@@ -1,9 +1,10 @@
 import { Fingerprint } from "@vicons/tabler";
 import { defineTool } from "../tool";
+import { translate } from "../../plugins/i18n.plugins";
 export const tool = defineTool({
-  name: "UUID生成器",
+  name: translate("tools.uuid-generator.title"),
   path: "/uuid-generator",
-  description: "UUID生成器",
+  description: translate("tools.uuid-generator.description"),
   icon: Fingerprint,
   keywords: ['uuid'],
   component: () => import("./uuid-generator.vue"),

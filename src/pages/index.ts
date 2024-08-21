@@ -1,5 +1,5 @@
 import { tool as uuidGenerator } from "./uuid-generator";
-import { ToolCategory } from "./tool.types";
+import { ToolCategory } from "./tool.types.ts";
 export const toolsCategory: ToolCategory[] = [
   {
     name: "Crypto",
