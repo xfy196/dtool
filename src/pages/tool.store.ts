@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
-import { useStorage } from "@vueuse/core";
 import type { Tool, ToolCategory, ToolWithCategory } from "./tool.types";
 import { toolsCategory, toolsWithCategory } from "./index";
-import { Ref, computed, h } from "vue";
+import { computed, h } from "vue";
 import { useI18n } from "vue-i18n";
 import _ from "lodash";
 import { translate } from "../plugins/i18n.plugins";

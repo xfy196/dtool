@@ -2,9 +2,9 @@
 import { FavoriteBorderRound, FavoriteOutlined } from "@vicons/material";
 import { useStorage } from "@vueuse/core";
 import { computed, Ref } from "vue";
-import {useThemeVars} from "naive-ui"
+import { useThemeVars } from "naive-ui";
 
-const themeVars = useThemeVars()
+const themeVars = useThemeVars();
 const props = defineProps({
   name: {
     type: String,
@@ -37,13 +37,15 @@ const cancelFavorite = () => {
               @click.stop="handleAddFavorite"
             />
             <FavoriteOutlined
-            :color="themeVars.primaryColor"
-            v-show="isFavorite" @click.stop="cancelFavorite" />
+              :color="themeVars.primaryColor"
+              v-show="isFavorite"
+              @click.stop="cancelFavorite"
+            />
           </n-icon>
         </template>
       </n-button>
     </template>
-    <span>{{ isFavorite ? "取消收藏" : "加入收藏"}}</span>
+    <span>{{ isFavorite ? "取消收藏" : "加入收藏" }}</span>
   </n-popover>
 </template>
 
