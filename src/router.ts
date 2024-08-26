@@ -19,6 +19,7 @@ const routes: RouteRecordRaw[] = [
     },
     ...toolsRoutes
 ]
+console.log("🚀 ~ routes:", routes)
 
 const router = createRouter({
     history: createWebHistory(),

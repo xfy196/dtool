@@ -4,7 +4,7 @@ import Header from './header.vue';
 </script>
 
 <template>
-  <n-layout has-sider> 
+  <n-layout class=" h-screen"  has-sider> 
     <sidler/>
     <n-layout>
         <Header/>

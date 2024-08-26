@@ -1,10 +1,17 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 import type { Tool, ToolCategory, ToolWithCategory } from "./tool.types";
-import { toolsWithCategory } from "./index";
-import { Ref, computed } from "vue";
+import { toolsCategory, toolsWithCategory } from "./index";
+import { Ref, computed, h } from "vue";
 import { useI18n } from "vue-i18n";
 import _ from "lodash";
+import { translate } from "../plugins/i18n.plugins";
+import { MenuOption } from "naive-ui";
+import { RouterLink } from "vue-router";
+import MenuIconItem from "../components/MenuIconItem.vue";
+const makeLabel = (tool: Tool) => () =>
+  h(RouterLink, { to: tool.path }, { default: () => tool.name });
+const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 export const useToolStore = defineStore("tools", () => {
   const favoriteToolsName = useStorage("favoriteToolsName", []) as Ref<
     string[]
@@ -25,19 +32,38 @@ export const useToolStore = defineStore("tools", () => {
       };
     })
   );
-
-  // 生成带分类的数据结构
-  const toolsByCategory = computed<ToolCategory[]>(() => {
-    return _.chain(tools.value)
-    .groupBy("category")
-    .map((components, name) => ({
-      name,
-      components,
-    }))
-    .value();
+  /**
+   * @description: 左侧菜单树数据结构处理
+   * @author 小小荧 <xfy196@outlook.com>
+   * @param {string} []
+   * @return {void}
+   * @date 2024-08-26 17:34
+   */
+  const menuTools = computed<MenuOption[]>(() => {
+    return toolsCategory.map((tool: ToolCategory) => {
+      const key = tool.name;
+      const icon = () => h(tool.icon);
+      const label = translate(`tools.${tool.name.toLocaleLowerCase()}`);
+      let children = tool.components.map((ctool) => {
+        const toolI18nKey = ctool.path.replace(/\//g, "");
+        ctool.name = t(`tools.${toolI18nKey}.title`, ctool.name);
+        return {
+          key: ctool.path,
+          label: makeLabel(ctool),
+          icon: makeIcon(ctool),
+        };
+      });
+      return {
+        key,
+        label,
+        icon,
+        children,
+      };
+    }) as MenuOption[];
   });
+
   return {
     tools,
-    toolsByCategory
+    menuTools,
   };
 });
