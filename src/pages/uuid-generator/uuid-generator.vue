@@ -8,6 +8,10 @@ import {
   v7 as uuidv7,
   NIL as NIL_UUID,
 } from "uuid";
+  console.log("🚀 ~ uuidv7:", uuidv7)
+  console.log("🚀 ~ uuidv6:", uuidv6)
+  console.log("🚀 ~ uuidv5:", uuidv5)
+  console.log("🚀 ~ uuidv3:", uuidv3)
 import { ref } from "vue";
 const versions = [
   { label: "NIL", value: "" },
