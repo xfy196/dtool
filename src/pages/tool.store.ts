@@ -13,14 +13,10 @@ const makeLabel = (tool: Tool) => () =>
   h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 export const useToolStore = defineStore("tools", () => {
-  const favoriteToolsName = useStorage("favoriteToolsName", []) as Ref<
-    string[]
-  >;
   const { t } = useI18n();
   const tools = computed<ToolWithCategory[]>(() =>
     toolsWithCategory.map((tool) => {
       const toolI18nKey = tool.path.replace(/\//g, "");
-
       return {
         ...tool,
         name: t(`tools.${toolI18nKey}.title`, tool.name),
