@@ -20,7 +20,7 @@ const description = computed<string>(() =>
       <Header />
       <n-layout-content content-style="padding: 24px;">
         <div class=" max-w-[600px] mx-auto my-0">
-          <BaseHead class="mb-6"key="key" :name="name" :description="description" />
+          <BaseHead v-if="route.path !== '/'"class="mb-6"key="key" :name="name" :description="description" />
           <RouterView />
         </div>
       </n-layout-content>
