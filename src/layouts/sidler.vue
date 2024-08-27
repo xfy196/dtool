@@ -2,9 +2,10 @@
 import { ref } from "vue";
 import { useToolStore } from "../pages/tool.store";
 import { storeToRefs } from "pinia";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useStorage } from "@vueuse/core";
 const route = useRoute();
+const router = useRouter();
 const toolStore = useToolStore();
 const { menuTools } = storeToRefs(toolStore);
 
@@ -36,8 +37,9 @@ const collapsed = ref(false);
       <!-- logo位置 -->
 
       <div
+        @click.stop="router.push('/')"
         :class="!collapsed ? 'text-white' : 'text-opacity-0 text-white'"
-        class="h-16 transition-all transition-duration-300 logo-bg truncate flex items-center justify-center text-base"
+        class="flex items-center justify-center h-16 text-base truncate transition-all cursor-pointer transition-duration-300 logo-bg"
       >
         帮助开发人员和IT人员
       </div>

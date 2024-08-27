@@ -16,7 +16,9 @@ declare module 'vue' {
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
+    NGi: typeof import('naive-ui')['NGi']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
+    NGrid: typeof import('naive-ui')['NGrid']
     NIcon: typeof import('naive-ui')['NIcon']
     NInput: typeof import('naive-ui')['NInput']
     NInputNumber: typeof import('naive-ui')['NInputNumber']
@@ -32,8 +34,11 @@ declare module 'vue' {
     NRadioButton: typeof import('naive-ui')['NRadioButton']
     NRadioGroup: typeof import('naive-ui')['NRadioGroup']
     NSelect: typeof import('naive-ui')['NSelect']
+    NSpace: typeof import('naive-ui')['NSpace']
+    NTooltip: typeof import('naive-ui')['NTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchResult: typeof import('./src/components/SearchResult.vue')['default']
+    ToolCards: typeof import('./src/components/ToolCards.vue')['default']
   }
 }

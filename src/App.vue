@@ -15,7 +15,7 @@ const isDark = useDark();
 <template>
   <n-config-provider :theme="isDark ? darkTheme : null">
     <NGlobalStyle />
-    <NMessageProvider placement="bottom">
+    <NMessageProvider placement="top">
       <NNotificationProvider placement="bottom-right">
         <component :is="layout">
           <RouterView />
