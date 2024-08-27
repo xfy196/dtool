@@ -8,6 +8,7 @@ import {
   v7 as uuidv7,
   NIL as NIL_UUID,
 } from "uuid";
+import _ from "lodash"
 import { useStorage, useClipboard } from "@vueuse/core";
 import { inject, ref, watch, watchEffect } from "vue";
 import { FormItemRule, useMessage } from "naive-ui";
@@ -77,26 +78,26 @@ const handleCopy = async () => {
 };
 const generators: Record<string, Function> = {
   nil: (quantity: number): string[] =>
-    Array.from({ length: quantity }, () => NIL_UUID),
+    _.times(quantity, () => NIL_UUID),
   v1: (quantity: number): string[] =>
-    Array.from({ length: quantity }, (_ignored, index) => {
+    _.times(quantity, (index) => {
       return uuidv1({
         clockseq: index,
         msecs: Date.now(),
         nsecs: Math.floor(Math.random() * 10000),
-        node: Array.from({ length: 6 }, () => Math.floor(Math.random() * 256)),
+        node: _.times(6, () => Math.floor(Math.random() * 256)),
       });
     }),
   v3: (quantity: number, name: string, namespaceValue: string): string[] =>
-    Array.from({ length: quantity }, () => uuidv3(name, namespaceValue)),
+    _.times(quantity, () => uuidv3(name, namespaceValue)),
   v4: (quantity: number): string[] =>
-    Array.from({ length: quantity }, () => uuidv4()),
+    _.times(quantity, () => uuidv4()),
   v5: (quantity: number, name: string, namespaceValue: string): string[] =>
-    Array.from({ length: quantity }, () => uuidv5(name, namespaceValue)),
+    _.times(quantity, () => uuidv5(name, namespaceValue)),
   v6: (quantity: number): string[] =>
-    Array.from({ length: quantity }, () => uuidv6()),
+    _.times(quantity, () => uuidv6()),
   v7: (quantity: number): string[] =>
-    Array.from({ length: quantity }, () => uuidv7()),
+    _.times(quantity, () => uuidv7()),
 };
 const handleRefresh = () => {
   form.value.value = generators[form.value.version](
@@ -133,11 +134,9 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="">
     <n-form
       :rules="rules"
       :show-require-mark="false"
-      ref="formRef"
       label-placement="left"
       :label-width="120"
       :model="form"
@@ -208,7 +207,6 @@ watchEffect(() => {
         </n-space>
       </div>
     </n-form>
-  </div>
 </template>
 
 <style lang="scss" scoped></style>
