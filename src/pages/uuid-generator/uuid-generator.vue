@@ -42,7 +42,7 @@ const namespaces = [
 ];
 
 const form = ref({
-  version: useStorage(`${_function}:ver`, "nil"),
+  version: useStorage(`${_function}:version`, "v4"),
   quantity: useStorage(`${_function}:quantity`, 1),
   value: "",
   namespace: useStorage(`${_function}:namespace`, "DNS"),
