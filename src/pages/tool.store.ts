@@ -8,7 +8,7 @@ import { translate } from "../plugins/i18n.plugins";
 import { MenuOption } from "naive-ui";
 import { RouterLink } from "vue-router";
 import MenuIconItem from "../components/MenuIconItem.vue";
-import { RemovableRef, useStorage } from "@vueuse/core";
+import { useStorage } from "@vueuse/core";
 const makeLabel = (tool: Tool) => () =>
   h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
