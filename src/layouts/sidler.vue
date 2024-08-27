@@ -19,13 +19,14 @@ const expandedKeys = useStorage<string[]>("expnandedKeys", [], undefined, {
 const handleIUpdateExpandedKeys = (keys: string[]) => {
   expandedKeys.value = keys;
 };
-const collapsed = ref(false);
+const collapsed = useStorage("collapsed", false);
 </script>
 
 <template>
   <div>
     <n-layout-sider
       bordered
+      class="h-full"
       collapse-mode="width"
       :collapsed-width="64"
       :width="240"
@@ -45,6 +46,7 @@ const collapsed = ref(false);
       </div>
 
       <n-menu
+        :indent="24"
         :collapsed="collapsed"
         :collapsed-width="64"
         :value="route.path"

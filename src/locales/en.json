@@ -10,6 +10,10 @@
     "ulid-generator": {
       "title": "ULID generator",
       "description": "Generate random Universally Unique Lexicographically Sortable Identifier (ULID)."
+    },
+    "token-generator": {
+      "title": "Token generator",
+      "description": "Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols."
     }
   }
 }

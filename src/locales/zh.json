@@ -10,6 +10,11 @@
     "ulid-generator": {
       "title": "ULID 生成器",
       "description": "生成随机的通用唯一词典可排序标识符（ULID）。"
+    },
+
+    "token-generator": {
+      "title": "Token 生成器",
+      "description": "使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。"
     }
   }
 }
