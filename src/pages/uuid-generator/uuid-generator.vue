@@ -42,7 +42,7 @@ const namespaces = [
 ];
 
 const form = ref({
-  version: useStorage(`${_function}:version`, "nil"),
+  version: useStorage(`${_function}:ver`, "nil"),
   quantity: useStorage(`${_function}:quantity`, 1),
   value: "",
   namespace: useStorage(`${_function}:namespace`, "DNS"),
@@ -142,6 +142,7 @@ watchEffect(() => {
       :label-width="120"
       :model="form"
     >
+      {{ form.version }}
       <n-form-item label="UUID version" path="version">
         <n-radio-group v-model:value="form.version">
           <n-radio-button
