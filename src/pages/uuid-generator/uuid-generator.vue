@@ -8,12 +8,13 @@ import {
   v7 as uuidv7,
   NIL as NIL_UUID,
 } from "uuid";
-import _ from "lodash"
-import { useStorage, useClipboard } from "@vueuse/core";
-import { inject, ref, watch, watchEffect } from "vue";
-import { FormItemRule, useMessage } from "naive-ui";
+import _ from "lodash";
+import { useStorage } from "@vueuse/core";
+import { inject, ref } from "vue";
+import { FormItemRule } from "naive-ui";
+import { computedRefreshable } from "@/composable/computedRefreshable";
+import { useCopy } from "@/composable/copy";
 const _function = inject("function", "uuid-generator");
-const message = useMessage();
 const versions = [
   { label: "NIL", value: "nil" },
   { label: "v1", value: "v1" },
@@ -45,9 +46,11 @@ const namespaces = [
 const form = ref({
   version: useStorage(`${_function}:version`, "v4"),
   quantity: useStorage(`${_function}:quantity`, 1),
-  value: "",
   namespace: useStorage(`${_function}:namespace`, "DNS"),
-  namespaceValue: "53a02157-caa5-4f41-a9a0-95a94af7fa68",
+  namespaceValue: useStorage(
+    `${_function}:namespaceValue`,
+    namespaces[0].value
+  ),
   name: useStorage(`${_function}:name`, ""),
 });
 const rules = {
@@ -67,18 +70,9 @@ const rules = {
     },
   },
 };
-const { copy, isSupported } = useClipboard({ source: form.value.value });
-const handleCopy = async () => {
-  try {
-    await copy(form.value.value);
-    message.success("UUIDS Copied to clipboard");
-  } catch (error) {
-    message.error("UUIDS Failed to copy to clipboard");
-  }
-};
+
 const generators: Record<string, Function> = {
-  nil: (quantity: number): string[] =>
-    _.times(quantity, () => NIL_UUID),
+  nil: (quantity: number): string[] => _.times(quantity, () => NIL_UUID),
   v1: (quantity: number): string[] =>
     _.times(quantity, (index) => {
       return uuidv1({
@@ -90,123 +84,111 @@ const generators: Record<string, Function> = {
     }),
   v3: (quantity: number, name: string, namespaceValue: string): string[] =>
     _.times(quantity, () => uuidv3(name, namespaceValue)),
-  v4: (quantity: number): string[] =>
-    _.times(quantity, () => uuidv4()),
+  v4: (quantity: number): string[] => _.times(quantity, () => uuidv4()),
   v5: (quantity: number, name: string, namespaceValue: string): string[] =>
     _.times(quantity, () => uuidv5(name, namespaceValue)),
-  v6: (quantity: number): string[] =>
-    _.times(quantity, () => uuidv6()),
-  v7: (quantity: number): string[] =>
-    _.times(quantity, () => uuidv7()),
+  v6: (quantity: number): string[] => _.times(quantity, () => uuidv6()),
+  v7: (quantity: number): string[] => _.times(quantity, () => uuidv7()),
 };
-const handleRefresh = () => {
-  form.value.value = generators[form.value.version](
-    form.value.quantity,
-    form.value.name,
-    form.value.namespaceValue
-  ).join("\n");
-};
-watch(
-  () => form.value.namespace,
-  (val) => {
-    const namespace = namespaces.find((namespace) => namespace.value === val);
-    if (namespace) {
-      form.value.namespaceValue = namespace.value;
-    }
-  },
-  {
-    immediate: true,
-  }
-);
-watchEffect(() => {
+
+const [uuid, handleRefresh] = computedRefreshable(() => {
   const version: string = form.value.version;
+  const namespace = namespaces.find(
+    (namespace) => namespace.label === form.value.namespace
+  );
+  if (namespace) {
+    form.value.namespaceValue = namespace.value;
+  }
   const namespaceValue: string = form.value.namespaceValue;
   const name: string = form.value.name;
   const quantity: number = form.value.quantity;
   try {
-    form.value.value = generators[version](quantity, name, namespaceValue).join(
-      "\n"
-    );
+    return generators[version](quantity, name, namespaceValue).join("\n");
   } catch (error) {
-    form.value.value = "";
+    return "";
   }
+});
+
+const { copy, isSupported } = useCopy({
+  source: uuid,
+  text: "UUIDS Copied to clipboard",
+  errText: "ULIDs Failed to copy to clipboard",
 });
 </script>
 
 <template>
-    <n-form
-      :rules="rules"
-      :show-require-mark="false"
-      label-placement="left"
-      :label-width="120"
-      :model="form"
+  <n-form
+    :rules="rules"
+    :show-require-mark="false"
+    label-placement="left"
+    :label-width="120"
+    :model="form"
+  >
+    <n-form-item label="UUID version" path="version">
+      <n-radio-group v-model:value="form.version">
+        <n-radio-button
+          v-for="version in versions"
+          :key="version.value"
+          :label="version.label"
+          :value="version.value"
+        ></n-radio-button>
+      </n-radio-group>
+    </n-form-item>
+    <n-form-item label="Quantity" path="quantity">
+      <n-input-number
+        :min="1"
+        class="w-full"
+        v-model:value="form.quantity"
+        placeholder="UUID Quantity"
+      />
+    </n-form-item>
+    <n-form-item
+      v-show="['v3', 'v5'].includes(form.version)"
+      label="Namespace"
+      path="namespace"
     >
-      {{ form.version }}
-      <n-form-item label="UUID version" path="version">
-        <n-radio-group v-model:value="form.version">
-          <n-radio-button
-            v-for="version in versions"
-            :key="version.value"
-            :label="version.label"
-            :value="version.value"
-          ></n-radio-button>
-        </n-radio-group>
-      </n-form-item>
-      <n-form-item label="Quantity" path="quantity">
-        <n-input-number
-          :min="1"
-          class="w-full"
-          v-model:value="form.quantity"
-          placeholder="UUID Quantity"
-        />
-      </n-form-item>
-      <n-form-item
-        v-show="['v3', 'v5'].includes(form.version)"
-        label="Namespace"
-        path="namespace"
-      >
-        <n-radio-group v-model:value="form.namespace">
-          <n-radio-button
-            v-for="version in namespaces"
-            :key="version.value"
-            :label="version.label"
-            :value="version.value"
-          ></n-radio-button>
-        </n-radio-group>
-      </n-form-item>
-      <n-form-item
-        path="namespaceValue"
-        v-show="['v3', 'v5'].includes(form.version)"
-        label=" "
-      >
-        <n-input v-model:value="form.namespaceValue" placeholder="Namespace" />
-      </n-form-item>
-      <n-form-item
-        path="name"
-        v-show="['v3', 'v5'].includes(form.version)"
-        label=" "
-      >
-        <n-input v-model:value="form.name" placeholder="Name" />
-      </n-form-item>
-      <n-form-item label="">
-        <n-input
-          class="text-center"
-          readonly
-          autosize
-          v-model:value="form.value"
-          type="textarea"
-          placeholder="UUID"
-        />
-      </n-form-item>
-      <div class="flex items-end justify-center">
-        <n-space>
-          <n-button v-if="isSupported" @click.stop="handleCopy" tertiary>
-            Copy
-          </n-button>
-          <n-button tertiary @click.top="handleRefresh"> Refresh </n-button>
-        </n-space>
-      </div>
-    </n-form>
+      <n-radio-group v-model:value="form.namespace">
+        <n-radio-button
+          v-for="version in namespaces"
+          :key="version.value"
+          :label="version.label"
+          :value="version.label"
+        ></n-radio-button>
+      </n-radio-group>
+    </n-form-item>
+    <n-form-item
+      path="namespaceValue"
+      v-show="['v3', 'v5'].includes(form.version)"
+      label=" "
+    >
+      <n-input v-model:value="form.namespaceValue" placeholder="Namespace" />
+    </n-form-item>
+    <n-form-item
+      path="name"
+      v-show="['v3', 'v5'].includes(form.version)"
+      label=" "
+    >
+      <n-input v-model:value="form.name" placeholder="Name" />
+    </n-form-item>
+    <n-form-item label="">
+      <n-input
+        class="text-center"
+        readonly
+        autosize
+        v-model:value="uuid"
+        type="textarea"
+        placeholder="UUID"
+      />
+    </n-form-item>
+    <div class="flex items-end justify-center">
+      <n-space>
+        <n-button v-if="isSupported" @click.stop="copy" tertiary>
+          Copy
+        </n-button>
+        <n-button tertiary @click.top="handleRefresh"> Refresh </n-button>
+      </n-space>
+    </div>
+  </n-form>
 </template>
 
 <style lang="scss" scoped></style>

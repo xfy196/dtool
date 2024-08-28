@@ -64,7 +64,7 @@ const handleUpdateShow = (val: boolean) => {
     <n-card
       :closable="false"
       :bordered="false"
-      class="w-[540px] top-20 fixed transition-none -translate-x-1/2 left-1/2"
+      class="w-[540px] top-20 fixed search-box left-1/2"
     >
       <n-auto-complete
         clear-after-select
@@ -82,4 +82,9 @@ const handleUpdateShow = (val: boolean) => {
   </n-modal>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-box {
+  transition: none;
+  transform: translateX(-50%);
+}
+</style>

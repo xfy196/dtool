@@ -15,6 +15,10 @@
     "token-generator": {
       "title": "Token 生成器",
       "description": "使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。"
+    },
+    "hash-text": {
+      "title": "Hash 文本",
+      "description": "使用所需的函数哈希文本字符串：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3或RIPEMD160。"
     }
   }
 }

@@ -14,6 +14,10 @@
     "token-generator": {
       "title": "Token generator",
       "description": "Generate random string with the chars you want, uppercase or lowercase letters, numbers and/or symbols."
+    },
+    "hash-text": {
+      "title": "Hash text",
+      "description": "Hash a text string using the function you need : MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 or RIPEMD160."
     }
   }
 }

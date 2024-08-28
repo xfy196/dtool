@@ -14,10 +14,9 @@ defineProps({
 </script>
 
 <template>
-
   <n-tooltip trigger="hover">
     <template #trigger>
-      <n-button text>
+      <n-button quaternary circle>
         <template #icon>
           <n-icon>
             <FavoriteBorderRound

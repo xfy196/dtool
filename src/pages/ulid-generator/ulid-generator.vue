@@ -1,46 +1,39 @@
 <script setup lang="ts">
-import { useClipboard, useStorage } from "@vueuse/core";
-import { useMessage } from "naive-ui";
+import {  useStorage } from "@vueuse/core";
 import { ulid } from "ulid";
-import { inject, ref, watchEffect } from "vue";
-import _ from "lodash"
+import { inject, ref } from "vue";
+import _ from "lodash";
+import { computedRefreshable } from "@/composable/computedRefreshable";
+import { useCopy } from "@/composable/copy";
 const _function = inject("function", "ulid-generator");
-const message = useMessage();
 const formats = [
-    {
-        label: "Raw",
-        value: 'raw'
-    },
-    {
-        label: "JSON",
-        value: 'json'
-    }
-]
+  {
+    label: "Raw",
+    value: "raw",
+  },
+  {
+    label: "JSON",
+    value: "json",
+  },
+];
 const form = ref({
-  ulid: ulid(),
   format: useStorage(`${_function}:format`, formats[0].value),
   quantity: useStorage(`${_function}:quantity`, 1),
 });
-const { copy, isSupported } = useClipboard({ source: form.value.ulid });
-const handleRefresh = () => {
-  const ulids = _.times(form.value.quantity, () => ulid());
+
+const [ulids, handleRefresh] = computedRefreshable<string>(() => {
+  const ids = _.times(form.value.quantity, () => ulid());
   if (form.value.format === "json") {
-    form.value.ulid = JSON.stringify(ulids, null, 2);
-  } else {
-    form.value.ulid = ulids.join("\n");
+    return JSON.stringify(ids, null, 2);
   }
-};
-watchEffect(() => {
-  handleRefresh();
+  return ids.join("\n");
 });
-const handleCopy = async () => {
-  try {
-    await copy(form.value.ulid);
-    message.success("ULIDs Copied to clipboard");
-  } catch (error) {
-    message.error("ULIDs Failed to copy to clipboard");
-  }
-};
+
+const { copy, isSupported } = useCopy({
+  source: ulids,
+  text: "ULIDs Copied to clipboard",
+  errText: "ULIDs Failed to copy to clipboard",
+});
 </script>
 
 <template>
@@ -68,14 +61,14 @@ const handleCopy = async () => {
         class="text-center"
         readonly
         autosize
-        v-model:value="form.ulid"
+        v-model:value="ulids"
         type="textarea"
         placeholder="ULID"
       />
     </n-form-item>
     <div class="flex items-end justify-center">
       <n-space>
-        <n-button v-if="isSupported" @click.stop="handleCopy" tertiary>
+        <n-button v-if="isSupported" @click.stop="copy" tertiary>
           Copy
         </n-button>
         <n-button tertiary @click.top="handleRefresh"> Refresh </n-button>

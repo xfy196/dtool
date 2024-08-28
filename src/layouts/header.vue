@@ -39,7 +39,7 @@ const handleShowSearch = () => {
 </script>
 
 <template>
-  <n-layout-header class="mt-2 px-2">
+  <n-layout-header>
     <div class="flex">
       <div
         @click.stop="handleShowSearch"

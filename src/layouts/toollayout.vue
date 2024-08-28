@@ -12,23 +12,37 @@ const description = computed<string>(() =>
   translate(`tools.${key.value}.description`)
 );
 provide("_function", key.value);
-
 </script>
 
 <template>
   <n-layout class="h-screen" has-sider>
     <sidler />
-    <n-layout>
+    <n-layout content-style="padding: 24px;" embedded>
       <Header />
-      <n-layout-content content-style="padding: 24px;">
-        <div :class="{'max-w-[600px]': route.path !== '/'}" class="mx-auto my-0">
-          <BaseHead v-if="route.path !== '/'"class="mb-6" :funcion="key" :name="name" :description="description" />
+      <n-layout-content embedded>
+        <BaseHead
+          v-if="route.path !== '/'"
+          class="py-10 max-w-[600px] mx-auto"
+          :funcion="key"
+          :name="name"
+          :description="description"
+        />
+        <div
+          v-if="route.path !== '/'"
+          class="flex flex-row justify-center gap-[16px] flex-wrap items-start tool-content"
+        >
+          <RouterView />
+        </div>
+        <div class="mt-10" v-else>
           <RouterView />
         </div>
       </n-layout-content>
-      <!-- <n-layout-footer>成府路</n-layout-footer> -->
     </n-layout>
   </n-layout>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.tool-content > * {
+  flex: 0 1 600px;
+}
+</style>
