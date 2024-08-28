@@ -4,7 +4,7 @@ import { inject, ref } from "vue";
 import { computedRefreshable } from "@/composable/computedRefreshable";
 import { useCopy } from "@/composable/copy";
 import { createToken } from "./token-generator.service";
-const _function = inject("function", "token-generator");
+const _function = inject("_function", "token-generator");
 
 const form = ref({
   upperCase: useStorage(`${_function}:upperCase`, false),
@@ -28,7 +28,6 @@ const { copy, isSupported } = useCopy({
 
 <template>
   <n-form
-    :show-require-mark="false"
     label-placement="left"
     :label-width="100"
     :model="form"

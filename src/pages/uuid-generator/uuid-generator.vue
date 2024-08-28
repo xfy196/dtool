@@ -14,7 +14,7 @@ import { inject, ref } from "vue";
 import { FormItemRule } from "naive-ui";
 import { computedRefreshable } from "@/composable/computedRefreshable";
 import { useCopy } from "@/composable/copy";
-const _function = inject("function", "uuid-generator");
+const _function = inject("_function", "uuid-generator");
 const versions = [
   { label: "NIL", value: "nil" },
   { label: "v1", value: "v1" },

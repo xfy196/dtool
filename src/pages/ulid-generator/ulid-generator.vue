@@ -5,7 +5,7 @@ import { inject, ref } from "vue";
 import _ from "lodash";
 import { computedRefreshable } from "@/composable/computedRefreshable";
 import { useCopy } from "@/composable/copy";
-const _function = inject("function", "ulid-generator");
+const _function = inject("_function", "ulid-generator");
 const formats = [
   {
     label: "Raw",
