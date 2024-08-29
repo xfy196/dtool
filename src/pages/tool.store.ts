@@ -13,10 +13,11 @@ const makeLabel = (tool: Tool) => () =>
   h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 export const useToolStore = defineStore("tools", () => {
-  const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<string[]>;
+  const favoriteToolsName = useStorage("favoriteToolsName", []) as Ref<
+    string[]
+  >;
   const { t } = useI18n();
   const tools = computed<ToolWithCategory[]>(() =>
-
     toolsWithCategory.map((tool) => {
       const toolI18nKey = tool.path.replace(/\//g, "");
       return {
@@ -41,16 +42,18 @@ export const useToolStore = defineStore("tools", () => {
 
   // 加入收藏
   const addToolToFavorite = (name: string) => {
-    favoriteToolsName.value.push(name)
-  }
+    favoriteToolsName.value.push(name);
+  };
   // 取消收藏
   const removeToolFromFavorite = (name: string) => {
-    favoriteToolsName.value = favoriteToolsName.value.filter((toolName) => toolName !== name)
-  }
+    favoriteToolsName.value = favoriteToolsName.value.filter(
+      (toolName) => toolName !== name
+    );
+  };
   // 判断是否收藏
   const isFavorite = (name: string) => {
-    return favoriteToolsName.value.includes(name)
-  }
+    return favoriteToolsName.value.includes(name);
+  };
 
   /**
    * @description: 左侧菜单树数据结构处理
@@ -62,7 +65,7 @@ export const useToolStore = defineStore("tools", () => {
   const menuTools = computed<MenuOption[]>(() => {
     return toolsCategory.map((tool: ToolCategory) => {
       const key = tool.name;
-      const show = tool.show
+      const show = tool.show;
       const icon = () => h(tool.icon);
       const label = translate(`tools.${tool.name.toLocaleLowerCase()}`);
       let children = tool.components.map((ctool) => {
@@ -85,12 +88,16 @@ export const useToolStore = defineStore("tools", () => {
     }) as MenuOption[];
   });
 
+  const latestTools = computed<ToolWithCategory[]>(() => {
+    return tools.value.filter((tool) => tool.isNew);
+  });
   return {
     tools,
     menuTools,
     favoriteTools,
     addToolToFavorite,
     removeToolFromFavorite,
-    isFavorite
+    isFavorite,
+    latestTools,
   };
 });
