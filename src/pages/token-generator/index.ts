@@ -6,6 +6,7 @@ export const tool = defineTool({
   path: "/token-generator",
   description: translate("tools.token-generator.description"),
   icon: ArrowsShuffle,
+  show: true,
   keywords: ['token', 'pasword'],
   component: () => import("./token-generator.vue"),
   createdAt: new Date("2024-08-27")

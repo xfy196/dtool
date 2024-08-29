@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BaseHead: typeof import('./src/components/BaseHead.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
+    InputCopy: typeof import('./src/components/InputCopy.vue')['default']
     MenuIconItem: typeof import('./src/components/MenuIconItem.vue')['default']
     NAutoComplete: typeof import('naive-ui')['NAutoComplete']
     NButton: typeof import('naive-ui')['NButton']
@@ -17,6 +18,7 @@ declare module 'vue' {
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NFormItemGi: typeof import('naive-ui')['NFormItemGi']
+    NFrom: typeof import('naive-ui')['NFrom']
     NGi: typeof import('naive-ui')['NGi']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
     NGrid: typeof import('naive-ui')['NGrid']

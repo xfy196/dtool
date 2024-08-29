@@ -3,6 +3,7 @@
     "search": "搜索",
     "searchPlaceholder": "搜索一个工具吧",
     "crypto": "加密",
+    "converter": "转换器",
     "uuid-generator": {
       "title": "UUIDs 生成器",
       "description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。"
@@ -19,6 +20,10 @@
     "hash-text": {
       "title": "Hash 文本",
       "description": "使用所需的函数哈希文本字符串：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3或RIPEMD160。"
+    },
+    "date-time-converter": {
+      "title": "日期时间转换器",
+      "description": "将日期和时间转换为各种不同的格式。"
     }
   }
 }

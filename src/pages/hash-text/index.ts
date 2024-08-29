@@ -6,6 +6,7 @@ export const tool = defineTool({
   path: "/hash-text",
   description: translate("tools.hash-text.description"),
   icon: EyeOff,
+  show: true,
   keywords: ['hash', 'text'],
   component: () => import("./hash-text.vue"),
   createdAt: new Date("2024-08-28")

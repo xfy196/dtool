@@ -62,6 +62,7 @@ export const useToolStore = defineStore("tools", () => {
   const menuTools = computed<MenuOption[]>(() => {
     return toolsCategory.map((tool: ToolCategory) => {
       const key = tool.name;
+      const show = tool.show
       const icon = () => h(tool.icon);
       const label = translate(`tools.${tool.name.toLocaleLowerCase()}`);
       let children = tool.components.map((ctool) => {
@@ -71,12 +72,14 @@ export const useToolStore = defineStore("tools", () => {
           key: ctool.path,
           label: makeLabel(ctool),
           icon: makeIcon(ctool),
+          show: ctool.show,
         };
       });
       return {
         key,
         label,
         icon,
+        show,
         children,
       };
     }) as MenuOption[];

@@ -6,6 +6,7 @@ export const tool = defineTool({
   path: "/uuid-generator",
   description: translate("tools.uuid-generator.description"),
   icon: Fingerprint,
+  show: true,
   keywords: ['uuid'],
   component: () => import("./uuid-generator.vue"),
   createdAt: new Date("2024-08-17")

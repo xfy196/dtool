@@ -8,13 +8,15 @@ export interface Tool {
   component: () => Promise<Component>
   icon: Component
   redirectFrom?: string[]
-  isNew: boolean
+  isNew: boolean,
+  show: boolean,
   createdAt?: Date
 }
 
 export interface ToolCategory {
   name: string
   components: Tool[],
+  show: boolean,
   icon: Component
 }
 

@@ -3,6 +3,7 @@
     "search": "Search",
     "searchPlaceholder": "Type a search a tool",
     "crypto": "Crypto",
+    "converter": "Converter",
     "uuid-generator": {
       "title": "UUIDs generator",
       "description": "A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!)."
@@ -18,6 +19,10 @@
     "hash-text": {
       "title": "Hash text",
       "description": "Hash a text string using the function you need : MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3 or RIPEMD160."
+    },
+    "date-time-converter": {
+      "title": "DateTime converter",
+      "description": "Convert date and time into the various different formats."
     }
   }
 }

@@ -7,6 +7,7 @@ export const tool = defineTool({
   description: translate("tools.ulid-generator.description"),
   icon: SortAscendingNumbers,
   keywords: ['ulid'],
+  show: true,
   component: () => import("./ulid-generator.vue"),
   createdAt: new Date("2024-08-17")
 });

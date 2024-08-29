@@ -56,7 +56,7 @@ const { copy, isSupported } = useCopy({
         ></n-radio-button>
       </n-radio-group>
     </n-form-item>
-    <n-form-item label="">
+    <n-form-item :show-label="false" label="">
       <n-input
         class="text-center"
         readonly

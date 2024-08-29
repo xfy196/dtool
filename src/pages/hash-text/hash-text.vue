@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from "@vueuse/core";
 import { inject, ref } from "vue";
-import { Copy } from "@vicons/tabler";
-import { useThemeVars } from "naive-ui";
+import InputCopy from "@/components/InputCopy.vue";
 import {
   MD5,
   RIPEMD160,
@@ -14,9 +13,9 @@ import {
   SHA512,
   enc,
 } from "crypto-js";
+import { convertHexToBin } from "@/utils/convert";
 
 const _function = inject("_function", "hash-text");
-const themeVars = useThemeVars();
 
 const algos = {
   MD5,
@@ -30,12 +29,13 @@ const algos = {
 } as const;
 
 type AlgoNames = keyof typeof algos;
-// type Encoding = keyof typeof enc | "Bin";
+type Encoding = keyof typeof enc | "Bin";
+
 const algoNames = Object.keys(algos) as AlgoNames[];
 
 const form = ref({
   text: useStorage(`${_function}:text`, ""),
-  encode: useStorage(`${_function}:encode`, "Bin"),
+  encode: useStorage<Encoding>(`${_function}:encode`, "Bin"),
 });
 const encodes = [
   {
@@ -56,7 +56,11 @@ const encodes = [
   },
 ];
 const hashText = (algo: AlgoNames, value: string = "") => {
-  return algo + value;
+  if (form.value.encode === "Bin") {
+    // crypto-js 不支持二进制转换，这里的思路生成十六进制再转为二进制
+    return convertHexToBin(algos[algo](value).toString(enc.Hex));
+  }
+  return algos[algo](value).toString(enc[form.value.encode]);
 };
 </script>
 
@@ -77,17 +81,7 @@ const hashText = (algo: AlgoNames, value: string = "") => {
         <n-input-group-label style="flex: 0 0 120px">{{
           algo
         }}</n-input-group-label>
-        <n-input :value="hashText(algo, form.text)" readonly>
-          <template #suffix>
-            <n-button circle quaternary type="success">
-              <template #icon>
-                <n-icon>
-                  <Copy :color="themeVars.textColor1" />
-                </n-icon>
-              </template>
-            </n-button>
-          </template>
-        </n-input>
+        <InputCopy :value="hashText(algo, form.text)" />
       </n-input-group>
     </div>
   </n-form>

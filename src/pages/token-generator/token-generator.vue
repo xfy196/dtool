@@ -32,32 +32,24 @@ const { copy, isSupported } = useCopy({
     :label-width="100"
     :model="form"
   >
-    <n-grid :cols="4" collapsed :collapsed-rows="2">
+    <n-grid :cols="4">
       <n-form-item-gi label="大写(ABC...)" path="upperCase">
-        <n-form-item :show-feedback="false">
           <n-switch v-model:value="form.upperCase" />
-        </n-form-item>
       </n-form-item-gi>
       <n-form-item-gi label="小写(abc...)" path="lowerCase">
-        <n-form-item :show-feedback="false">
           <n-switch v-model:value="form.lowerCase" />
-        </n-form-item>
       </n-form-item-gi>
       <n-form-item-gi label="数字(123..)" path="number">
-        <n-form-item :show-feedback="false">
           <n-switch v-model:value="form.number" />
-        </n-form-item>
       </n-form-item-gi>
       <n-form-item-gi label="符号(!+;...)" path="symbol">
-        <n-form-item :show-feedback="false">
           <n-switch v-model:value="form.symbol" />
-        </n-form-item>
       </n-form-item-gi>
     </n-grid>
     <n-form-item path="length" :label="`长度(${form.length})`">
       <n-slider :min="1" :max="512" v-model:value="form.length" :step="1" />
     </n-form-item>
-    <n-form-item path="value" label="">
+    <n-form-item path="value" :show-label="false" label="">
       <n-input
         type="textarea"
         readonly
