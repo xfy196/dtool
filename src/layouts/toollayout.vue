@@ -7,12 +7,14 @@ import { computed, provide } from "vue";
 import { translate } from "@/plugins/i18n.plugins.ts";
 import { useStyleStore } from "@/stores/style.store";
 import { storeToRefs } from "pinia";
+import { useTitle } from "@vueuse/core";
 
 const styleStore = useStyleStore();
 const { isSmallScreen, collapsed } = storeToRefs(styleStore);
 const route = useRoute();
 const key = computed<string>(() => route.path.replace(/\//g, ""));
 const name = computed<string>(() => translate(`tools.${key.value}.title`));
+useTitle(`${name.value} - Cool Tools`)
 const description = computed<string>(() =>
   translate(`tools.${key.value}.description`)
 );
