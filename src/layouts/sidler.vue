@@ -3,10 +3,17 @@ import { useToolStore } from "../pages/tool.store";
 import { storeToRefs } from "pinia";
 import { useRoute, useRouter } from "vue-router";
 import { useStorage } from "@vueuse/core";
+import { useStyleStore } from "@/stores/style.store";
+import { computed } from "vue";
+
+const styleStore = useStyleStore();
+const { collapsed, isSmallScreen } = storeToRefs(styleStore);
 const route = useRoute();
 const router = useRouter();
 const toolStore = useToolStore();
 const { menuTools } = storeToRefs(toolStore);
+
+const position = computed(() => (isSmallScreen.value ? "absolute" : "static"));
 
 const expandedKeys = useStorage<string[]>("expnandedKeys", [], undefined, {
   deep: true,
@@ -18,7 +25,6 @@ const expandedKeys = useStorage<string[]>("expnandedKeys", [], undefined, {
 const handleIUpdateExpandedKeys = (keys: string[]) => {
   expandedKeys.value = keys;
 };
-const collapsed = useStorage("collapsed", false);
 </script>
 
 <template>
@@ -27,10 +33,12 @@ const collapsed = useStorage("collapsed", false);
       bordered
       class="h-full"
       collapse-mode="width"
-      :collapsed-width="64"
+      :collapsed-width="isSmallScreen ? 0 : 64"
       :width="240"
       :collapsed="collapsed"
-      show-trigger
+      :show-trigger="!isSmallScreen"
+      :native-scrollbar="false"
+      :position="position"
       @collapse="collapsed = true"
       @expand="collapsed = false"
     >

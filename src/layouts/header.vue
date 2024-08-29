@@ -1,27 +1,30 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { Search } from "@vicons/tabler";
+import { Search, Menu2, Home2 } from "@vicons/tabler";
 import { useI18n } from "vue-i18n";
 import { SelectOption } from "naive-ui";
 import { translate } from "../plugins/i18n.plugins";
 import { SunnyOutline } from "@vicons/ionicons5";
 import { Moon } from "@vicons/tabler";
-import { useDark, useStorage, useToggle } from "@vueuse/core";
+import { useStorage } from "@vueuse/core";
+import { useStyleStore } from "@/stores/style.store";
 import SearchResult from "../components/SearchResult.vue";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 const { locale } = useI18n();
-
-const lang = useStorage("lang", 'zh');
+const router = useRouter();
+const lang = useStorage("lang", "zh");
 
 locale.value = lang.value;
 
 const searchVisible = ref<boolean>(false);
 
+const styleStore = useStyleStore();
+const { isDark, isSmallScreen } = storeToRefs(styleStore);
+
 watch(lang, (newLang) => {
   locale.value = newLang;
 });
-
-const isDark = useDark();
-const toogleDark = useToggle(isDark);
 
 const langOptions = ref<Array<SelectOption>>([
   {
@@ -41,6 +44,30 @@ const handleShowSearch = () => {
 <template>
   <n-layout-header>
     <div class="flex">
+      <n-button
+        quaternary
+        @click="styleStore.collapsed = !styleStore.collapsed"
+        circle
+        v-show="isSmallScreen"
+      >
+        <template #icon>
+          <n-icon :size="24">
+            <Menu2 />
+          </n-icon>
+        </template>
+      </n-button>
+      <n-button
+        @click.stop="router.push('/')"
+        quaternary
+        circle
+        v-show="isSmallScreen"
+      >
+        <template #icon>
+          <n-icon :size="24">
+            <Home2 />
+          </n-icon>
+        </template>
+      </n-button>
       <div
         @click.stop="handleShowSearch"
         class="mr-2 flex-1 cursor-pointer dark:bg-opacity-15 bg-[#2d3338] bg-opacity-5 h-[34px] rounded px-3 flex items-center"
@@ -48,11 +75,16 @@ const handleShowSearch = () => {
         <n-icon :component="Search" class="mr-2" />
         <div>{{ translate("tools.search") }}</div>
       </div>
-      <n-select class="w-24" v-model:value="lang" :options="langOptions" />
-      <div class="flex ml-2">
-        <n-button circle @click.stop="toogleDark()" class="text-2xl">
+      <n-select
+        v-show="!isSmallScreen"
+        class="w-24"
+        v-model:value="lang"
+        :options="langOptions"
+      />
+      <div v-show="!isSmallScreen" class="flex ml-2">
+        <n-button quaternary circle @click.stop="styleStore.toggleDark()">
           <template #icon>
-            <n-icon>
+            <n-icon :size="24">
               <SunnyOutline v-if="isDark" />
               <Moon v-else />
             </n-icon>

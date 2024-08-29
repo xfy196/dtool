@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <n-grid x-gap="12" :cols="4">
+  <n-grid responsive="screen" y-gap="12" x-gap="12" cols="xs:1 s:2 m:2 l:3 xl:4 2xl:4">
     <n-gi v-for="tool in tools" :key="tool.path">
       <n-card
         @click.stop="router.push(tool.path)"

@@ -5,6 +5,11 @@ import BaseHead from "../components/BaseHead.vue";
 import { useRoute } from "vue-router";
 import { computed, provide } from "vue";
 import { translate } from "@/plugins/i18n.plugins.ts";
+import { useStyleStore } from "@/stores/style.store";
+import { storeToRefs } from "pinia";
+
+const styleStore = useStyleStore();
+const { isSmallScreen, collapsed } = storeToRefs(styleStore);
 const route = useRoute();
 const key = computed<string>(() => route.path.replace(/\//g, ""));
 const name = computed<string>(() => translate(`tools.${key.value}.title`));
@@ -38,6 +43,11 @@ provide("_function", key.value);
         </div>
       </n-layout-content>
     </n-layout>
+    <div
+      class="absolute top-0 left-0 w-full h-full bg-[#00000080] cursor-pointer"
+      @click.stop="styleStore.collapsed = !styleStore.collapsed"
+      v-show="isSmallScreen && !collapsed"
+    ></div>
   </n-layout>
 </template>
 

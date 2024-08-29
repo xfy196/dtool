@@ -61,24 +61,22 @@ const handleUpdateShow = (val: boolean) => {
 
 <template>
   <n-modal @update:show="handleUpdateShow" v-model:show="showModal">
-    <n-card
-      :closable="false"
-      :bordered="false"
-      class="w-[540px] top-20 fixed search-box left-1/2"
-    >
-      <n-auto-complete
-        clear-after-select
-        @update:value="handleUpdateKeywords"
-        v-model:value="keywords"
-        :input-props="{
-          autocomplete: 'disabled',
-        }"
-        @select="handleSelect"
-        :options="options"
-        :placeholder="translate('tools.searchPlaceholder')"
-        clearable
-      />
-    </n-card>
+    <div class="max-w-[540px] w-full px-2 top-20 fixed search-box left-1/2">
+      <n-card class="w-full" :closable="false" :bordered="false">
+        <n-auto-complete
+          clear-after-select
+          @update:value="handleUpdateKeywords"
+          v-model:value="keywords"
+          :input-props="{
+            autocomplete: 'disabled',
+          }"
+          @select="handleSelect"
+          :options="options"
+          :placeholder="translate('tools.searchPlaceholder')"
+          clearable
+        />
+      </n-card>
+    </div>
   </n-modal>
 </template>
 
