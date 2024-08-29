@@ -7,9 +7,9 @@ import { createToken } from "./token-generator.service";
 const _function = inject("_function", "token-generator");
 
 const form = ref({
-  upperCase: useStorage(`${_function}:upperCase`, false),
-  lowerCase: useStorage(`${_function}:lowerCase`, false),
-  number: useStorage(`${_function}:number`, false),
+  upperCase: useStorage(`${_function}:upperCase`, true),
+  lowerCase: useStorage(`${_function}:lowerCase`, true),
+  number: useStorage(`${_function}:number`, true),
   symbol: useStorage(`${_function}:symbol`, false),
   length: useStorage(`${_function}:length`, 24),
 });
