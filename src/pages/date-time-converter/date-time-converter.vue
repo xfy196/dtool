@@ -3,7 +3,6 @@ import { useNow } from "@vueuse/core";
 import type { DateFormat } from "./date-time-converter.types";
 import { formatISO } from "date-fns";
 import InputCopy from "@/components/InputCopy.vue";
-import isDate from "validator/lib/isDate";
 import { computed, ref } from "vue";
 
 const value = ref("");
@@ -42,7 +41,7 @@ const formatDateUsingFormatter = (
   formatter: (date: Date) => string,
   date?: Date
 ) => {
-  if (!date || !isDate(date)) {
+  if (!date || !(date instanceof Date)) {
     return "Invalid date";
   }
   return formatter(date);
