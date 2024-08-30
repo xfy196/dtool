@@ -4,8 +4,11 @@ import { inject, ref } from "vue";
 import { computedRefreshable } from "@/composable/computedRefreshable";
 import { useCopy } from "@/composable/copy";
 import { createToken } from "./token-generator.service";
+import { storeToRefs } from "pinia";
+import { useStyleStore } from "@/stores/style.store";
 const _function = inject("_function", "token-generator");
-
+const styleStore = useStyleStore()
+const {isSmallScreen} = storeToRefs(styleStore)
 const form = ref({
   upperCase: useStorage(`${_function}:upperCase`, true),
   lowerCase: useStorage(`${_function}:lowerCase`, true),
@@ -29,10 +32,9 @@ const { copy, isSupported } = useCopy({
 <template>
   <n-form
     label-placement="left"
-    :label-width="100"
     :model="form"
   >
-    <n-grid :cols="4">
+    <n-grid :cols="isSmallScreen ? 2: 4">
       <n-form-item-gi label="大写(ABC...)" path="upperCase">
           <n-switch v-model:value="form.upperCase" />
       </n-form-item-gi>
@@ -46,7 +48,8 @@ const { copy, isSupported } = useCopy({
           <n-switch v-model:value="form.symbol" />
       </n-form-item-gi>
     </n-grid>
-    <n-form-item path="length" :label="`长度(${form.length})`">
+    <n-form-item 
+     path="length" :label="`长度(${form.length})`">
       <n-slider :min="1" :max="512" v-model:value="form.length" :step="1" />
     </n-form-item>
     <n-form-item path="value" :show-label="false" label="">

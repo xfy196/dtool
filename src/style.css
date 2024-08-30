@@ -4,7 +4,9 @@
 
 @layer components {
   .logo-bg {
-    background-color: #0093e9;
-    background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    /* background-color: #0093e9; */
+    /* background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%); */
+    background: url("./assets/logo-bg.png") center no-repeat;
+    background-size: cover;
   }
 }

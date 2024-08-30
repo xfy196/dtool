@@ -47,9 +47,10 @@ const handleIUpdateExpandedKeys = (keys: string[]) => {
       <div
         @click.stop="router.push('/')"
         :class="!collapsed ? 'text-white' : 'text-opacity-0 text-white'"
-        class="flex items-center justify-center h-16 text-base truncate transition-all cursor-pointer transition-duration-300 logo-bg"
+        class="flex flex-col items-center justify-center py-2 text-base truncate transition-all cursor-pointer transition-duration-300 logo-bg"
       >
-        帮助开发人员和IT人员
+        <div class="text-2xl font-bold">Cool Tools</div>
+        <div class="mt-2">帮助开发人员和IT人员</div>
       </div>
 
       <n-menu

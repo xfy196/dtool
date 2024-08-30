@@ -42,7 +42,6 @@ const handleShowSearch = () => {
 </script>
 
 <template>
-  <n-layout-header>
     <div class="flex">
       <n-button
         quaternary
@@ -68,6 +67,7 @@ const handleShowSearch = () => {
           </n-icon>
         </template>
       </n-button>
+      
       <div
         @click.stop="handleShowSearch"
         class="mr-2 flex-1 cursor-pointer dark:bg-opacity-15 bg-[#2d3338] bg-opacity-5 h-[34px] rounded px-3 flex items-center"
@@ -93,7 +93,6 @@ const handleShowSearch = () => {
       </div>
       <SearchResult v-model:show="searchVisible" />
     </div>
-  </n-layout-header>
 </template>
 
 <style lang="scss" scoped></style>

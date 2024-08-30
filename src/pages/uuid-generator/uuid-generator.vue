@@ -13,7 +13,9 @@ import { useStorage } from "@vueuse/core";
 import { inject, ref } from "vue";
 import { FormItemRule } from "naive-ui";
 import { computedRefreshable } from "@/composable/computedRefreshable";
+import {useStyleStore} from "@/stores/style.store"
 import { useCopy } from "@/composable/copy";
+import { storeToRefs } from "pinia";
 const _function = inject("_function", "uuid-generator");
 const versions = [
   { label: "NIL", value: "nil" },
@@ -42,7 +44,8 @@ const namespaces = [
     value: "8998b45b-152e-4dfd-bee4-afd61b138f77",
   },
 ];
-
+const styleStore = useStyleStore()
+const {isSmallScreen} = storeToRefs(styleStore)
 const form = ref({
   version: useStorage(`${_function}:version`, "v4"),
   quantity: useStorage(`${_function}:quantity`, 1),
@@ -120,8 +123,8 @@ const { copy, isSupported } = useCopy({
   <n-form
     :rules="rules"
     :show-require-mark="false"
-    label-placement="left"
-    :label-width="120"
+    :label-placement="isSmallScreen? 'top': 'left'"
+    :label-width="100"
     :model="form"
   >
     <n-form-item label="UUID version" path="version">

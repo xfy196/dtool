@@ -37,7 +37,7 @@ const { copy, isSupported } = useCopy({
 </script>
 
 <template>
-  <n-form :model="form" label-placement="left" :label-width="120">
+  <n-form :model="form" label-placement="left" :label-width="60">
     <n-form-item label="Quantity" path="quantity">
       <n-input-number
         :min="1"
