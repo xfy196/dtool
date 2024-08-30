@@ -12,17 +12,23 @@ import { useTitle } from "@vueuse/core";
 const styleStore = useStyleStore();
 const { isSmallScreen, collapsed } = storeToRefs(styleStore);
 const route = useRoute();
-const key = computed<string>(() => route.path.replace(/\//g, ""));
+const key = computed<string>(() => {
+  const key = route.path.replace(/\//g, "");
+  provide("_function", key);
+  return key;
+});
 const name = computed<string>(() => translate(`tools.${key.value}.title`));
-watch(() => route.path, (val) => {
-  if(val !== '/'){
-    useTitle(`${name.value} - Cool Tools`)
+watch(
+  () => route.path,
+  (val) => {
+    if (val !== "/") {
+      useTitle(`${name.value} - Cool Tools`);
+    }
   }
-})
+);
 const description = computed<string>(() =>
   translate(`tools.${key.value}.description`)
 );
-provide("_function", key.value);
 </script>
 
 <template>
