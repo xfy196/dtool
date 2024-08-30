@@ -3,7 +3,7 @@ import sidler from "./sidler.vue";
 import Header from "./header.vue";
 import BaseHead from "../components/BaseHead.vue";
 import { useRoute } from "vue-router";
-import { computed, provide } from "vue";
+import { computed, provide, watch } from "vue";
 import { translate } from "@/plugins/i18n.plugins.ts";
 import { useStyleStore } from "@/stores/style.store";
 import { storeToRefs } from "pinia";
@@ -14,7 +14,11 @@ const { isSmallScreen, collapsed } = storeToRefs(styleStore);
 const route = useRoute();
 const key = computed<string>(() => route.path.replace(/\//g, ""));
 const name = computed<string>(() => translate(`tools.${key.value}.title`));
-useTitle(`${name.value} - Cool Tools`)
+watch(() => route.path, (val) => {
+  if(val !== '/'){
+    useTitle(`${name.value} - Cool Tools`)
+  }
+})
 const description = computed<string>(() =>
   translate(`tools.${key.value}.description`)
 );
