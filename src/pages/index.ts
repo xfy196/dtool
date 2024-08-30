@@ -15,7 +15,7 @@ export const toolsCategory: ToolCategory[] = [
   },
   {
     name: "Converter",
-    show: false,
+    show: true,
     icon: ConvertRange20Regular,
     components: [dateConverter],
   },
