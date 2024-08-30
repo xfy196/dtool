@@ -56,6 +56,7 @@ const { copy, isSupported } = useCopy({
       <n-input
         type="textarea"
         readonly
+        autosize
         placeholder="Token"
         v-model:value="token"
       />

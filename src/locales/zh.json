@@ -24,6 +24,10 @@
     "date-time-converter": {
       "title": "日期时间转换器",
       "description": "将日期和时间转换为各种不同的格式。"
+    },
+    "str-split": {
+      "title": "字符串分割器",
+      "description": "字符串分割器指一种工具或函数，用于将一个字符串按照一定的规则分割成多个子字符串。"
     }
   }
 }

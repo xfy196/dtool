@@ -23,6 +23,10 @@
     "date-time-converter": {
       "title": "DateTime converter",
       "description": "Convert date and time into the various different formats."
+    },
+    "str-split": {
+      "title": "字符串分割器",
+      "description": "A string splitter refers to a tool or function that is used to split a string into multiple substrings according to certain rules."
     }
   }
 }

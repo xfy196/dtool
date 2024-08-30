@@ -3,6 +3,7 @@ import { tool as ulidGenerator } from "./ulid-generator";
 import { tool as tokenGenerator } from "./token-generator";
 import { tool as hashText } from "./hash-text";
 import { tool as dateConverter } from "./date-time-converter";
+import { tool as strSplit } from "./str-split";
 import { ToolCategory } from "./tool.types.ts";
 import { ConvertRange20Regular } from "@vicons/fluent";
 import { Lock } from "@vicons/tabler";
@@ -17,7 +18,7 @@ export const toolsCategory: ToolCategory[] = [
     name: "Converter",
     show: true,
     icon: ConvertRange20Regular,
-    components: [dateConverter],
+    components: [dateConverter, strSplit],
   },
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);
