@@ -17,4 +17,7 @@ function base64ToText(
 function isBase64(text: string) {
   return isValid(text);
 }
-export { textToBase64, isBase64, base64ToText };
+function removePotentialDataAndMimePrefix(text: string){
+    return text.replace(/^data:.*?;base64,/, "");
+}
+export { textToBase64, isBase64, base64ToText, removePotentialDataAndMimePrefix };
