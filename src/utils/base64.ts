@@ -4,12 +4,14 @@ function textToBase64(
   text: string,
   { urlSafe = false }: { urlSafe?: boolean }
 ) {
+  console.log("🚀 ~ urlSafe:", urlSafe)
   return encode(text);
 }
 function base64ToText(
   text: string,
   { urlSafe = false }: { urlSafe?: boolean }
 ) {
+  console.log("🚀 ~ urlSafe:", urlSafe)
   return decode(text);
 }
 function isBase64(text: string) {
