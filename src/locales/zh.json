@@ -28,6 +28,14 @@
     "str-split": {
       "title": "字符串分割器",
       "description": "字符串分割器指一种工具或函数，用于将一个字符串按照一定的规则分割成多个子字符串。"
+    },
+    "integer-converter": {
+      "title": "整数转换器",
+      "description": "（十进制、十六进制、二进制、八进制、base64…）之间转换数字"
+    },
+    "base64-string-converter": {
+      "title": "Base64 字符串编码/解码",
+      "description": "将字符串编码和解码为其 Base64 格式表示形式即可。"
     }
   }
 }

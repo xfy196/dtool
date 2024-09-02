@@ -27,6 +27,14 @@
     "str-split": {
       "title": "字符串分割器",
       "description": "A string splitter refers to a tool or function that is used to split a string into multiple substrings according to certain rules."
+    },
+    "integer-converter": {
+      "title": "Integer converter",
+      "description": "(Convert numbers between decimal, hexadecimal, binary, octal, base64...)."
+    },
+    "base64-string-converter": {
+      "title": "Base64 string encoder/decoder",
+      "description": "Simply encode and decode strings into their base64 representation."
     }
   }
 }

@@ -61,7 +61,7 @@ const { copy, isSupported } = useCopy({
         v-model:value="token"
       />
     </n-form-item>
-    <div class="flex items-end justify-center">
+    <div class="flex items-center justify-center">
       <n-space>
         <n-button v-if="isSupported" @click.stop="copy" tertiary>
           Copy
