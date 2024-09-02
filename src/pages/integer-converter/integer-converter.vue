@@ -2,7 +2,6 @@
 import { computed, ref } from "vue";
 import { convertBase } from "./integer-converter.service";
 import InputCopy from "@/components/InputCopy.vue";
-import { ErrorCircle16Regular } from "@vicons/fluent";
 const inputValue = ref("66");
 const baseValue = ref(10);
 const customeValue = ref(20);
