@@ -42,12 +42,12 @@ const [romanValue] = computedRefreshable<string>(() => {
     return "";
   }
 });
-const [number] = computedRefreshable<number | string>(() => {
-  if (!form.value.roman) return '';
+const [number] = computedRefreshable<string>(() => {
+  if (!form.value.roman) return "";
   try {
-    return romans.deromanize(form.value.roman);
+    return String(romans.deromanize(form.value.roman));
   } catch (error) {
-    return '';
+    return "";
   }
 });
 const { isSupported, copy: copyRoman } = useCopy({

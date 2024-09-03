@@ -8,7 +8,7 @@ export function useCopy({
   errText = "Failed to copy to the clipboard",
   isTost = true,
 }: {
-  source?: MaybeRefOrGetter<string | number>;
+  source?: MaybeRefOrGetter<string>;
   text?: string;
   errText?: string;
   isTost?: boolean;
