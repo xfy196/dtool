@@ -1,6 +1,6 @@
 import { useClipboard } from "@vueuse/core";
 import { useMessage } from "naive-ui";
-import { ComputedRef, MaybeRefOrGetter } from "vue";
+import {MaybeRefOrGetter } from "vue";
 
 export function useCopy({
   source,
