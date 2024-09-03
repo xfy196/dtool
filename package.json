@@ -64,18 +64,22 @@
   },
   "lint-staged": {
     "*.{js,ts,json}": [
+      "eslint",
       "prettier --write"
     ],
     "*.{cjs,json}": [
+      "eslint",
       "prettier --write"
     ],
     "*.{vue,html}": [
       "prettier --write"
     ],
     "*.{scss,css}": [
+      "eslint",
       "prettier --write"
     ],
     "*.md": [
+      "eslint",
       "prettier --write"
     ]
   },
