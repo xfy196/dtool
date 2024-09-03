@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "lint:lint-staged": "lint-staged"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -40,7 +42,11 @@
     "@types/validator": "^13.12.1",
     "@vitejs/plugin-vue": "^5.1.2",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.1",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
     "sass-embedded": "^1.77.8",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.3",
@@ -48,5 +54,26 @@
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{cjs,json}": [
+      "prettier --write"
+    ],
+    "*.{vue,html}": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   }
 }
