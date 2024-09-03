@@ -36,6 +36,18 @@
     "base64-string-converter": {
       "title": "Base64 字符串编码/解码",
       "description": "将字符串编码和解码为其 Base64 格式表示形式即可。"
+    },
+    "bcrypt": {
+      "title": "加密",
+      "description": "使用bcrypt对文本字符串进行哈希和比较。Bcrypt是一个基于Blowfish密码的密码哈希函数。"
+    },
+    "password-strength-analyser": {
+      "title": "密码强度分析器",
+      "description": "使用此密码强度分析器和破解时间估计工具来发现密码的强度。"
+    },
+    "roman-numeral-converter": {
+      "title": "罗马数字转换器",
+      "description": "将罗马数字转换为数字，并将数字转换为罗马数字。"
     }
   }
 }

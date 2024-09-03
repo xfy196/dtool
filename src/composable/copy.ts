@@ -1,6 +1,6 @@
 import { useClipboard } from "@vueuse/core";
 import { useMessage } from "naive-ui";
-import { MaybeRefOrGetter } from "vue";
+import { ComputedRef, MaybeRefOrGetter } from "vue";
 
 export function useCopy({
   source,
@@ -8,7 +8,7 @@ export function useCopy({
   errText = "Failed to copy to the clipboard",
   isTost = true,
 }: {
-  source?: MaybeRefOrGetter<string>;
+  source?: MaybeRefOrGetter<string | number>;
   text?: string;
   errText?: string;
   isTost?: boolean;

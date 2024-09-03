@@ -35,6 +35,18 @@
     "base64-string-converter": {
       "title": "Base64 string encoder/decoder",
       "description": "Simply encode and decode strings into their base64 representation."
+    },
+    "bcrypt": {
+      "title": "Bcrypt",
+      "description": "Hash and compare text string using bcrypt. Bcrypt is a password-hashing function based on the Blowfish cipher."
+    },
+    "password-strength-analyser": {
+      "title": "Password strength analyser",
+      "description": "Discover the strength of your password with this client-side-only password strength analyser and crack time estimation tool."
+    },
+    "roman-numeral-converter": {
+      "title": "Roman numeral converter",
+      "description": "Convert Roman numerals to numbers and convert numbers to Roman numerals."
     }
   }
 }

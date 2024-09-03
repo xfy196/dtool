@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/bcryptjs':
+    specifier: ^2.4.6
+    version: 2.4.6
   '@types/crypto-js':
     specifier: ^4.2.2
     version: 4.2.2
@@ -23,6 +26,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^11.0.1
     version: 11.0.1(vue@3.4.38)
+  bcryptjs:
+    specifier: ^2.4.3
+    version: 2.4.3
   crypto-js:
     specifier: ^4.2.0
     version: 4.2.0
@@ -44,6 +50,9 @@ dependencies:
   pinia:
     specifier: ^2.2.2
     version: 2.2.2(typescript@5.5.4)(vue@3.4.38)
+  romans:
+    specifier: ^2.0.16
+    version: 2.0.16
   ulid:
     specifier: ^2.3.0
     version: 2.3.0
@@ -681,6 +690,10 @@ packages:
     dev: true
     optional: true
 
+  /@types/bcryptjs@2.4.6:
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
+    dev: false
+
   /@types/crypto-js@4.2.2:
     resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
     dev: false
@@ -959,6 +972,10 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
+    dev: false
 
   /binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -1768,6 +1785,10 @@ packages:
       '@rollup/rollup-win32-x64-msvc': 4.20.0
       fsevents: 2.3.3
     dev: true
+
+  /romans@2.0.16:
+    resolution: {integrity: sha512-VsNzu29gZf73w+q4LgNJ4eZ4qss7Wyhwzd4b/GDaOaVINs5OTuvr5NuE/fKnpm0ODBCqXxMcIal1elAbybwWpA==}
+    dev: false
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
