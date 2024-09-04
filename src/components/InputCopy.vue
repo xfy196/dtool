@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { useCopy } from "@/composable/copy";
-import { useVModel } from "@vueuse/core";
-import { Copy } from "@vicons/tabler";
-import { useThemeVars } from "naive-ui";
-import { computed } from "vue";
-const props = defineProps<{ value: string }>();
-const emit = defineEmits(["update:value"]);
-const value = useVModel(props, "value", emit);
-const themeVars = useThemeVars();
-const { copy, copied, isSupported } = useCopy({ source: value, isTost: false });
-const tooltipText = computed(() =>
-  copied.value ? "Copied" : "Copy to clipboard"
-);
+  import { useCopy } from '@/composable/copy';
+  import { Copy } from '@vicons/tabler';
+  import { useThemeVars } from 'naive-ui';
+  import { computed } from 'vue';
+  withDefaults(defineProps<{ readonly: boolean }>(), {
+    readonly: true
+  });
+  const value = defineModel<string>('value', { required: true });
+  const themeVars = useThemeVars();
+  const { copy, copied, isSupported } = useCopy({
+    source: value,
+    isTost: false
+  });
+  const tooltipText = computed(() =>
+    copied.value ? 'Copied' : 'Copy to clipboard'
+  );
 </script>
 
 <template>
-  <n-input v-model:value="value" readonly>
+  <n-input v-model:value="value" :readonly="readonly">
     <template #suffix>
       <n-tooltip v-if="isSupported" trigger="hover">
         <template #trigger>

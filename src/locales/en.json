@@ -51,6 +51,10 @@
     "color-converter": {
       "title": "Color converter",
       "description": "Convert color between the different formats (hex, rgb, hsl and css name)."
+    },
+    "case-converter": {
+      "title": "Case converter",
+      "description": "Transform the case of a string and choose between different formats."
     }
   }
 }

@@ -7,6 +7,7 @@
   import namesPlugin from 'colord/plugins/names';
   extend([hwbPlugin, lchPlugin, cmykPlugin, namesPlugin]);
   import { FormItemRule } from 'naive-ui';
+  import InputCopy from '@/components/InputCopy.vue';
   const form = ref<Record<string, string>>({
     colorPicker: '#18A058',
     hex: '',
@@ -139,11 +140,12 @@
           />
         </n-form-item>
         <n-form-item :label="label" :rule="rule" v-else :path="key">
-          <n-input
+          <InputCopy
+            :readonly="false"
             @update:value="(v: string) => updateColor(parse(v), key)"
             :placeholder="placeholder"
             v-model:value="form[key]"
-          ></n-input>
+          />
         </n-form-item>
       </template>
     </n-form>
