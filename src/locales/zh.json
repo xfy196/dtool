@@ -56,6 +56,10 @@
     "case-converter": {
       "title": "大小写转换",
       "description": "更改字符串的大小写并在不同格式之间进行选择。"
+    },
+    "base64-file-converter": {
+      "title": "Base64 文件转换器",
+      "description": "将字符串、文件或图像转换为其 Base64 表示形式。"
     }
   }
 }

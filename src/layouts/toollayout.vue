@@ -1,34 +1,34 @@
 <script setup lang="ts">
-import sidler from "./sidler.vue";
-import Header from "./header.vue";
-import BaseHead from "../components/BaseHead.vue";
-import { useRoute } from "vue-router";
-import { computed, provide, watch } from "vue";
-import { translate } from "@/plugins/i18n.plugins.ts";
-import { useStyleStore } from "@/stores/style.store";
-import { storeToRefs } from "pinia";
-import { useTitle } from "@vueuse/core";
+  import sidler from './sidler.vue';
+  import Header from './header.vue';
+  import BaseHead from '../components/BaseHead.vue';
+  import { useRoute } from 'vue-router';
+  import { computed, provide, watch } from 'vue';
+  import { translate } from '@/plugins/i18n.plugins.ts';
+  import { useStyleStore } from '@/stores/style.store';
+  import { storeToRefs } from 'pinia';
+  import { useTitle } from '@vueuse/core';
 
-const styleStore = useStyleStore();
-const { isSmallScreen, collapsed } = storeToRefs(styleStore);
-const route = useRoute();
-const key = computed<string>(() => {
-  const key = route.path.replace(/\//g, "");
-  provide("_function", key);
-  return key;
-});
-const name = computed<string>(() => translate(`tools.${key.value}.title`));
-watch(
-  () => route.path,
-  (val) => {
-    if (val !== "/") {
-      useTitle(`${name.value} - Cool Tools`);
+  const styleStore = useStyleStore();
+  const { isSmallScreen, collapsed } = storeToRefs(styleStore);
+  const route = useRoute();
+  const key = computed<string>(() => {
+    const key = route.path.replace(/\//g, '');
+    provide('_function', key);
+    return key;
+  });
+  const name = computed<string>(() => translate(`tools.${key.value}.title`));
+  watch(
+    () => route.path,
+    (val) => {
+      if (val !== '/') {
+        useTitle(`${name.value} - Dool`);
+      }
     }
-  }
-);
-const description = computed<string>(() =>
-  translate(`tools.${key.value}.description`)
-);
+  );
+  const description = computed<string>(() =>
+    translate(`tools.${key.value}.description`)
+  );
 </script>
 
 <template>
@@ -64,7 +64,7 @@ const description = computed<string>(() =>
 </template>
 
 <style lang="scss" scoped>
-.tool-content > * {
-  flex: 0 1 600px;
-}
+  .tool-content > * {
+    flex: 0 1 600px;
+  }
 </style>

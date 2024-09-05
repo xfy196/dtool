@@ -11,6 +11,7 @@ import { tool as base64StringConverter } from './base64-string-converter';
 import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as colorConverter } from './color-converter';
 import { tool as caseConverter } from './case-converter';
+import { tool as base64FileConverter } from './base64-file-converter';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { Lock } from '@vicons/tabler';
@@ -39,7 +40,8 @@ export const toolsCategory: ToolCategory[] = [
       dateConverter,
       strSplit,
       integerConverter,
-      base64StringConverter
+      base64StringConverter,
+      base64FileConverter
     ]
   }
 ];

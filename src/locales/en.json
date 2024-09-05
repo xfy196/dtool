@@ -55,6 +55,10 @@
     "case-converter": {
       "title": "Case converter",
       "description": "Transform the case of a string and choose between different formats."
+    },
+    "base64-file-converter": {
+      "title": "Base64 file converter",
+      "description": "Convert a string, file, or image into its base64 representation."
     }
   }
 }
