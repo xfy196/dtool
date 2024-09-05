@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import { useCopy } from "@/composable/copy";
-import { useStorage } from "@vueuse/core";
-import { inject, ref } from "vue";
-import { textToBase64, base64ToText } from "@/utils/base64";
-import { computedRefreshable } from "@/composable/computedRefreshable";
-import { FormItemRule } from "naive-ui";
-const _function = inject("_function", "base64-string-converter");
+  import { useCopy } from '@/composable/copy';
+  import { useStorage } from '@vueuse/core';
+  import { inject, ref } from 'vue';
+  import { textToBase64, base64ToText, isBase64 } from '@/utils/base64';
+  import { computedRefreshable } from '@/composable/computedRefreshable';
+  import { FormItemRule } from 'naive-ui';
+  const _function = inject('_function', 'base64-string-converter');
 
-const encodeSafe = useStorage(`${_function}:encodeSafe`, false);
-const decodeSafe = useStorage(`${_function}:decodeSafe`, false);
-const encodeValue = ref("");
-const form = ref({
-  encodeBase64Value: "",
-});
-const rules = {
-  encodeBase64Value: {
-    validator(_rule: FormItemRule, value: string) {
-      try {
-        return base64ToText(value, {
-          urlSafe: decodeSafe.value,
-        });
-      } catch (error: any) {
-        return error;
-      }
-    },
-    trigger: ["input", "blur"],
-  },
-};
-const [base64Value] = computedRefreshable(() =>
-  textToBase64(encodeValue.value, { urlSafe: encodeSafe.value })
-);
-const [decodeValue] = computedRefreshable(() => {
-  try {
-    return base64ToText(form.value.encodeBase64Value, {
-      urlSafe: decodeSafe.value,
-    });
-  } catch (error) {
-    return "";
-  }
-});
-const { isSupported, copy: copyBase64 } = useCopy({
-  source: base64Value,
-  text: "Base64 复制成功",
-});
-const { copy: copyDecodeString } = useCopy({
-  source: decodeValue,
-  text: "Base64解码字符串 复制成功",
-});
+  const encodeSafe = useStorage(`${_function}:encodeSafe`, false);
+  const decodeSafe = useStorage(`${_function}:decodeSafe`, false);
+  const encodeValue = ref('');
+  const form = ref({
+    encodeBase64Value: ''
+  });
+  const rules = {
+    encodeBase64Value: {
+      validator(_rule: FormItemRule, value: string) {
+        try {
+          return isBase64(value, {
+            urlSafe: decodeSafe.value
+          });
+        } catch (error: any) {
+          return new Error(error.message);
+        }
+      },
+      trigger: ['input', 'blur']
+    }
+  };
+  const [base64Value] = computedRefreshable(() =>
+    textToBase64(encodeValue.value, { urlSafe: encodeSafe.value })
+  );
+  const [decodeValue] = computedRefreshable(() => {
+    try {
+      return base64ToText(form.value.encodeBase64Value, {
+        urlSafe: decodeSafe.value
+      });
+    } catch (error) {
+      return '';
+    }
+  });
+  const { isSupported, copy: copyBase64 } = useCopy({
+    source: base64Value,
+    text: 'Base64 复制成功'
+  });
+  const { copy: copyDecodeString } = useCopy({
+    source: decodeValue,
+    text: 'Base64解码字符串 复制成功'
+  });
 </script>
 
 <template>
@@ -58,20 +58,14 @@ const { copy: copyDecodeString } = useCopy({
     >
       <n-switch v-model:value="encodeSafe" />
     </n-form-item>
-    <n-form-item
-      label-align="left"
-      :label="'字符串编码'"
-    >
+    <n-form-item label-align="left" :label="'字符串编码'">
       <n-input
         type="textarea"
         placeholder="请输入内容"
         v-model:value="encodeValue"
       ></n-input>
     </n-form-item>
-    <n-form-item
-      label-align="left"
-      :label="'Base64编码结果'"
-    >
+    <n-form-item label-align="left" :label="'Base64编码结果'">
       <n-input
         readonly
         type="textarea"
@@ -105,10 +99,7 @@ const { copy: copyDecodeString } = useCopy({
           v-model:value="form.encodeBase64Value"
         ></n-input>
       </n-form-item>
-      <n-form-item
-        label-align="left"
-        :label="'字符串结果'"
-      >
+      <n-form-item label-align="left" :label="'字符串结果'">
         <n-input
           readonly
           type="textarea"
