@@ -24,6 +24,8 @@ const downloadBase64File = ({
   extension?: string;
   fileMimeType?: string;
 }) => {
+  console.log('🚀 ~ fileMimeType:', fileMimeType);
+  console.log('🚀 ~ extension:', extension);
   if (!sourceValue) {
     throw new Error('base64 is empty');
   }
@@ -33,4 +35,4 @@ const downloadBase64File = ({
   a.download = fileName || '';
   a.click();
 };
-export { getBase64MimeType, getExtensionFromMimeType };
+export { getBase64MimeType, getExtensionFromMimeType, downloadBase64File };
