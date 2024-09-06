@@ -5,7 +5,7 @@ import { computed, h, Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import _ from 'lodash';
 import { translate } from '../plugins/i18n.plugins';
-import { MenuOption } from 'naive-ui';
+import { MenuOption, NIcon } from 'naive-ui';
 import { RouterLink } from 'vue-router';
 import MenuIconItem from '../components/MenuIconItem.vue';
 import { useStorage } from '@vueuse/core';
@@ -66,7 +66,10 @@ export const useToolStore = defineStore('tools', () => {
     return toolsCategory.map((tool: ToolCategory) => {
       const key = tool.name;
       const show = tool.show;
-      const icon = () => h(tool.icon);
+      const icon = () =>
+        h(NIcon, {
+          component: tool.icon
+        });
       const label = translate(`tools.${tool.name.toLocaleLowerCase()}`);
       let children = tool.components.map((ctool) => {
         const toolI18nKey = ctool.path.replace(/\//g, '');
