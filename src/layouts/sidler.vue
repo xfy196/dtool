@@ -39,6 +39,7 @@
     :collapsed="collapsed"
     :show-trigger="!isSmallScreen"
     :native-scrollbar="false"
+    default-expand-all
     :position="position"
     :content-style="{
       display: 'flex',
