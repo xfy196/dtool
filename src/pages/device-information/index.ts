@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/device-information',
   description: translate('tools.device-information.description'),
   icon: DeviceLaptop,
-  show: false,
+  show: true,
   keywords: ['device-information', 'device', 'information', 'browser'],
   component: () => import('./device-information.vue'),
   createdAt: new Date('2024-09-06')
