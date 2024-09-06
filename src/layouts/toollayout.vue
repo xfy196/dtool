@@ -29,6 +29,9 @@
   const description = computed<string>(() =>
     translate(`tools.${key.value}.description`)
   );
+  const handleTouchStart = (e: Event) => {
+    e.preventDefault();
+  };
 </script>
 
 <template>
@@ -57,6 +60,7 @@
       </n-layout-content>
     </n-layout>
     <div
+      @touchstart="handleTouchStart"
       class="absolute top-0 left-0 w-full h-full bg-[#00000080] cursor-pointer"
       @click.stop="styleStore.collapsed = !styleStore.collapsed"
       v-show="isSmallScreen && !collapsed"
