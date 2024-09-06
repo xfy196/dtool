@@ -1,25 +1,25 @@
-import { defineStore } from "pinia";
-import type { Tool, ToolCategory, ToolWithCategory } from "./tool.types";
-import { toolsCategory, toolsWithCategory } from "./index";
-import { computed, h, Ref } from "vue";
-import { useI18n } from "vue-i18n";
-import _ from "lodash";
-import { translate } from "../plugins/i18n.plugins";
-import { MenuOption } from "naive-ui";
-import { RouterLink } from "vue-router";
-import MenuIconItem from "../components/MenuIconItem.vue";
-import { useStorage } from "@vueuse/core";
+import { defineStore } from 'pinia';
+import type { Tool, ToolCategory, ToolWithCategory } from './tool.types';
+import { toolsCategory, toolsWithCategory } from './index';
+import { computed, h, Ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import _ from 'lodash';
+import { translate } from '../plugins/i18n.plugins';
+import { MenuOption } from 'naive-ui';
+import { RouterLink } from 'vue-router';
+import MenuIconItem from '../components/MenuIconItem.vue';
+import { useStorage } from '@vueuse/core';
 const makeLabel = (tool: Tool) => () =>
   h(RouterLink, { to: tool.path }, { default: () => tool.name });
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
-export const useToolStore = defineStore("tools", () => {
-  const favoriteToolsName = useStorage("favoriteToolsName", []) as Ref<
+export const useToolStore = defineStore('tools', () => {
+  const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<
     string[]
   >;
   const { t } = useI18n();
   const tools = computed<ToolWithCategory[]>(() =>
     toolsWithCategory.map((tool) => {
-      const toolI18nKey = tool.path.replace(/\//g, "");
+      const toolI18nKey = tool.path.replace(/\//g, '');
       return {
         ...tool,
         name: t(`tools.${toolI18nKey}.title`, tool.name),
@@ -27,7 +27,7 @@ export const useToolStore = defineStore("tools", () => {
         category: t(
           `tools.categories.${tool.category.toLowerCase()}`,
           tool.category
-        ),
+        )
       };
     })
   );
@@ -35,13 +35,13 @@ export const useToolStore = defineStore("tools", () => {
   // 本地收藏的工具
   const favoriteTools = computed<ToolWithCategory[]>(() => {
     return tools.value.filter((tool: ToolWithCategory) => {
-      const _function: string = tool.path.replace(/\//g, "");
+      const _function: string = tool.path.replace(/\//g, '');
       return favoriteToolsName.value.includes(_function);
     });
   });
 
   // 加入收藏
-  const addToolToFavorite = (name: string) => {
+  const adDTOOLToFavorite = (name: string) => {
     favoriteToolsName.value.push(name);
   };
   // 取消收藏
@@ -69,13 +69,13 @@ export const useToolStore = defineStore("tools", () => {
       const icon = () => h(tool.icon);
       const label = translate(`tools.${tool.name.toLocaleLowerCase()}`);
       let children = tool.components.map((ctool) => {
-        const toolI18nKey = ctool.path.replace(/\//g, "");
+        const toolI18nKey = ctool.path.replace(/\//g, '');
         ctool.name = t(`tools.${toolI18nKey}.title`, ctool.name);
         return {
           key: ctool.path,
           label: makeLabel(ctool),
           icon: makeIcon(ctool),
-          show: ctool.show,
+          show: ctool.show
         };
       });
       return {
@@ -83,7 +83,7 @@ export const useToolStore = defineStore("tools", () => {
         label,
         icon,
         show,
-        children,
+        children
       };
     }) as MenuOption[];
   });
@@ -95,9 +95,9 @@ export const useToolStore = defineStore("tools", () => {
     tools,
     menuTools,
     favoriteTools,
-    addToolToFavorite,
+    adDTOOLToFavorite,
     removeToolFromFavorite,
     isFavorite,
-    latestTools,
+    latestTools
   };
 });

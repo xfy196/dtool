@@ -4,6 +4,7 @@
     "searchPlaceholder": "搜索一个工具吧",
     "crypto": "加密",
     "converter": "转换器",
+    "web": "Web",
     "uuid-generator": {
       "title": "UUIDs 生成器",
       "description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。"
@@ -60,6 +61,14 @@
     "base64-file-converter": {
       "title": "Base64 文件转换器",
       "description": "将字符串、文件或图像转换为其 Base64 表示形式。"
+    },
+    "mime-types": {
+      "title": "mime类型",
+      "description": "将mime类型转换为扩展，反之亦然。"
+    },
+    "device-information": {
+      "title": "设备信息",
+      "description": "获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）。"
     }
   }
 }

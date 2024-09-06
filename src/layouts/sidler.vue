@@ -30,31 +30,35 @@
 </script>
 
 <template>
-  <div>
-    <n-layout-sider
-      bordered
-      class="h-full"
-      collapse-mode="width"
-      :collapsed-width="isSmallScreen ? 0 : 64"
-      :width="240"
-      :collapsed="collapsed"
-      :show-trigger="!isSmallScreen"
-      :native-scrollbar="false"
-      :position="position"
-      @collapse="collapsed = true"
-      @expand="collapsed = false"
+  <n-layout-sider
+    bordered
+    class="h-full"
+    collapse-mode="width"
+    :collapsed-width="isSmallScreen ? 0 : 64"
+    :width="240"
+    :collapsed="collapsed"
+    :show-trigger="!isSmallScreen"
+    :native-scrollbar="false"
+    :position="position"
+    :content-style="{
+      display: 'flex',
+      'flex-direction': 'column',
+      height: '100%'
+    }"
+    @collapse="collapsed = true"
+    @expand="collapsed = false"
+  >
+    <!-- logo位置 -->
+    <div
+      @click.stop="router.push('/')"
+      :class="!collapsed ? 'text-white' : 'text-opacity-0 text-white'"
+      class="flex flex-col items-center h-[80px] justify-center py-2 text-base truncate transition-all cursor-pointer transition-duration-300 logo-bg"
     >
-      <!-- logo位置 -->
+      <div class="text-2xl font-bold">DTOOL</div>
+      <div class="mt-2">帮助开发人员和IT人员</div>
+    </div>
 
-      <div
-        @click.stop="router.push('/')"
-        :class="!collapsed ? 'text-white' : 'text-opacity-0 text-white'"
-        class="flex flex-col items-center justify-center py-2 text-base truncate transition-all cursor-pointer transition-duration-300 logo-bg"
-      >
-        <div class="text-2xl font-bold">dtool</div>
-        <div class="mt-2">帮助开发人员和IT人员</div>
-      </div>
-
+    <n-scrollbar class="flex-1">
       <n-menu
         :indent="24"
         :collapsed="collapsed"
@@ -65,8 +69,8 @@
         :collapsed-icon-size="22"
         :on-update:expanded-keys="handleIUpdateExpandedKeys"
       />
-    </n-layout-sider>
-  </div>
+    </n-scrollbar>
+  </n-layout-sider>
 </template>
 
 <style lang="scss" scoped></style>

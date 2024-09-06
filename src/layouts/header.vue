@@ -85,7 +85,7 @@
         <template #trigger>
           <n-button quaternary circle>
             <template #icon>
-              <a href="https://github.com/xfy196/dtool" target="__blank">
+              <a href="https://github.com/xfy196/DTOOL" target="__blank">
                 <n-icon :size="24">
                   <BrandGithub />
                 </n-icon>

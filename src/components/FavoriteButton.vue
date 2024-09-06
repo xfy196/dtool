@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { FavoriteBorderRound, FavoriteOutlined } from "@vicons/material";
-import { useThemeVars } from "naive-ui";
-import { useToolStore } from "@/pages/tool.store";
-const themeVars = useThemeVars();
-const toolStore = useToolStore();
-defineProps({
-  funcion: {
-    type: String,
-    default: "",
-    required: true,
-  },
-});
+  import { FavoriteBorderRound, FavoriteOutlined } from '@vicons/material';
+  import { useThemeVars } from 'naive-ui';
+  import { useToolStore } from '@/pages/tool.store';
+  const themeVars = useThemeVars();
+  const toolStore = useToolStore();
+  defineProps({
+    funcion: {
+      type: String,
+      default: '',
+      required: true
+    }
+  });
 </script>
 
 <template>
@@ -21,7 +21,7 @@ defineProps({
           <n-icon>
             <FavoriteBorderRound
               v-show="!toolStore.isFavorite(funcion)"
-              @click.stop="toolStore.addToolToFavorite(funcion)"
+              @click.stop="toolStore.adDTOOLToFavorite(funcion)"
             />
             <FavoriteOutlined
               :color="themeVars.primaryColor"
@@ -32,7 +32,7 @@ defineProps({
         </template>
       </n-button>
     </template>
-    <span>{{ toolStore.isFavorite(funcion) ? "取消收藏" : "加入收藏" }}</span>
+    <span>{{ toolStore.isFavorite(funcion) ? '取消收藏' : '加入收藏' }}</span>
   </n-tooltip>
 </template>
 

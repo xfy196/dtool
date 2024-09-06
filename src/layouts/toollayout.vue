@@ -35,12 +35,13 @@
   <n-layout class="h-screen" has-sider>
     <sidler />
     <n-layout content-style="padding: 24px;" embedded>
+      <n-back-top />
+
       <Header />
       <n-layout-content embedded>
         <BaseHead
           v-if="route.path !== '/'"
           class="py-10 max-w-[600px] mx-auto"
-          :funcion="key"
           :name="name"
           :description="description"
         />

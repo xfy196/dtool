@@ -12,8 +12,11 @@ import { tool as romanNumeralConverter } from './roman-numeral-converter';
 import { tool as colorConverter } from './color-converter';
 import { tool as caseConverter } from './case-converter';
 import { tool as base64FileConverter } from './base64-file-converter';
+import { tool as mimeTypes } from './mime-types';
+import { tool as deviceInformation } from './device-information';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
+import { ApplicationWeb } from '@vicons/carbon';
 import { Lock } from '@vicons/tabler';
 export const toolsCategory: ToolCategory[] = [
   {
@@ -43,6 +46,12 @@ export const toolsCategory: ToolCategory[] = [
       base64StringConverter,
       base64FileConverter
     ]
+  },
+  {
+    name: 'Web',
+    show: true,
+    icon: ApplicationWeb,
+    components: [mimeTypes, deviceInformation]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

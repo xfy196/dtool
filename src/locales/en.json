@@ -4,6 +4,7 @@
     "searchPlaceholder": "Type a search a tool",
     "crypto": "Crypto",
     "converter": "Converter",
+    "web": "Web",
     "uuid-generator": {
       "title": "UUIDs generator",
       "description": "A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!)."
@@ -59,6 +60,14 @@
     "base64-file-converter": {
       "title": "Base64 file converter",
       "description": "Convert a string, file, or image into its base64 representation."
+    },
+    "mime-types": {
+      "title": "MIME types",
+      "description": "Convert MIME types to file extensions and vice-versa."
+    },
+    "device-information": {
+      "title": "Device information",
+      "description": "Get information about your current device (screen size, pixel-ratio, user agent, ...)."
     }
   }
 }
