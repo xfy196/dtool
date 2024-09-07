@@ -2,16 +2,9 @@
   import { useCopy } from '@/composable/copy';
   import { Copy } from '@vicons/tabler';
   import { useThemeVars } from 'naive-ui';
-  import { computed, readonly } from 'vue';
-  // withDefaults(defineProps<{ readonly: boolean }>(), {
-  //   readonly: true
-  // });
-  defineProps({
-    readonly: {
-      type: Boolean,
-      required: false,
-      default: true
-    }
+  import { computed } from 'vue';
+  withDefaults(defineProps<{ readonly?: boolean }>(), {
+    readonly: true
   });
   const value = defineModel<string>('value', { required: true });
   const themeVars = useThemeVars();

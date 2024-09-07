@@ -69,6 +69,10 @@
     "device-information": {
       "title": "设备信息",
       "description": "获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）。"
+    },
+    "keycode-info": {
+      "title": "Keycode 信息",
+      "description": "查找任何按下的键的javascript键代码、代码、位置和修饰符。"
     }
   }
 }

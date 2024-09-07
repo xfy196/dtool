@@ -14,6 +14,7 @@ import { tool as caseConverter } from './case-converter';
 import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as mimeTypes } from './mime-types';
 import { tool as deviceInformation } from './device-information';
+import { tool as keycodeInfo } from './keycode-info';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -51,7 +52,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'Web',
     show: true,
     icon: ApplicationWeb,
-    components: [mimeTypes, deviceInformation]
+    components: [keycodeInfo, mimeTypes, deviceInformation]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

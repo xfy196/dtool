@@ -68,6 +68,10 @@
     "device-information": {
       "title": "Device information",
       "description": "Get information about your current device (screen size, pixel-ratio, user agent, ...)."
+    },
+    "keycode-info": {
+      "title": "Keycode info",
+      "description": "Find the javascript keycode, code, location and modifiers of any pressed key."
     }
   }
 }
