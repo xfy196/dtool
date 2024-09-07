@@ -43,6 +43,7 @@
           v-if="route.path !== '/'"
           class="py-10 max-w-[600px] mx-auto"
           :name="name"
+          :funcion="key"
           :description="description"
         />
         <div

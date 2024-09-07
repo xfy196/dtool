@@ -42,6 +42,7 @@ export const useToolStore = defineStore('tools', () => {
 
   // 加入收藏
   const adDTOOLToFavorite = (name: string) => {
+    console.log('🚀 ~ adDTOOLToFavorite ~ name:', name);
     favoriteToolsName.value.push(name);
   };
   // 取消收藏
