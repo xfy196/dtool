@@ -72,6 +72,18 @@
     "keycode-info": {
       "title": "Keycode info",
       "description": "Find the javascript keycode, code, location and modifiers of any pressed key."
+    },
+    "text-to-unicode": {
+      "title": "Text to Unicode",
+      "description": "Parse and convert text to unicode and vice-versa."
+    },
+    "xml-to-json": {
+      "title": "XML to JSON",
+      "description": "Convert XML to JSON."
+    },
+    "json-to-xml": {
+      "title": "JSON to XML",
+      "description": "Convert JSON to XML."
     }
   }
 }

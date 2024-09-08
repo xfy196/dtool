@@ -73,6 +73,18 @@
     "keycode-info": {
       "title": "Keycode 信息",
       "description": "查找任何按下的键的javascript键代码、代码、位置和修饰符。"
+    },
+    "text-to-unicode": {
+      "title": "文本转 Unicode",
+      "description": "解析文本并将其转换为 unicode，反之亦然。"
+    },
+    "xml-to-json": {
+      "title": "XML 转 JSON",
+      "description": "将 XML 转换为 JSON。"
+    },
+    "json-to-xml": {
+      "title": "JSON 转 XML",
+      "description": "将 JSON 转换为 XML。"
     }
   }
 }

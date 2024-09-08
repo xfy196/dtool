@@ -15,6 +15,9 @@ import { tool as base64FileConverter } from './base64-file-converter';
 import { tool as mimeTypes } from './mime-types';
 import { tool as deviceInformation } from './device-information';
 import { tool as keycodeInfo } from './keycode-info';
+import { tool as textToUnicode } from './text-to-unicode';
+import { tool as xmlToJson } from './xml-to-json';
+import { tool as jsonToXml } from './json-to-xml';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -45,7 +48,10 @@ export const toolsCategory: ToolCategory[] = [
       strSplit,
       integerConverter,
       base64StringConverter,
-      base64FileConverter
+      base64FileConverter,
+      textToUnicode,
+      xmlToJson,
+      jsonToXml
     ]
   },
   {
