@@ -1,49 +1,51 @@
 <script setup lang="ts">
-  import convert from 'xml-js';
-  import { computed, ref } from 'vue';
-  import { isValidXml } from './xml-to-json.service';
-  import { FormRules } from 'naive-ui';
   import { useCopy } from '@/composable/copy';
+  import { FormRules } from 'naive-ui';
+  import { computed, ref } from 'vue';
+  import { parse as parseYaml } from 'yaml';
   import { Copy } from '@vicons/tabler';
 
   const form = ref({
-    xml: '<a x="1.234" y="It\'s"/>'
+    yaml: 'a: 1\nb: 2'
   });
   const rules: FormRules = {
-    xml: [
+    yaml: [
       {
-        trigger: ['input', 'blur'],
-        validator: (_rule, value: string) => {
-          if (!isValidXml(value)) {
-            return new Error('Invalid XML content');
+        validator: (_rule, value) => {
+          try {
+            if (value === '' || parseYaml(value)) {
+              return true;
+            }
+          } catch (error) {
+            return new Error('Invalid YAML Content');
           }
-          return true;
         }
       }
     ]
   };
   const json = computed(() => {
-    if (!isValidXml(form.value.xml)) {
+    try {
+      const obj = parseYaml(form.value.yaml);
+      if (obj) {
+        return JSON.stringify(obj, null, 2);
+      }
+    } catch (error) {
       return '';
     }
-    return JSON.stringify(
-      convert.xml2js(form.value.xml, { compact: true }),
-      null,
-      2
-    );
+    return '';
   });
-  const { isSupported, copy } = useCopy({ source: json, text: 'JSON copied!' });
+  const { copy, isSupported } = useCopy({ source: json, text: 'JSON Copied' });
 </script>
 
 <template>
-  <n-card title="XML Content">
+  <n-card title="YAML Content">
     <n-form :model="form" :rules="rules">
-      <n-form-item label-placement="left" path="xml">
+      <n-form-item label-placement="left" path="yaml">
         <n-input
           :rows="10"
-          placeholder="Please enter the XML content"
+          placeholder="Please enter the yaml content"
           type="textarea"
-          v-model:value="form.xml"
+          v-model:value="form.yaml"
         />
       </n-form-item>
     </n-form>

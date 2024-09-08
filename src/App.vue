@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import { useDark, useStorage } from '@vueuse/core';
+  import { useDark } from '@vueuse/core';
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
   import { darkTheme } from 'naive-ui';
-  import { useI18n } from 'vue-i18n';
   import hljs from 'highlight.js/lib/core';
   import javascript from 'highlight.js/lib/languages/javascript';
   import json from 'highlight.js/lib/languages/json';
+  import yaml from 'highlight.js/lib/languages/yaml';
+  import xml from 'highlight.js/lib/languages/xml';
   hljs.registerLanguage('javascript', javascript);
   hljs.registerLanguage('json', json);
-  const { locale } = useI18n();
-  const lang = useStorage('lang', 'zh');
-  locale.value = lang.value;
+  hljs.registerLanguage('yaml', yaml);
+  hljs.registerLanguage('xml', xml);
   const route = useRoute();
   const layout = computed(() => route?.meta?.layout);
   const isDark = useDark();

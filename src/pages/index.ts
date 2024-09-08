@@ -18,6 +18,8 @@ import { tool as keycodeInfo } from './keycode-info';
 import { tool as textToUnicode } from './text-to-unicode';
 import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
+import { tool as yamlToJson } from './yaml-to-json';
+import { tool as jsonToYaml } from './json-to-yaml';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -50,6 +52,8 @@ export const toolsCategory: ToolCategory[] = [
       base64StringConverter,
       base64FileConverter,
       textToUnicode,
+      yamlToJson,
+      jsonToYaml,
       xmlToJson,
       jsonToXml
     ]

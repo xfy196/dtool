@@ -84,6 +84,14 @@
     "json-to-xml": {
       "title": "JSON to XML",
       "description": "Convert JSON to XML."
+    },
+    "yaml-to-json": {
+      "title": "YAML to JSON",
+      "description": "Convert YAML to JSON."
+    },
+    "json-to-yaml": {
+      "title": "JSON to YAML",
+      "description": "Convert JSON to YAML."
     }
   }
 }

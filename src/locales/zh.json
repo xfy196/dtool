@@ -85,6 +85,14 @@
     "json-to-xml": {
       "title": "JSON 转 XML",
       "description": "将 JSON 转换为 XML。"
+    },
+    "yaml-to-json": {
+      "title": "YAML 转 JSON",
+      "description": "将 YAML 转换为 JSON。"
+    },
+    "json-to-yaml": {
+      "title": "JSON 转 YAML",
+      "description": "将 JSON 转换为 YAML。"
     }
   }
 }

@@ -8,7 +8,8 @@
   import { useStyleStore } from '@/stores/style.store';
   import { storeToRefs } from 'pinia';
   import { useTitle } from '@vueuse/core';
-
+  import { useI18n } from 'vue-i18n';
+  const { locale } = useI18n();
   const styleStore = useStyleStore();
   const { isSmallScreen, collapsed } = storeToRefs(styleStore);
   const route = useRoute();
@@ -17,13 +18,18 @@
     provide('_function', key);
     return key;
   });
-  const name = computed<string>(() => translate(`tools.${key.value}.title`));
+  const name = computed<string>(() => {
+    return translate(`tools.${key.value}.title`);
+  });
   watch(
-    () => route.path,
-    (val) => {
-      if (val !== '/') {
+    () => [route.path, locale.value],
+    ([path]) => {
+      if (path !== '/') {
         useTitle(`${name.value} - Dool`);
       }
+    },
+    {
+      immediate: true
     }
   );
   const description = computed<string>(() =>

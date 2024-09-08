@@ -1,54 +1,55 @@
 <script setup lang="ts">
-  import convert from 'xml-js';
-  import { computed, ref } from 'vue';
-  import { isValidXml } from './xml-to-json.service';
-  import { FormRules } from 'naive-ui';
   import { useCopy } from '@/composable/copy';
+  import { FormRules } from 'naive-ui';
+  import { computed, ref } from 'vue';
+  import { stringify as stringifyJSON } from 'yaml';
   import { Copy } from '@vicons/tabler';
 
   const form = ref({
-    xml: '<a x="1.234" y="It\'s"/>'
+    json: JSON.stringify({ a: 1, b: 2 })
   });
   const rules: FormRules = {
-    xml: [
+    json: [
       {
         trigger: ['input', 'blur'],
-        validator: (_rule, value: string) => {
-          if (!isValidXml(value)) {
-            return new Error('Invalid XML content');
+        validator: (_rule, value) => {
+          try {
+            if (value === '' || stringifyJSON(JSON.parse(value))) {
+              return true;
+            }
+          } catch (error) {
+            return new Error('Invalid YAML Content');
           }
-          return true;
         }
       }
     ]
   };
-  const json = computed(() => {
-    if (!isValidXml(form.value.xml)) {
+  const yaml = computed(() => {
+    try {
+      const yaml = stringifyJSON(JSON.parse(form.value.json));
+      return yaml;
+    } catch (error) {
       return '';
     }
-    return JSON.stringify(
-      convert.xml2js(form.value.xml, { compact: true }),
-      null,
-      2
-    );
+    return '';
   });
-  const { isSupported, copy } = useCopy({ source: json, text: 'JSON copied!' });
+  const { copy, isSupported } = useCopy({ source: yaml, text: 'JSON Copied' });
 </script>
 
 <template>
-  <n-card title="XML Content">
+  <n-card title="JSON Content">
     <n-form :model="form" :rules="rules">
-      <n-form-item label-placement="left" path="xml">
+      <n-form-item label-placement="left" path="json">
         <n-input
           :rows="10"
-          placeholder="Please enter the XML content"
+          placeholder="Please enter the JSON here..."
           type="textarea"
-          v-model:value="form.xml"
+          v-model:value="form.json"
         />
       </n-form-item>
     </n-form>
   </n-card>
-  <n-card title="Converted JSON">
+  <n-card title="Converted YAML">
     <template #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
@@ -62,7 +63,7 @@
       </n-tooltip>
     </template>
     <n-form-item label-placement="left" :show-feedback="false">
-      <n-code :code="json" language="json" />
+      <n-code word-wrap :code="yaml" language="json" />
     </n-form-item>
   </n-card>
 </template>
