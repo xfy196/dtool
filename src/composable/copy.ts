@@ -1,17 +1,17 @@
-import { useClipboard } from "@vueuse/core";
-import { useMessage } from "naive-ui";
-import {MaybeRefOrGetter } from "vue";
+import { useClipboard } from '@vueuse/core';
+import { useMessage } from 'naive-ui';
+import { MaybeRefOrGetter } from 'vue';
 
 export function useCopy({
   source,
-  text = "Copied to the clipboard",
-  errText = "Failed to copy to the clipboard",
-  isTost = true,
+  text = 'Copied to the clipboard',
+  errText = 'Failed to copy to the clipboard',
+  isToast = true
 }: {
   source?: MaybeRefOrGetter<string>;
   text?: string;
   errText?: string;
-  isTost?: boolean;
+  isToast?: boolean;
 }) {
   const { copy, ...rest } = useClipboard({ source, legacy: true });
   const message = useMessage();
@@ -22,7 +22,7 @@ export function useCopy({
       content?: string,
       {
         notificationMessage,
-        errMessage,
+        errMessage
       }: { notificationMessage?: string; errMessage?: string } = {}
     ) {
       try {
@@ -31,14 +31,14 @@ export function useCopy({
         } else {
           await copy(content);
         }
-        if (isTost) {
+        if (isToast) {
           message.success(notificationMessage ?? text);
         }
       } catch (error) {
-        if (isTost) {
+        if (isToast) {
           message.error(errMessage ?? errText);
         }
       }
-    },
+    }
   };
 }

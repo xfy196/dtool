@@ -10,7 +10,7 @@
   const themeVars = useThemeVars();
   const { copy, copied, isSupported } = useCopy({
     source: value,
-    isTost: false
+    isToast: false
   });
   const tooltipText = computed(() =>
     copied.value ? 'Copied' : 'Copy to clipboard'

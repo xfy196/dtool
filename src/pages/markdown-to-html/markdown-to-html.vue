@@ -10,7 +10,7 @@
   });
   const { copy, isSupported, copied } = useCopy({
     source: html,
-    isTost: false
+    isToast: false
   });
   const printPdf = () => {
     const w = window.open();
