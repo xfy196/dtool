@@ -33,7 +33,10 @@
     }
     return '';
   });
-  const { copy, isSupported } = useCopy({ source: yaml, text: 'JSON Copied' });
+  const { copy, isSupported, copied } = useCopy({
+    source: yaml,
+    isToast: false
+  });
 </script>
 
 <template>
@@ -59,7 +62,7 @@
             </template>
           </n-button>
         </template>
-        Copy to clipboard
+        {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
     <n-form-item label-placement="left" :show-feedback="false">

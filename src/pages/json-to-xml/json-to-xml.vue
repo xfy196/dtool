@@ -34,7 +34,10 @@
       return '';
     }
   });
-  const { isSupported, copy } = useCopy({ source: xml, text: 'XML copied!' });
+  const { isSupported, copy, copied } = useCopy({
+    source: xml,
+    isToast: false
+  });
 </script>
 
 <template>
@@ -60,7 +63,7 @@
             </template>
           </n-button>
         </template>
-        Copy to clipboard
+        {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
     <n-form-item label-placement="left" :show-feedback="false">

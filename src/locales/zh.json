@@ -93,6 +93,10 @@
     "json-to-yaml": {
       "title": "JSON 转 YAML",
       "description": "将 JSON 转换为 YAML。"
+    },
+    "markdown-to-html": {
+      "title": "Markdown 转 HTML",
+      "description": "将 Markdown 转换为 HTML。"
     }
   }
 }
