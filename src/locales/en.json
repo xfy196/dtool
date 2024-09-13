@@ -93,6 +93,10 @@
       "title": "JSON to YAML",
       "description": "Convert JSON to YAML."
     },
+    "toml-to-json": {
+      "title": "TOML to JSON",
+      "description": "Convert TOML to JSON."
+    },
     "markdown-to-html": {
       "title": "Markdown to HTML",
       "description": "Convert Markdown to HTML."

@@ -94,6 +94,10 @@
       "title": "JSON 转 YAML",
       "description": "将 JSON 转换为 YAML。"
     },
+    "toml-to-json": {
+      "title": "TOML 转 JSON",
+      "description": "将 TOML 转换为 JSON。"
+    },
     "markdown-to-html": {
       "title": "Markdown 转 HTML",
       "description": "将 Markdown 转换为 HTML。"

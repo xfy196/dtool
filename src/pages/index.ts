@@ -20,6 +20,7 @@ import { tool as xmlToJson } from './xml-to-json';
 import { tool as jsonToXml } from './json-to-xml';
 import { tool as yamlToJson } from './yaml-to-json';
 import { tool as jsonToYaml } from './json-to-yaml';
+import { tool as tomlToJson } from './toml-to-json';
 import { tool as markdownToHtml } from './markdown-to-html';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
@@ -57,6 +58,7 @@ export const toolsCategory: ToolCategory[] = [
       jsonToYaml,
       xmlToJson,
       jsonToXml,
+      tomlToJson,
       markdownToHtml
     ]
   },
