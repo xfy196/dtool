@@ -27,6 +27,7 @@
     "date-fns": "^3.6.0",
     "fuse.js": "^7.0.0",
     "highlight.js": "^11.10.0",
+    "iarna-toml-esm": "^3.0.5",
     "js-base64": "^3.7.7",
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
