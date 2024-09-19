@@ -25,7 +25,7 @@
     () => [route.path, locale.value],
     ([path]) => {
       if (path !== '/') {
-        useTitle(`${name.value} - Dool`);
+        useTitle(`${name.value} - DTOOL`);
       }
     },
     {
