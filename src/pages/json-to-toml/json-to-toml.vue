@@ -1,22 +1,25 @@
 <script setup lang="ts">
-  import { parse } from 'iarna-toml-esm';
-  import { FormItemRule, FormRules } from 'naive-ui';
+  import { FormRules } from 'naive-ui';
   import { computed, ref } from 'vue';
-  import { isValidToml } from './toml-to-json.service';
+  import { stringify } from 'iarna-toml-esm';
+  import { isValidJson } from './json-to-toml.service';
   import { useCopy } from '@/composable/copy';
   import { Copy } from '@vicons/tabler';
 
   const form = ref({
-    toml: ''
+    json: ''
   });
   const rules: FormRules = {
-    toml: {
-      validator(_rule: FormItemRule, value: string) {
+    json: {
+      validator: (_rule, value) => {
+        console.log('🚀 ~ value:', value);
         try {
-          if (!isValidToml(value)) {
-            return new Error('Provided TOML is not valid.');
+          const res = isValidJson(value);
+          console.log('🚀 ~ res:', res);
+          if (res) {
+            return true;
           }
-          return true;
+          return new Error('Please enter a valid JSON');
         } catch (error: any) {
           return new Error(error.message);
         }
@@ -24,28 +27,29 @@
       trigger: ['input', 'blur']
     }
   };
-  const json = computed(() => {
-    if (!isValidToml(form.value.toml)) {
-      return '';
+  const toml = computed(() => {
+    const res = isValidJson(form.value.json);
+    if (res) {
+      return stringify(res);
     }
-    return JSON.stringify(parse(form.value.toml), null, 2);
+    return '';
   });
-  const { copy, isSupported, copied } = useCopy({ source: json });
+  const { copy, isSupported, copied } = useCopy({ source: toml });
 </script>
 
 <template>
-  <n-card title="Toml Content">
+  <n-card title="JSON Content">
     <n-form :model="form" :rules="rules">
-      <n-form-item label-placement="left" path="toml">
+      <n-form-item label-placement="left" path="json">
         <n-input
-          placeholder="please input toml"
+          placeholder="Please input json"
+          v-model:value.trim="form.json"
           type="textarea"
-          v-model:value="form.toml"
         />
       </n-form-item>
     </n-form>
   </n-card>
-  <n-card title="Convertd to JSON">
+  <n-card title="Converted TOML">
     <template #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
@@ -58,7 +62,7 @@
         {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
-    <n-code :code="json" word-wrap language="json" />
+    <n-code :code="toml" word-wrap language="toml" />
   </n-card>
 </template>
 

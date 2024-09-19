@@ -9,4 +9,5 @@ declare module '*.vue' {
 
 declare module 'iarna-toml-esm' {
   export function parse(toml: string): any;
+  export function stringify(json: any): string;
 }

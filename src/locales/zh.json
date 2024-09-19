@@ -101,6 +101,14 @@
     "markdown-to-html": {
       "title": "Markdown 转 HTML",
       "description": "将 Markdown 转换为 HTML。"
+    },
+    "json-to-toml": {
+      "title": "JSON 转 TOML",
+      "description": "将 JSON 转换为 TOML。"
+    },
+    "toml-to-xml": {
+      "title": "TOML 转 XML",
+      "description": "将 TOML 转换为 XML。"
     }
   }
 }

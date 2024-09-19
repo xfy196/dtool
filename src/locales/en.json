@@ -100,6 +100,14 @@
     "markdown-to-html": {
       "title": "Markdown to HTML",
       "description": "Convert Markdown to HTML."
+    },
+    "json-to-toml": {
+      "title": "JSON to TOML",
+      "description": "Convert JSON to TOML."
+    },
+    "toml-to-xml": {
+      "title": "TOML to XML",
+      "description": "Convert TOML to XML."
     }
   }
 }
