@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, computed } from 'vue';
   import { parse as parseJson } from 'yaml';
   import { stringify } from 'iarna-toml-esm';
   import { Copy } from '@vicons/tabler';
