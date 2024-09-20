@@ -3,6 +3,7 @@
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
   import { darkTheme } from 'naive-ui';
+  import { SpeedInsights } from '@vercel/speed-insights/vue';
   import hljs from 'highlight.js/lib/core';
   import javascript from 'highlight.js/lib/languages/javascript';
   import json from 'highlight.js/lib/languages/json';
@@ -23,6 +24,7 @@
 <template>
   <n-config-provider :hljs="hljs" :theme="isDark ? darkTheme : null">
     <NGlobalStyle />
+    <SpeedInsights />
     <NMessageProvider placement="top">
       <NNotificationProvider placement="bottom-right">
         <component :is="layout">
