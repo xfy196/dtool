@@ -32,7 +32,10 @@
       2
     );
   });
-  const { isSupported, copy } = useCopy({ source: json, text: 'JSON copied!' });
+  const { copy, isSupported, copied } = useCopy({
+    source: json,
+    isToast: false
+  });
 </script>
 
 <template>
@@ -49,7 +52,7 @@
     </n-form>
   </n-card>
   <n-card title="Converted JSON">
-    <template #header-extra>
+    <template v-if="json" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>
@@ -58,7 +61,7 @@
             </template>
           </n-button>
         </template>
-        Copy to clipboard
+        {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
     <n-form-item label-placement="left" :show-feedback="false">

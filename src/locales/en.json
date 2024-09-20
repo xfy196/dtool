@@ -108,6 +108,10 @@
     "toml-to-xml": {
       "title": "TOML to XML",
       "description": "Convert TOML to XML."
+    },
+    "yaml-to-toml": {
+      "title": "YAML to TOML",
+      "description": "Convert YAML to TOML."
     }
   }
 }

@@ -53,7 +53,7 @@
     </n-form>
   </n-card>
   <n-card title="Converted YAML">
-    <template #header-extra>
+    <template v-if="yaml" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>

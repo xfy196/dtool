@@ -54,7 +54,7 @@
     </n-form>
   </n-card>
   <n-card title="Converted XML">
-    <template #header-extra>
+    <template v-if="xml" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>
@@ -66,9 +66,7 @@
         {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
-    <n-form-item label-placement="left" :show-feedback="false">
-      <n-code word-wrap :code="xml" language="xml" />
-    </n-form-item>
+    <n-code word-wrap :code="xml" language="xml" />
   </n-card>
 </template>
 

@@ -24,6 +24,7 @@ import { tool as tomlToJson } from './toml-to-json';
 import { tool as markdownToHtml } from './markdown-to-html';
 import { tool as jsonToToml } from './json-to-toml';
 import { tool as tomlToXml } from './toml-to-xml';
+import { tool as yamlToToml } from './yaml-to-toml';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -56,13 +57,14 @@ export const toolsCategory: ToolCategory[] = [
       base64StringConverter,
       base64FileConverter,
       textToUnicode,
-      yamlToJson,
       jsonToYaml,
       jsonToToml,
-      xmlToJson,
-      tomlToXml,
       jsonToXml,
+      xmlToJson,
       tomlToJson,
+      yamlToJson,
+      tomlToXml,
+      yamlToToml,
       markdownToHtml
     ]
   },

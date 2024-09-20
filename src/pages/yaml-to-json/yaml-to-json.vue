@@ -2,7 +2,7 @@
   import { useCopy } from '@/composable/copy';
   import { FormRules } from 'naive-ui';
   import { computed, ref } from 'vue';
-  import { parse as parseYaml } from 'yaml';
+  import { parse as parseJson } from 'yaml';
   import { Copy } from '@vicons/tabler';
 
   const form = ref({
@@ -13,7 +13,7 @@
       {
         validator: (_rule, value) => {
           try {
-            if (value === '' || parseYaml(value)) {
+            if (value === '' || parseJson(value)) {
               return true;
             }
           } catch (error) {
@@ -25,7 +25,7 @@
   };
   const json = computed(() => {
     try {
-      const obj = parseYaml(form.value.yaml);
+      const obj = parseJson(form.value.yaml);
       if (obj) {
         return JSON.stringify(obj, null, 2);
       }
@@ -34,7 +34,10 @@
     }
     return '';
   });
-  const { copy, isSupported } = useCopy({ source: json, text: 'JSON Copied' });
+  const { copy, isSupported, copied } = useCopy({
+    source: json,
+    isToast: false
+  });
 </script>
 
 <template>
@@ -51,7 +54,7 @@
     </n-form>
   </n-card>
   <n-card title="Converted JSON">
-    <template #header-extra>
+    <template v-if="json" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>
@@ -60,7 +63,7 @@
             </template>
           </n-button>
         </template>
-        Copy to clipboard
+        {{ copied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
     <n-form-item label-placement="left" :show-feedback="false">

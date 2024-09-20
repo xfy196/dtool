@@ -46,7 +46,7 @@
     </n-form>
   </n-card>
   <n-card title="Convertd to JSON">
-    <template #header-extra>
+    <template v-if="json" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>

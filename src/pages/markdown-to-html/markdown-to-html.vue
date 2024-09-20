@@ -35,7 +35,7 @@
     <div class="mt-6">
       <div>Output Html</div>
       <n-card class="relative mt-2">
-        <div v-show="html" class="absolute right-4 top-4">
+        <div v-if="html" class="absolute right-4 top-4">
           <n-tooltip trigger="hover">
             <template #trigger>
               <n-button v-if="isSupported" @click.stop="copy" circle tertiary>

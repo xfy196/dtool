@@ -1,55 +1,58 @@
 <script setup lang="ts">
-  import { FormRules } from 'naive-ui';
-  import { computed, ref } from 'vue';
+  import { ref } from 'vue';
+  import { parse as parseJson } from 'yaml';
   import { stringify } from 'iarna-toml-esm';
-  import { isValidJson } from './json-to-toml.service';
-  import { useCopy } from '@/composable/copy';
   import { Copy } from '@vicons/tabler';
-
+  import { useCopy } from '@/composable/copy';
+  import { FormRules } from 'naive-ui';
   const form = ref({
-    json: ''
+    yaml: ''
   });
   const rules: FormRules = {
-    json: {
+    yaml: {
       validator: (_rule, value) => {
-        console.log('🚀 ~ value:', value);
         try {
-          const res = isValidJson(value);
-          console.log('🚀 ~ res:', res);
-          if (res) {
+          // 把 yaml 字符串转为 json 对象
+          const res = parseJson(value);
+          if (value === '' || res) {
             return true;
           }
-          return new Error('Please enter a valid JSON');
-        } catch (error: any) {
-          return new Error(error.message);
+        } catch (error) {
+          return new Error('Invalid YAML Content');
         }
       },
-      trigger: ['input', 'blur']
+      trigger: ['blur', 'input']
     }
   };
   const toml = computed(() => {
-    const res = isValidJson(form.value.json);
-    if (res) {
-      return stringify(res);
+    if (form.value.yaml !== '') {
+      const res = parseJson(form.value.yaml);
+      if (res && typeof res === 'object') {
+        return stringify(res);
+      }
+      return '';
     }
     return '';
   });
-  const { copy, isSupported, copied } = useCopy({ source: toml });
+  const { copy, isSupported, copied } = useCopy({
+    source: toml,
+    isToast: false
+  });
 </script>
 
 <template>
-  <n-card title="JSON Content">
+  <n-card title="YAML Content">
     <n-form :model="form" :rules="rules">
-      <n-form-item label-placement="left" path="json">
+      <n-form-item label-placement="left" path="yaml">
         <n-input
-          placeholder="Please input json"
-          v-model:value.trim="form.json"
           type="textarea"
+          placeholder="Please enter YAML Content"
+          v-model:value="form.yaml"
         />
       </n-form-item>
     </n-form>
   </n-card>
-  <n-card title="Converted TOML">
+  <n-card title="Converted to TOML">
     <template v-if="toml" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>

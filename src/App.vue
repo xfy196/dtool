@@ -8,10 +8,13 @@
   import json from 'highlight.js/lib/languages/json';
   import yaml from 'highlight.js/lib/languages/yaml';
   import xml from 'highlight.js/lib/languages/xml';
+  import ini from 'highlight.js/lib/languages/ini';
   hljs.registerLanguage('javascript', javascript);
   hljs.registerLanguage('json', json);
   hljs.registerLanguage('yaml', yaml);
   hljs.registerLanguage('xml', xml);
+  hljs.registerLanguage('html', xml);
+  hljs.registerLanguage('toml', ini);
   const route = useRoute();
   const layout = computed(() => route?.meta?.layout);
   const isDark = useDark();

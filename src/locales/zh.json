@@ -109,6 +109,10 @@
     "toml-to-xml": {
       "title": "TOML 转 XML",
       "description": "将 TOML 转换为 XML。"
+    },
+    "yaml-to-toml": {
+      "title": "YAML 转 TOML",
+      "description": "将 YAML 转换为 TOML。"
     }
   }
 }

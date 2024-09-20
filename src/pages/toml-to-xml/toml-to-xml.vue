@@ -43,7 +43,7 @@
     </n-form>
   </n-card>
   <n-card title="Converted XML">
-    <template #header-extra>
+    <template v-if="xml" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button v-if="isSupported" @click.stop="copy" circle tertiary>
