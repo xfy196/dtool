@@ -113,6 +113,10 @@
     "yaml-to-toml": {
       "title": "YAML 转 TOML",
       "description": "将 YAML 转换为 TOML。"
+    },
+    "encryption": {
+      "title": "加密/解密文本",
+      "description": "使用加密算法（如AES、TripleDES、Rabbit或RC4）加密和解密文本明文。"
     }
   }
 }

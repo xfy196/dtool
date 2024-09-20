@@ -112,6 +112,10 @@
     "yaml-to-toml": {
       "title": "YAML to TOML",
       "description": "Convert YAML to TOML."
+    },
+    "encryption": {
+      "title": "Encryption/Decryption",
+      "description": "Encrypt and decrypt text using encryption algorithms (AES, TripleDES, Rabbit or RC4)."
     }
   }
 }
