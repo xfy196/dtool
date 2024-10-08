@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { AES, RC4, TripleDES, Rabbit, enc } from 'crypto-js';
   import { ref, computed } from 'vue';
-  const algos = {
+  const algos: Record<string, any> = {
     aes: AES,
     tripledes: TripleDES,
     rabbit: Rabbit,
