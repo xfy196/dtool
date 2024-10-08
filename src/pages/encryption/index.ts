@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/encryption',
   description: translate('tools.encryption.description'),
   icon: Lock,
-  show: false,
+  show: true,
   keywords: ['encryption', 'encrypt', 'decrypt'],
   component: () => import('./encryption.vue'),
   createdAt: new Date('2024-09-20')
