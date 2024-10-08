@@ -116,6 +116,10 @@
     "encryption": {
       "title": "Encryption/Decryption",
       "description": "Encrypt and decrypt text using encryption algorithms (AES, TripleDES, Rabbit or RC4)."
+    },
+    "bip39-generator": {
+      "title": "BIP39 Mnemonic Words Generator",
+      "description": "Generate a random BIP39 mnemonic word list."
     }
   }
 }

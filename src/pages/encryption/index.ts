@@ -9,5 +9,5 @@ export const tool = defineTool({
   show: true,
   keywords: ['encryption', 'encrypt', 'decrypt'],
   component: () => import('./encryption.vue'),
-  createdAt: new Date('2024-09-20')
+  createdAt: new Date('2024-10-08')
 });

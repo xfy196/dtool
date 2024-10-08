@@ -22,7 +22,7 @@
     <template #suffix>
       <n-tooltip v-if="isSupported" trigger="hover">
         <template #trigger>
-          <n-button @click.stop="copy" circle quaternary type="success">
+          <n-button @click.stop="copy" circle quaternary>
             <template #icon>
               <n-icon>
                 <Copy :color="themeVars.textColor1" />

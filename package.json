@@ -12,6 +12,7 @@
     "commit": "git pull && git add -A && git-cz && git push"
   },
   "dependencies": {
+    "@scure/bip39": "^1.4.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/crypto-js": "^4.2.2",
     "@vercel/speed-insights": "^1.0.12",
