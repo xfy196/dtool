@@ -120,6 +120,14 @@
     "bip39-generator": {
       "title": "BIP39 Mnemonic Words Generator",
       "description": "Generate a random BIP39 mnemonic word list."
+    },
+    "hmac-generator": {
+      "title": "HMAC Generator",
+      "description": "Generate a HMAC signature using a secret key and a message."
+    },
+    "rsa-key-pair-generator": {
+      "title": "RSA Key Pair Generator",
+      "description": "Generate RSA public and private key pairs in PEM certificate format. RSA is widely used for secure data transmission and digital signatures."
     }
   }
 }

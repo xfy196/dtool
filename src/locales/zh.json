@@ -121,6 +121,14 @@
     "bip39-generator": {
       "title": "BIP39 助记词生成器",
       "description": "生成符合BIP39规范的助记词。"
+    },
+    "hmac-generator": {
+      "title": "HMAC 密钥生成器",
+      "description": "使用密钥和您喜欢的哈希函数计算基于哈希的消息身份验证代码（HMAC）。"
+    },
+    "rsa-key-pair-generator": {
+      "title": "RSA 密钥对生成器",
+      "description": "生成 RSA 公钥和私钥pem证书。"
     }
   }
 }

@@ -27,6 +27,8 @@ import { tool as tomlToXml } from './toml-to-xml';
 import { tool as yamlToToml } from './yaml-to-toml';
 import { tool as encryption } from './encryption';
 import { tool as bip39Generator } from './bip39-generator';
+import { tool as hmacGenerator } from './hmac-generator';
+import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -44,7 +46,9 @@ export const toolsCategory: ToolCategory[] = [
       ulidGenerator,
       tokenGenerator,
       encryption,
-      bip39Generator
+      bip39Generator,
+      hmacGenerator,
+      rsaKeyPairGenerator
     ]
   },
   {
