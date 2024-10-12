@@ -128,12 +128,7 @@ class SnowflakeID {
    * @param {*} fromBase
    * @param {*} toBase
    */
-  convertBase(
-    str: string,
-    fromBase: number,
-    toBase: number,
-    legnth?: number
-  ): string | null {
+  convertBase(str: string, fromBase: number, toBase: number): string | null {
     let digits = this.parseToDigitsArray(str, fromBase);
     if (digits === null) return null;
     let outArray: Array<number> | null = [];
