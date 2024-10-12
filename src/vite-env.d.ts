@@ -11,3 +11,6 @@ declare module 'iarna-toml-esm' {
   export function parse(toml: string): any;
   export function stringify(json: any): string;
 }
+declare module 'pdf-signature-reader' {
+  export default any;
+}

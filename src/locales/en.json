@@ -128,6 +128,14 @@
     "rsa-key-pair-generator": {
       "title": "RSA Key Pair Generator",
       "description": "Generate RSA public and private key pairs in PEM certificate format. RSA is widely used for secure data transmission and digital signatures."
+    },
+    "snowflake-id-generator": {
+      "title": "Snowflake ID Generator",
+      "description": "Generate unique ID numbers with a high degree of uniqueness and sequentiality."
+    },
+    "pdf-signature-checker": {
+      "title": "PDF Signature Checker",
+      "description": "Verify signatures in PDF files. Signed PDF files contain one or more signatures that can be used to determine if the contents of the file have been altered since it was signed."
     }
   }
 }

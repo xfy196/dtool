@@ -129,6 +129,14 @@
     "rsa-key-pair-generator": {
       "title": "RSA 密钥对生成器",
       "description": "生成 RSA 公钥和私钥pem证书。"
+    },
+    "snowflake-id-generator": {
+      "title": "雪花ID 生成器",
+      "description": "雪花ID（Snowflake ID）是一种分布式系统中用于生成唯一标识符的算法"
+    },
+    "pdf-signature-checker": {
+      "title": "PDF 签名检查器",
+      "description": "验证PDF文件的签名。签名的PDF文件包含一个或多个签名，可用于确定文件的内容在签名后是否已被更改。"
     }
   }
 }
