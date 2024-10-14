@@ -6,9 +6,11 @@
   withDefaults(
     defineProps<{
       readonly?: boolean;
+      labelPlacement?: string;
     }>(),
     {
-      readonly: true
+      readonly: true,
+      labelPlacement: 'left'
     }
   );
   const value = defineModel<string>('value', { required: true });
@@ -23,7 +25,7 @@
 </script>
 
 <template>
-  <n-form-item class="w-full">
+  <n-form-item :label-placement="labelPlacement" class="w-full">
     <n-input v-model:value="value" :readonly="readonly">
       <template #suffix>
         <n-tooltip v-if="isSupported" trigger="hover">

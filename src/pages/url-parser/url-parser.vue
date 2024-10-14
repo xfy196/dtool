@@ -28,7 +28,7 @@
     <InputCopy
       v-for="{ title, key } in properties"
       :key="key"
-      label-placement="left"
+      label-placement="right"
       :label-width="90"
       label-align="left"
       :value="(urlParsed?.[key] as string) ?? ''"
