@@ -31,6 +31,7 @@ import { tool as hmacGenerator } from './hmac-generator';
 import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
 import { tool as snowflakeIdGenerator } from './snowflake-id-generator';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
+import { tool as urlParser } from './url-parser';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -84,7 +85,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'Web',
     show: true,
     icon: ApplicationWeb,
-    components: [keycodeInfo, mimeTypes, deviceInformation]
+    components: [keycodeInfo, mimeTypes, deviceInformation, urlParser]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

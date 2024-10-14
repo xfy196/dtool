@@ -3,14 +3,23 @@ import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import Inspector from 'unplugin-vue-inspector/vite';
 import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/]
+    }),
     VueI18nPlugin({
+      runtimeOnly: true,
+      jitCompilation: true,
+      compositionOnly: true,
+      fullInstall: true,
+      strictMessage: false,
       include: [path.resolve(__dirname, './src/locales/**')]
     }),
     AutoImport({
@@ -26,8 +35,12 @@ export default defineConfig({
         }
       ]
     }),
+    Icons({ compiler: 'vue3' }),
     Components({
-      resolvers: [NaiveUiResolver()]
+      dirs: ['src/'],
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })]
     }),
     Inspector()
   ],
