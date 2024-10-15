@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import pdfSignatureDetail from './components/pdf-signature-detail.vue';
   import verifyPDF from 'pdf-signature-reader';
   import { Upload } from '@vicons/tabler';
   import { filesize } from 'filesize';
@@ -27,8 +28,9 @@
 </script>
 
 <template>
-  <div>
+  <div class="flex-grow-0" style="flex: 0 0 100%">
     <n-upload
+      class="max-w-[600px] mx-auto"
       accept="application/pdf"
       directory-dnd
       :show-file-list="false"
@@ -51,14 +53,19 @@
     </n-upload>
     <div
       v-if="uploadFile"
-      class="box-border flex items-center h-12 p-4 mt-4 bg-white"
+      class="box-border max-w-[600px] mx-auto flex items-center h-12 p-4 mt-4 bg-white"
     >
       <div class="font-bold">
         {{ uploadFile?.name }}
       </div>
       <div class="ml-2">{{ formatSize(uploadFile?.file?.size) }}</div>
     </div>
-    <div v-if="status === 'parsed' && signatures.length > 0"></div>
+    <div if="status === 'parsed' && signatures.length > 0">
+      <div class="mt-4" v-for="(signature, index) in signatures" :key="index">
+        <div class="mb-2 font-bold">Signature {{ index + 1 }} certificates</div>
+        <pdfSignatureDetail :signature="signature" />
+      </div>
+    </div>
   </div>
 </template>
 

@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/pdf-signature-checker',
   description: translate('tools.pdf-signature-checker.description'),
   icon: DocumentPdf,
-  show: false,
+  show: true,
   keywords: [
     'pdf-signature-checker',
     'pdf',
