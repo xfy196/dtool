@@ -32,10 +32,11 @@ import { tool as rsaKeyPairGenerator } from './rsa-key-pair-generator';
 import { tool as snowflakeIdGenerator } from './snowflake-id-generator';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as urlParser } from './url-parser';
+import { tool as qrcodeGenerator } from './qrcode-generator';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
-import { Lock } from '@vicons/tabler';
+import { Lock, Photo } from '@vicons/tabler';
 export const toolsCategory: ToolCategory[] = [
   {
     name: 'Crypto',
@@ -86,6 +87,12 @@ export const toolsCategory: ToolCategory[] = [
     show: true,
     icon: ApplicationWeb,
     components: [keycodeInfo, mimeTypes, deviceInformation, urlParser]
+  },
+  {
+    name: 'PhotoAndVideo',
+    show: true,
+    icon: Photo,
+    components: [qrcodeGenerator]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

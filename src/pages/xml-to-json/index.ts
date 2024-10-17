@@ -1,11 +1,11 @@
-import { Braces } from '@vicons/tabler';
+import { DataArrayFilled } from '@vicons/material';
 import { defineTool } from '../tool';
 import { translate } from '../../plugins/i18n.plugins';
 export const tool = defineTool({
   name: translate('tools.xml-to-json.title'),
   path: '/xml-to-json',
   description: translate('tools.xml-to-json.description'),
-  icon: Braces,
+  icon: DataArrayFilled,
   keywords: ['xml', 'json', 'converter', 'xml to json'],
   show: true,
   component: () => import('./xml-to-json.vue'),
