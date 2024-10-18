@@ -145,6 +145,14 @@
     "qrcode-generator": {
       "title": "QR Code Generator",
       "description": "Generate and download QR codes for URLs or text, and customize background and foreground colors."
+    },
+    "svg-placeholder-generator": {
+      "title": "SVG Placeholder Generator",
+      "description": "Generate placeholder images in SVG format with customizable size, color, and text."
+    },
+    "camera-recorder": {
+      "title": "Camera Recorder",
+      "description": "Record video and audio from your webcam and save it to a file."
     }
   }
 }

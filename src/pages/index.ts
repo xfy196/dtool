@@ -33,6 +33,8 @@ import { tool as snowflakeIdGenerator } from './snowflake-id-generator';
 import { tool as pdfSignatureChecker } from './pdf-signature-checker';
 import { tool as urlParser } from './url-parser';
 import { tool as qrcodeGenerator } from './qrcode-generator';
+import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
+import { tool as cameraRecorder } from './camera-recorder';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -92,7 +94,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'PhotoAndVideo',
     show: true,
     icon: Photo,
-    components: [qrcodeGenerator]
+    components: [qrcodeGenerator, svgPlaceholderGenerator, cameraRecorder]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

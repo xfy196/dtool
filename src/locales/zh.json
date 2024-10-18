@@ -146,6 +146,14 @@
     "qrcode-generator": {
       "title": "二维码生成器",
       "description": "生成并下载url或文本的QR代码，并自定义背景和前景颜色。"
+    },
+    "svg-placeholder-generator": {
+      "title": "SVG 占位符生成器",
+      "description": "生成带有自定义文本和颜色的SVG占位符。"
+    },
+    "camera-recorder": {
+      "title": "摄像头录制器",
+      "description": "使用摄像头捕捉视频并保存为本地文件。"
     }
   }
 }
