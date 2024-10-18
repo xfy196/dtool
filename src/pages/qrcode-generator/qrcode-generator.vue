@@ -25,7 +25,7 @@
       value: 'Q'
     },
     {
-      laebl: 'high',
+      label: 'high',
       value: 'H'
     }
   ];
