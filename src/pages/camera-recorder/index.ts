@@ -14,7 +14,7 @@ export const tool = defineTool({
     'video to audio',
     'audio to video'
   ],
-  show: false,
+  show: true,
   component: () => import('./camera-recorder.vue'),
   createdAt: new Date('2024-10-18')
 });
