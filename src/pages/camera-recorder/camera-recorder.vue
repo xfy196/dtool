@@ -73,6 +73,7 @@
     createAt: Date | number;
   }
   const medias = ref<Media[]>([]);
+  const permissionCannotBePrompted = ref<boolean>(false);
   const {
     startRecording,
     stopRecording,
@@ -129,14 +130,29 @@
   const handleDeleteMedia = (index: number) => {
     medias.value.splice(index, 1);
   };
+  const requestPermissions = async () => {
+    try {
+      await ensurePermissions();
+    } catch (error) {
+      permissionCannotBePrompted.value = true;
+    }
+  };
 </script>
 
 <template>
   <n-card v-if="!isSupported">
     Your browser does not support webcam recording.
   </n-card>
-  <n-card v-else-if="!permissionGranted">
+  <n-card v-else-if="!permissionGranted" class="text-center">
     You need to grant permission to use your webcam and microphone.
+    <n-alert v-if="permissionCannotBePrompted" class="mt-4 text-left">
+      Your browser has blocked permission request or does not support it. You
+      need to grant permission manually in your browser settings (usually the
+      lock icon in the address bar).
+    </n-alert>
+    <div v-else>
+      <n-button @click.stop="requestPermissions"> Grant permission </n-button>
+    </div>
   </n-card>
   <n-card v-else>
     <n-space vertical>
@@ -170,16 +186,22 @@
           Start webcam
         </n-button>
       </n-form-item>
-      <video
-        v-else
-        ref="videoRef"
-        class="w-full max-h-full"
-        autoplay
-        controls
-        playsinline
-      ></video>
-      <n-space v-if="stream" justify="space-between">
-        <n-button @click.stop="handleStartScreenshot" secondary strong>
+      <div v-else>
+        <video
+          ref="videoRef"
+          class="w-full max-h-full"
+          autoplay
+          controls
+          playsinline
+        ></video>
+      </div>
+      <n-space justify="space-between">
+        <n-button
+          :disabled="!isMediaStreamEnable"
+          @click.stop="handleStartScreenshot"
+          secondary
+          strong
+        >
           <template #icon>
             <n-icon>
               <Camera />
@@ -187,7 +209,7 @@
           </template>
           screenshot
         </n-button>
-        <n-space>
+        <n-space v-if="isRecordingSupported">
           <n-button
             v-if="recordingState === 'stopped'"
             @click.stop="startRecording"
