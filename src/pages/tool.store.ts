@@ -20,7 +20,7 @@ const makeLabel = (tool: Tool) => () => {
       { default: () => tool.name }
     );
   } else {
-    return h(RouterLink, { to: tool.pathr }, { default: () => tool.name });
+    return h(RouterLink, { to: tool.path }, { default: () => tool.name });
   }
 };
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
