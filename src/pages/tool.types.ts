@@ -5,7 +5,7 @@ export interface Tool {
   path: string;
   description: string;
   keywords: string[];
-  component: () => Promise<Component>;
+  component?: () => Promise<Component>;
   icon: Component;
   redirectFrom?: string[];
   isNew: boolean;
@@ -18,7 +18,6 @@ export interface ToolCategory {
   name: string;
   components: Tool[];
   show: boolean;
-  link?: string;
   icon: Component;
 }
 
