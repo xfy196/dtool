@@ -7,7 +7,7 @@ export const tool = defineTool({
   description: translate('tools.placeholder.description'),
   icon: ImageOutlined,
   show: true,
-  component: () => '',
+  component: () => Promise.resolve(h()),
   link: 'https://placehold.dtool.tech/',
   keywords: ['placeholder'],
   createdAt: new Date('2024-10-29')

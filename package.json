@@ -94,6 +94,7 @@
       "prettier --write"
     ],
     "*.{vue,html}": [
+      "eslint",
       "prettier --write"
     ],
     "*.{scss,css}": [
