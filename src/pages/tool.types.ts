@@ -5,7 +5,7 @@ export interface Tool {
   path: string;
   description: string;
   keywords: string[];
-  component?: () => Promise<Component>;
+  component: () => Promise<Component>;
   icon: Component;
   redirectFrom?: string[];
   isNew: boolean;
