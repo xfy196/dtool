@@ -1,23 +1,35 @@
 <script setup lang="ts">
-import { ToolWithCategory } from "@/pages/tool.types";
-import FavoriteButton from "@/components/FavoriteButton.vue";
-import { useRouter } from "vue-router";
-import { useThemeVars } from "naive-ui";
-const themeVars = useThemeVars();
-const router = useRouter();
-defineProps({
-  tools: {
-    type: Array<ToolWithCategory>,
-    default: () => [],
-  },
-});
+  import { ToolWithCategory } from '@/pages/tool.types';
+  import FavoriteButton from '@/components/FavoriteButton.vue';
+  import { useRouter } from 'vue-router';
+  import { useThemeVars } from 'naive-ui';
+  const themeVars = useThemeVars();
+  const router = useRouter();
+  defineProps({
+    tools: {
+      type: Array<ToolWithCategory>,
+      default: () => []
+    }
+  });
+  const handleToLink = (tool: ToolWithCategory) => {
+    if (tool.link) {
+      window.open(tool.link);
+    } else {
+      router.push(tool.path);
+    }
+  };
 </script>
 
 <template>
-  <n-grid responsive="screen" y-gap="12" x-gap="12" cols="xs:1 s:2 m:2 l:3 xl:4 2xl:4">
+  <n-grid
+    responsive="screen"
+    y-gap="12"
+    x-gap="12"
+    cols="xs:1 s:2 m:2 l:3 xl:4 2xl:4"
+  >
     <n-gi v-for="tool in tools" :key="tool.path">
       <n-card
-        @click.stop="router.push(tool.path)"
+        @click.stop="handleToLink(tool)"
         class="h-48 border-2 cursor-pointer hover:border-2 card min-h-48"
       >
         <template #header>
@@ -53,9 +65,9 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.card {
-  &:hover {
-    border: 1px solid v-bind("themeVars.primaryColor");
+  .card {
+    &:hover {
+      border: 1px solid v-bind('themeVars.primaryColor');
+    }
   }
-}
 </style>
