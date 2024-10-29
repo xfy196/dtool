@@ -1,5 +1,6 @@
 import { ImageOutlined } from '@vicons/material';
 import { defineTool } from '../tool';
+import { h } from 'vue';
 import { translate } from '@/plugins/i18n.plugins';
 export const tool = defineTool({
   name: translate('tools.placeholder.title'),
