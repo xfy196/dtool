@@ -9,8 +9,20 @@ import { MenuOption, NIcon } from 'naive-ui';
 import { RouterLink } from 'vue-router';
 import MenuIconItem from '../components/MenuIconItem.vue';
 import { useStorage } from '@vueuse/core';
-const makeLabel = (tool: Tool) => () =>
-  h(RouterLink, { to: tool.path }, { default: () => tool.name });
+const makeLabel = (tool: Tool) => () => {
+  if (tool.link) {
+    return h(
+      'a',
+      {
+        href: tool.link,
+        target: '_blank'
+      },
+      { default: () => tool.name }
+    );
+  } else {
+    return h(RouterLink, { to: tool.pathr }, { default: () => tool.name });
+  }
+};
 const makeIcon = (tool: Tool) => () => h(MenuIconItem, { tool });
 export const useToolStore = defineStore('tools', () => {
   const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<

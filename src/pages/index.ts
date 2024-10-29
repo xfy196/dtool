@@ -35,6 +35,7 @@ import { tool as urlParser } from './url-parser';
 import { tool as qrcodeGenerator } from './qrcode-generator';
 import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
 import { tool as cameraRecorder } from './camera-recorder';
+import { tool as placeholder } from './placeholder';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -88,7 +89,13 @@ export const toolsCategory: ToolCategory[] = [
     name: 'Web',
     show: true,
     icon: ApplicationWeb,
-    components: [keycodeInfo, mimeTypes, deviceInformation, urlParser]
+    components: [
+      keycodeInfo,
+      mimeTypes,
+      deviceInformation,
+      urlParser,
+      placeholder
+    ]
   },
   {
     name: 'PhotoAndVideo',

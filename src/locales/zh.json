@@ -154,6 +154,10 @@
     "camera-recorder": {
       "title": "摄像头录制器",
       "description": "使用摄像头捕捉视频并保存为本地文件。"
+    },
+    "placeholder": {
+      "title": "图片占位符",
+      "description": "前端开发调试占位图片"
     }
   }
 }

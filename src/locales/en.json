@@ -153,6 +153,10 @@
     "camera-recorder": {
       "title": "Camera Recorder",
       "description": "Record video and audio from your webcam and save it to a file."
+    },
+    "placeholder": {
+      "title": "Image Placeholder ",
+      "description": "Front end development debugging placeholder image"
     }
   }
 }
