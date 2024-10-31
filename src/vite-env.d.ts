@@ -14,3 +14,6 @@ declare module 'iarna-toml-esm' {
 declare module 'pdf-signature-reader' {
   export default any;
 }
+declare module 'markdown-it-mark' {
+  export default any;
+}

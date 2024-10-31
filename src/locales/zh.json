@@ -158,6 +158,10 @@
     "placeholder": {
       "title": "图片占位符",
       "description": "前端开发调试占位图片"
+    },
+    "html-wysiwyg-editor": {
+      "title": "HTML所见即所得编辑器",
+      "description": "在线HTML编辑器具有功能丰富的所见即所得编辑器，立即获得内容的源代码。"
     }
   }
 }

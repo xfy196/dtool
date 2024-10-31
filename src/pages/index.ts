@@ -36,6 +36,7 @@ import { tool as qrcodeGenerator } from './qrcode-generator';
 import { tool as svgPlaceholderGenerator } from './svg-placeholder-generator';
 import { tool as cameraRecorder } from './camera-recorder';
 import { tool as placeholder } from './placeholder';
+import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -94,14 +95,19 @@ export const toolsCategory: ToolCategory[] = [
       mimeTypes,
       deviceInformation,
       urlParser,
-      placeholder
+      htmlWysiwygEditor
     ]
   },
   {
     name: 'PhotoAndVideo',
     show: true,
     icon: Photo,
-    components: [qrcodeGenerator, svgPlaceholderGenerator, cameraRecorder]
+    components: [
+      qrcodeGenerator,
+      svgPlaceholderGenerator,
+      cameraRecorder,
+      placeholder
+    ]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);
