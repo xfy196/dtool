@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { MdEditor, allToolbar, config } from 'md-editor-v3';
+  import { MdEditor, ToolbarNames, allToolbar, config } from 'md-editor-v3';
   import { ExportPDF, Emoji, Mark, OriginalImg } from '@vavt/v3-extension';
   import MarkExtension from 'markdown-it-mark';
   import '@vavt/v3-extension/lib/asset/ExportPDF.css';
@@ -7,9 +7,8 @@
   import '@vavt/v3-extension/lib/asset/OriginalImg.css';
   import 'md-editor-v3/lib/style.css';
   import { ref } from 'vue';
-  let toolbars = [...allToolbar];
-  toolbars.splice(20, 0, '0', '1', '2', '3');
-  console.log('🚀 ~ toolbars:', toolbars);
+  let toolbars: ToolbarNames[] = [...allToolbar] as ToolbarNames[];
+  toolbars.splice(20, 0, 0, 1, 2, 3);
 
   config({
     markdownItConfig(md) {
