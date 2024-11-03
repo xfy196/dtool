@@ -22,7 +22,7 @@
 <template>
   <n-card>
     <n-form-item :show-feedback="false" label="Your url to parse">
-      <n-input :value="url"></n-input>
+      <n-input v-model:value="url"></n-input>
     </n-form-item>
     <n-divider />
     <InputCopy
