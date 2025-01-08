@@ -69,12 +69,12 @@
     </div>
   </div>
   <n-card title="Private key">
-    <template v-if="certs.publicKeyPem" #header-extra>
+    <template v-if="certs?.publicKeyPem" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button
             v-if="isSupported"
-            @click.stop="handleCopyPublicKey(certs.publicKeyPem)"
+            @click.stop="handleCopyPublicKey(certs?.publicKeyPem)"
             circle
             tertiary
           >
@@ -89,12 +89,12 @@
     {{ certs.publicKeyPem }}
   </n-card>
   <n-card title="Public key">
-    <template v-if="certs.privateKeyPem" #header-extra>
+    <template v-if="certs?.privateKeyPem" #header-extra>
       <n-tooltip trigger="hover">
         <template #trigger>
           <n-button
             v-if="isSupported"
-            @click.stop="handleCopyPrivateKey(certs.privateKeyPem)"
+            @click.stop="handleCopyPrivateKey(certs?.privateKeyPem)"
             circle
             tertiary
           >
@@ -106,7 +106,7 @@
         {{ privateKeyCopied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
-    {{ certs.privateKeyPem }}
+    {{ certs?.privateKeyPem }}
   </n-card>
 </template>
 
