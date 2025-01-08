@@ -86,7 +86,7 @@
         {{ publicKeyCopied ? 'Copied!' : 'Copy to clipboard' }}
       </n-tooltip>
     </template>
-    {{ certs.publicKeyPem }}
+    {{ certs?.publicKeyPem }}
   </n-card>
   <n-card title="Public key">
     <template v-if="certs?.privateKeyPem" #header-extra>
