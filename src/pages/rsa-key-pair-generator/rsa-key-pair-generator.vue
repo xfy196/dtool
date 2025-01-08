@@ -41,11 +41,11 @@
     isSupported,
     copied: publicKeyCopied
   } = useCopy({
-    source: certs.value.publicKeyPem,
+    source: certs.value?.publicKeyPem,
     isToast: false
   });
   const { copy: handleCopyPrivateKey, copied: privateKeyCopied } = useCopy({
-    source: certs.value.privateKeyPem,
+    source: certs.value?.privateKeyPem,
     isToast: false
   });
 </script>
