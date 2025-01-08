@@ -161,6 +161,10 @@
     "html-wysiwyg-editor": {
       "title": "HTML WYSIWYG Editor",
       "description": "Online HTML editor with a feature-rich WYSIWYG editor, instantly get the source code of the content."
+    },
+    "html-entities": {
+      "title": "Escape HTML entities",
+      "description": "Escape or unescape HTML entities (replace characters like <,>, &, and \\' with their HTMLversion"
     }
   }
 }
