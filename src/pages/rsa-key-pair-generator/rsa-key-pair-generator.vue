@@ -35,9 +35,7 @@
       return { publicKeyPem: '', privateKeyPem: '' };
     }
   }, emptyCerts.value);
-  watch(certs, () => {
-    console.log('certs', certs.value);
-  });
+
   const {
     copy: handleCopyPublicKey,
     isSupported,
