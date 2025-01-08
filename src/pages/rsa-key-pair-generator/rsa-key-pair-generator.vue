@@ -3,7 +3,7 @@
   import { pki } from 'node-forge';
   import workerScript from 'node-forge/dist/prime.worker.min?url';
   import { useCopy } from '@/composable/copy';
-  import { ref, watch } from 'vue';
+  import { ref } from 'vue';
   import { computedRefreshableAsync } from '@/composable/computedRefreshable';
   const bits = ref(2048);
 
@@ -35,7 +35,7 @@
       return { publicKeyPem: '', privateKeyPem: '' };
     }
   }, emptyCerts.value);
-
+  console.log(certs.value);
   const {
     copy: handleCopyPublicKey,
     isSupported,
