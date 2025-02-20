@@ -1,5 +1,3 @@
-/** * @description: 文本转二进制 * @fileName: text-to-binary.vue * @author:
-小小荧 * @date: 2025-02-20 12:40:32 * @version: V1.0.0 */
 <template>
   <n-card title="Text to Binary">
     <n-form :model="textToBinaryForm">
@@ -60,6 +58,13 @@
 </template>
 
 <script setup lang="ts">
+  /**
+   * @description: 文本转二进制
+   * @fileName: text-to-binary.vue
+   * @author: 小小荧
+   * @date: 2025-02-20 12:58:27
+   * @version: V1.0.0
+   */
   import { computed, ref } from 'vue';
   import {
     convertBinaryToText,

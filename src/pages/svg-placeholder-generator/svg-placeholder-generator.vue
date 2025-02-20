@@ -33,6 +33,11 @@
     extension: 'svg'
   });
 
+  const onlineUrl = computed(
+    () =>
+      `https://placehold.dtool.tech/${width.value}x${height.value}/${backgroundColor.value.slice(1)}/${textColor.value.slice(1)}?text=${customText.value}`
+  );
+
   const styleStore = useStyleStore();
   const { isSmallScreen } = storeToRefs(styleStore);
 </script>
@@ -47,7 +52,7 @@
         ></n-input-number>
       </n-form-item-gi>
       <n-form-item-gi :span="isSmallScreen ? 24 : 12" label="Background">
-        <n-color-picker v-model:value="backgroundColor" />
+        <n-color-picker :show-alpha="false" v-model:value="backgroundColor" />
       </n-form-item-gi>
       <n-form-item-gi :span="isSmallScreen ? 24 : 12" label="Height (in px)">
         <n-input-number
@@ -56,7 +61,7 @@
         ></n-input-number>
       </n-form-item-gi>
       <n-form-item-gi :span="isSmallScreen ? 24 : 12" label="Text color">
-        <n-color-picker v-model:value="textColor" />
+        <n-color-picker :show-alpha="false" v-model:value="textColor" />
       </n-form-item-gi>
       <n-form-item-gi :span="isSmallScreen ? 24 : 12" label="Font size">
         <n-input-number
@@ -86,7 +91,10 @@
         <n-code :code="svgHtml" class="svgCode" language="html"></n-code>
       </div>
     </n-form-item>
-    <n-form-item class="flex items-center justify-center">
+    <n-form-item>
+      <InputCopy v-model:value="onlineUrl" readonly />
+    </n-form-item>
+    <n-form-item class="flex justify-center items-center">
       <n-space>
         <n-button tertiary @click="copy"> Copy svg </n-button>
         <n-button tertiary @click="handleCopyBase64"> Copy base64 </n-button>

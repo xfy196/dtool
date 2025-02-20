@@ -36,8 +36,8 @@
     errorLvel: string;
   }>({
     text: 'https://dtool.tech',
-    fcolor: '#000000ff',
-    bcolor: '#ffffffff',
+    fcolor: '#000000',
+    bcolor: '#ffffff',
     errorLvel: 'M'
   });
   const qrCodeRef: any = useTemplateRef('qrCodeRef');
@@ -71,10 +71,10 @@
         ></n-input>
       </n-form-item>
       <n-form-item path="fcolor" label="Foreground color:">
-        <n-color-picker v-model:value="form.fcolor" />
+        <n-color-picker :show-alpha="false" v-model:value="form.fcolor" />
       </n-form-item>
       <n-form-item path="fcolor" label="Background color:">
-        <n-color-picker v-model:value="form.bcolor" />
+        <n-color-picker :show-alpha="false" v-model:value="form.bcolor" />
       </n-form-item>
       <n-form-item path="errorLvel" label="Error level:">
         <n-select
@@ -83,7 +83,7 @@
         ></n-select>
       </n-form-item>
     </n-form>
-    <div class="flex items-center justify-center">
+    <div class="flex justify-center items-center">
       <n-qr-code
         ref="qrCodeRef"
         :padding="0"
@@ -94,7 +94,7 @@
         :background-color="form.bcolor"
       />
     </div>
-    <div class="flex items-center justify-center mt-3">
+    <div class="flex justify-center items-center mt-3">
       <n-button @click="downloadQrCode" secondary>Download qr-code</n-button>
     </div>
   </n-card>

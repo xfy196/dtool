@@ -77,6 +77,7 @@ export const toolsCategory: ToolCategory[] = [
       base64StringConverter,
       base64FileConverter,
       textToUnicode,
+      textToBinary,
       jsonToYaml,
       jsonToToml,
       jsonToXml,
@@ -85,8 +86,7 @@ export const toolsCategory: ToolCategory[] = [
       yamlToJson,
       tomlToXml,
       yamlToToml,
-      markdownToHtml,
-      textToBinary
+      markdownToHtml
     ]
   },
   {
