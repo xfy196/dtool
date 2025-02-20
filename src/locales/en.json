@@ -165,6 +165,10 @@
     "html-entities": {
       "title": "Escape HTML entities",
       "description": "Escape or unescape HTML entities (replace characters like <,>, &, and \\' with their HTMLversion"
+    },
+    "text-to-binary": {
+      "title": "Text to Binary",
+      "description": "Convert text to binary and vice versa."
     }
   }
 }

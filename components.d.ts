@@ -91,6 +91,7 @@ declare module 'vue' {
     SnowflakeIdGenerator: typeof import('./src/pages/snowflake-id-generator/snowflake-id-generator.vue')['default']
     StrSplit: typeof import('./src/pages/str-split/str-split.vue')['default']
     SvgPlaceholderGenerator: typeof import('./src/pages/svg-placeholder-generator/svg-placeholder-generator.vue')['default']
+    TextToBinary: typeof import('./src/pages/text-to-binary/text-to-binary.vue')['default']
     TextToUnicode: typeof import('./src/pages/text-to-unicode/text-to-unicode.vue')['default']
     TokenGenerator: typeof import('./src/pages/token-generator/token-generator.vue')['default']
     TomlToJson: typeof import('./src/pages/toml-to-json/toml-to-json.vue')['default']
