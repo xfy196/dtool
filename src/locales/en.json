@@ -169,6 +169,10 @@
     "text-to-binary": {
       "title": "Text to Binary",
       "description": "Convert text to binary and vice versa."
+    },
+    "mp4-to-avi": {
+      "title": "MP4 to AVI",
+      "description": "Convert MP4 to AVI."
     }
   }
 }

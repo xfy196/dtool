@@ -170,6 +170,10 @@
     "text-to-binary": {
       "title": "文本转二进制",
       "description": "将文本转换为二进制，反之亦然。"
+    },
+    "mp4-to-avi": {
+      "title": "MP4 转 AVI",
+      "description": "将 MP4 文件转换为 AVI 文件。"
     }
   }
 }

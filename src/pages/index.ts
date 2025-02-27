@@ -39,6 +39,7 @@ import { tool as placeholder } from './placeholder';
 import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
 import { tool as htmlEntities } from './html-entities';
 import { tool as textToBinary } from './text-to-binary';
+import { tool as mp4ToAvi } from './mp4-to-avi';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -86,7 +87,8 @@ export const toolsCategory: ToolCategory[] = [
       yamlToJson,
       tomlToXml,
       yamlToToml,
-      markdownToHtml
+      markdownToHtml,
+      mp4ToAvi
     ]
   },
   {
