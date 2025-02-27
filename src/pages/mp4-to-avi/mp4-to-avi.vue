@@ -30,11 +30,9 @@
   import { ArchiveOutline as ArchiveIcon } from '@vicons/ionicons5';
   import { ref } from 'vue';
   import { UploadFileInfo, useMessage } from 'naive-ui';
-  import type { LogEvent } from '@ffmpeg/ffmpeg/dist/esm/types';
 
   import { FFmpeg } from '@ffmpeg/ffmpeg';
   import { fetchFile, toBlobURL } from '@ffmpeg/util';
-  import { watch } from 'fs';
   const convertVideoUrl = ref<string>('');
   const ffmpeg = new FFmpeg();
   const message = useMessage();
