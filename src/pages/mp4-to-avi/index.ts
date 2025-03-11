@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/mp4-to-avi',
   description: translate('tools.mp4-to-avi.description'),
   icon: Video,
-  show: true,
+  show: false,
   keywords: ['mime', 'types', 'mp4-to-avi'],
   component: () => import('./mp4-to-avi.vue'),
   createdAt: new Date('2024-09-06')
