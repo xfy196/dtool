@@ -5,7 +5,7 @@
   import { useResizeObserver } from '@vueuse/core';
 
   const editorContainer = useTemplateRef<HTMLElement>('editorContainer');
-  let editor: monaco.editor.IStandaloneCodeEditor = null;
+  let editor: monaco.editor.IStandaloneCodeEditor;
   monaco.editor.defineTheme('dtool-dark', {
     base: 'vs-dark',
     inherit: true,
