@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import { useTemplateRef, watch } from 'vue';
+  import { useTemplateRef, watch, onMounted } from 'vue';
   import * as monaco from 'monaco-editor';
   import { useStyleStore } from '@/stores/style.store';
   import { useResizeObserver } from '@vueuse/core';
-  import { onMounted } from 'vue';
+
   const editorContainer = useTemplateRef<HTMLElement>('editorContainer');
-  let editor: monaco.editor.IStandaloneCodeEditor | null = null;
+  let editor: monaco.editor.IStandaloneCodeEditor = null;
   monaco.editor.defineTheme('dtool-dark', {
     base: 'vs-dark',
     inherit: true,
@@ -31,7 +31,9 @@
     }
   );
   useResizeObserver(editorContainer, () => {
-    editor?.layout();
+    if (editor) {
+      editor.layout();
+    }
   });
   onMounted(() => {
     if (!editorContainer.value) {
