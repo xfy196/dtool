@@ -6,6 +6,7 @@
     "converter": "Converter",
     "web": "Web",
     "photoandvideo": "PhotoAndVideo",
+    "text": "Text",
     "uuid-generator": {
       "title": "UUIDs generator",
       "description": "A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!)."
@@ -173,6 +174,14 @@
     "mp4-to-avi": {
       "title": "MP4 to AVI",
       "description": "Convert MP4 to AVI."
+    },
+    "text-statistics": {
+      "title": "Text statistics",
+      "description": "Get information about a text, the number of characters, the number of words, its size in bytes, ..."
+    },
+    "text-diff": {
+      "title": "Text diff",
+      "description": "Compare two texts and get the differences between them."
     }
   }
 }

@@ -6,6 +6,7 @@
     "converter": "转换器",
     "web": "Web",
     "photoandvideo": "图片和视频",
+    "text": "文本",
     "uuid-generator": {
       "title": "UUIDs 生成器",
       "description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。"
@@ -174,6 +175,14 @@
     "mp4-to-avi": {
       "title": "MP4 转 AVI",
       "description": "将 MP4 文件转换为 AVI 文件。"
+    },
+    "text-statistics": {
+      "title": "文本统计",
+      "description": "获取有关文本、字符数、字数、大小等的信息"
+    },
+    "text-diff": {
+      "title": "文本差异",
+      "description": "比较两个文本并获取它们之间的差异。"
     }
   }
 }

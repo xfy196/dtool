@@ -40,10 +40,12 @@ import { tool as htmlWysiwygEditor } from './html-wysiwyg-editor';
 import { tool as htmlEntities } from './html-entities';
 import { tool as textToBinary } from './text-to-binary';
 import { tool as mp4ToAvi } from './mp4-to-avi';
+import { tool as textStatistics } from './text-statistics';
+import { tool as textDiff } from './text-diff';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
-import { Lock, Photo } from '@vicons/tabler';
+import { Lock, Photo, File } from '@vicons/tabler';
 export const toolsCategory: ToolCategory[] = [
   {
     name: 'Crypto',
@@ -114,6 +116,12 @@ export const toolsCategory: ToolCategory[] = [
       cameraRecorder,
       placeholder
     ]
+  },
+  {
+    name: 'Text',
+    show: true,
+    icon: File,
+    components: [textStatistics, textDiff]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);
