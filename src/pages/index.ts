@@ -42,6 +42,7 @@ import { tool as textToBinary } from './text-to-binary';
 import { tool as mp4ToAvi } from './mp4-to-avi';
 import { tool as textStatistics } from './text-statistics';
 import { tool as textDiff } from './text-diff';
+import { tool as emojiPicker } from './emoji-picker';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -121,7 +122,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'Text',
     show: true,
     icon: File,
-    components: [textStatistics, textDiff]
+    components: [textStatistics, textDiff, emojiPicker]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

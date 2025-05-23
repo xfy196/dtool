@@ -182,6 +182,10 @@
     "text-diff": {
       "title": "Text diff",
       "description": "Compare two texts and get the differences between them."
+    },
+    "emoji-picker": {
+      "title": "Emoji Picker",
+      "description": "Easily copy and paste Emoji, and get the unicode and code points of each emoji."
     }
   }
 }

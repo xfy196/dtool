@@ -5,7 +5,7 @@
   import { useResizeObserver } from '@vueuse/core';
 
   const editorContainer = useTemplateRef<HTMLElement>('editorContainer');
-  let editor: monaco.editor.IStandaloneCodeEditor | null = null;
+  let editor: monaco.editor.IStandaloneDiffEditor | null = null;
   monaco.editor.defineTheme('dtool-dark', {
     base: 'vs-dark',
     inherit: true,
@@ -39,12 +39,23 @@
     if (!editorContainer.value) {
       return;
     }
+    editor = monaco.editor.createDiffEditor(editorContainer.value, {
+      originalEditable: true,
+      lineNumbers: 'on',
+      minimap: {
+        enabled: false
+      }
+    });
+    editor.setModel({
+      original: monaco.editor.createModel('original text', 'txt'),
+      modified: monaco.editor.createModel('modified text', 'txt')
+    });
   });
 </script>
 
 <template>
-  <n-card>
-    <n-text as="div" ref="editorContainer" class="h-[600px]"></n-text>
+  <n-card style="flex: 1 1 0">
+    <div ref="editorContainer" class="h-[600px]"></div>
   </n-card>
 </template>
 

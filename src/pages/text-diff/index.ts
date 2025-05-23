@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/text-diff',
   description: translate('tools.text-diff.description'),
   icon: FileDiff,
-  show: false,
+  show: true,
   keywords: [
     'diff',
     'text',
