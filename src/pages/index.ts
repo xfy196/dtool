@@ -43,6 +43,7 @@ import { tool as mp4ToAvi } from './mp4-to-avi';
 import { tool as textStatistics } from './text-statistics';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
+import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
@@ -73,6 +74,7 @@ export const toolsCategory: ToolCategory[] = [
     icon: ConvertRange20Regular,
     components: [
       caseConverter,
+      simplifiedAndComplexConverter,
       romanNumeralConverter,
       colorConverter,
       dateConverter,

@@ -186,6 +186,10 @@
     "emoji-picker": {
       "title": "Emoji Picker",
       "description": "Easily copy and paste Emoji, and get the unicode and code points of each emoji."
+    },
+    "simplified-and-complex-converter": {
+      "title": "Simplified and Complex Converter",
+      "description": "Convert Simplified Chinese to Traditional Chinese and vice versa."
     }
   }
 }

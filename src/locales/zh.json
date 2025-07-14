@@ -187,6 +187,10 @@
     "emoji-picker": {
       "title": "表情符号选择器",
       "description": "轻松复制和粘贴Emoji表情符号，并获得每个表情符号的unicode和code points值."
+    },
+    "simplified-and-complex-converter": {
+      "title": "简体和繁体转换器",
+      "description": "将简体中文转换为繁体中文，反之亦然。"
     }
   }
 }
