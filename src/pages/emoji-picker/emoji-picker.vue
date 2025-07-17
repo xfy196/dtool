@@ -1,12 +1,19 @@
 <template>
   <div class="mx-auto max-w-[2400px]" style="flex: 1">
-    <div class="flex items-center gap-3">
-      <n-input
-        class="mx-auto max-w-[600px]"
-        v-model:value="keyword"
-        type="text"
-        placeholder="Search emoji"
-      />
+    <div class="flex mx-auto max-w-[600px] items-center justify-center gap-3">
+      <n-input-group>
+        <n-button ghost>
+          <n-icon>
+            <Search />
+          </n-icon>
+        </n-button>
+        <n-input
+          @input="handleInput"
+          v-model:value="keyword"
+          type="text"
+          placeholder="Search emoji"
+        />
+      </n-input-group>
     </div>
     <div v-for="{ group, emojiInfos } in emojisGroups" :key="group">
       <div class="mt-4 text-[20px] font-bold">{{ group }}</div>
@@ -82,12 +89,16 @@
 </template>
 
 <script setup lang="ts">
+  import { Search } from '@vicons/tabler';
+
   import emojiUnicodeData from 'unicode-emoji-json';
   import emojiKeywords from 'emojilib';
   import _ from 'lodash';
   import { EmojiInfo } from './emoji.types';
   import { useCopy } from '@/composable/copy';
   import { ref } from 'vue';
+  import { useDebounceFn } from '@vueuse/core';
+  import { onMounted } from 'vue';
   const keyword = ref('');
   const { copy } = useCopy({});
   const escapeUnicode = ({ emoji }: { emoji: string }) => {
@@ -102,7 +113,7 @@
       ? `0x${emoji.codePointAt(0)?.toString(16)}`
       : undefined;
   };
-
+  const emojisGroups = ref<{ emojiInfos: EmojiInfo[]; group: string }[]>([]);
   const emojis = _.map(emojiUnicodeData, (emojiInfo, emoji) => {
     return {
       ...emojiInfo,
@@ -113,13 +124,20 @@
       unicode: escapeUnicode({ emoji })
     };
   });
-  const emojisGroups: { emojiInfos: EmojiInfo[]; group: string }[] = _.chain(
-    emojis
-  )
-    .groupBy('group')
-    .map((emojiInfos, group) => ({ emojiInfos, group }))
-    .value();
-
-  console.log('🚀 ~ emojisGroups:', emojisGroups);
+  const groupEmojis = () => {
+    emojisGroups.value = _.chain(emojis)
+      .filter((emojiInfo) => {
+        return emojiInfo.name?.includes(keyword.value);
+      })
+      .groupBy('group')
+      .map((emojiInfos, group) => ({ emojiInfos, group }))
+      .value();
+  };
+  onMounted(() => {
+    groupEmojis();
+  });
+  const handleInput = useDebounceFn(() => {
+    groupEmojis();
+  }, 500);
 </script>
 <style lang="scss" scoped></style>
