@@ -190,6 +190,10 @@
     "simplified-and-complex-converter": {
       "title": "Simplified and Complex Converter",
       "description": "Convert Simplified Chinese to Traditional Chinese and vice versa."
+    },
+    "json-diff": {
+      "title": "JSON Diff",
+      "description": "Compare two JSON objects and get the differences between them."
     }
   }
 }

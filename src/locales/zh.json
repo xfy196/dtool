@@ -191,6 +191,10 @@
     "simplified-and-complex-converter": {
       "title": "简体和繁体转换器",
       "description": "将简体中文转换为繁体中文，反之亦然。"
+    },
+    "json-diff": {
+      "title": "JSON 差异比对",
+      "description": "比较两个JSON对象并获得它们之间的差异。"
     }
   }
 }

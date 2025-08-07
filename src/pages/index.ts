@@ -44,10 +44,12 @@ import { tool as textStatistics } from './text-statistics';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
 import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
+import { tool as jsonDiff } from './json-diff';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb } from '@vicons/carbon';
 import { Lock, Photo, File } from '@vicons/tabler';
+
 export const toolsCategory: ToolCategory[] = [
   {
     name: 'Crypto',
@@ -106,7 +108,8 @@ export const toolsCategory: ToolCategory[] = [
       deviceInformation,
       urlParser,
       htmlWysiwygEditor,
-      htmlEntities
+      htmlEntities,
+      jsonDiff
     ]
   },
   {
