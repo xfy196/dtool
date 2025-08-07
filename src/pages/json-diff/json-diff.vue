@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import DiffView from '@/pages/json-diff/component/diff-view.vue';
-  import { computed } from 'vue';
+  import { computed, ref } from 'vue';
   import { isNotThrowing } from '@/utils/boolean.ts';
 
   const originJson = ref<string>('');

@@ -12,8 +12,8 @@
   const diffResult = ref({});
   const message = useMessage();
   const deepDiff = (
-    obj1,
-    obj2,
+    obj1: any,
+    obj2: any,
     onlyDifferences = true,
     path = '',
     seen = new Map()

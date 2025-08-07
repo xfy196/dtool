@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const { data } = defineProps(['data']);
+  // const { data } = defineProps(['data']);
 </script>
 
 <template></template>
