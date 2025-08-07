@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { watchEffect } from 'vue';
+  import { watchEffect, ref } from 'vue';
   import { useMessage } from 'naive-ui';
   import { isEmpty, get } from 'lodash';
   import JsonDiffNode from '@/pages/json-diff/component/json-diff-node.vue';
@@ -68,7 +68,7 @@
 
     // 对象处理
     const keys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
-    const diff = {};
+    const diff: any = {};
     keys.forEach((key) => {
       const currentPath = path ? `${path}.${key}` : key;
       const val1 = obj1[key];
@@ -93,7 +93,9 @@
     // 过滤未变更字段
     return onlyDifferences
       ? Object.fromEntries(
-          Object.entries(diff).filter(([_, v]) => v.type !== 'UNCHANGED')
+          Object.entries(diff).filter(
+            ([_, v]: [any, any]) => v.type !== 'UNCHANGED'
+          )
         )
       : diff;
   };
