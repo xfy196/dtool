@@ -139,7 +139,7 @@
       "title": "PDF Signature Checker",
       "description": "Verify signatures in PDF files. Signed PDF files contain one or more signatures that can be used to determine if the contents of the file have been altered since it was signed."
     },
-    "url-pars": {
+    "url-parser": {
       "title": "URL Parser",
       "description": "Parse a URL string to get all the different parts (protocol, origin, parameters, port, username, password, etc.)."
     },
