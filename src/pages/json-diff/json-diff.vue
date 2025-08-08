@@ -9,7 +9,7 @@
   const { locale } = useI18n();
   watch(
     () => locale.value,
-    (string) => {
+    () => {
       location.reload();
     }
   );
@@ -46,7 +46,7 @@
     }
   });
   onMounted(() => {
-    const langMap = {
+    const langMap: Record<string, string> = {
       cn: 'zh-cn',
       en: 'en'
     };
