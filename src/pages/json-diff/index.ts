@@ -6,7 +6,7 @@ export const tool = defineTool({
   path: '/json-diff',
   description: translate('tools.json-diff.description'),
   icon: ArrowSwap20Regular,
-  show: false,
+  show: true,
   keywords: ['integer', 'int', 'converter'],
   component: () => import('./json-diff.vue'),
   createdAt: new Date('2024-08-31')

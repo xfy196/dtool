@@ -7,11 +7,13 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import Inspector from 'unplugin-vue-inspector/vite';
+
 import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   optimizeDeps: {
     exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util']
+    /** vite 版本需要大于等于2.3.0 */
   },
   server: {
     headers: {
@@ -53,6 +55,15 @@ export default defineConfig({
     }),
     Inspector()
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'monaco-editor': ['monaco-editor']
+        }
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
