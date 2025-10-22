@@ -7,6 +7,7 @@
     "web": "Web",
     "photoandvideo": "图片和视频",
     "text": "文本",
+    "network": "网络",
     "uuid-generator": {
       "title": "UUIDs 生成器",
       "description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。"
@@ -15,7 +16,6 @@
       "title": "ULID 生成器",
       "description": "生成随机的通用唯一词典可排序标识符（ULID）。"
     },
-
     "token-generator": {
       "title": "Token 生成器",
       "description": "使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。"
@@ -195,6 +195,10 @@
     "json-diff": {
       "title": "JSON 差异比对",
       "description": "比较两个JSON对象并获得它们之间的差异。"
+    },
+    "ipv4-subnet-calculator": {
+      "title": "IPv4子网计算器",
+      "description": "解析IPv4 CIDR块，并获取有关子网络的所有所需信息。"
     }
   }
 }

@@ -9,7 +9,7 @@ export const tool = defineTool({
   icon: ImageOutlined,
   show: true,
   component: () => Promise.resolve(h('div')),
-  link: 'https://placehold.dtool.tech/',
+  link: import.meta.env.VITE_APP_PLACEHOLDER_URL,
   keywords: ['placeholder'],
   createdAt: new Date('2024-10-29')
 });

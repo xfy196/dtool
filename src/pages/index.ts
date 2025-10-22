@@ -45,9 +45,10 @@ import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
 import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
 import { tool as jsonDiff } from './json-diff';
+import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
-import { ApplicationWeb } from '@vicons/carbon';
+import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
 import { Lock, Photo, File } from '@vicons/tabler';
 
 export const toolsCategory: ToolCategory[] = [
@@ -128,6 +129,12 @@ export const toolsCategory: ToolCategory[] = [
     show: true,
     icon: File,
     components: [textStatistics, textDiff, emojiPicker]
+  },
+  {
+    name: 'NetWork',
+    show: true,
+    icon: ContentDeliveryNetwork,
+    components: [ipv4SubnetCalculator]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

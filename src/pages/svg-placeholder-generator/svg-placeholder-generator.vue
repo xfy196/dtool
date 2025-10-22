@@ -6,6 +6,7 @@
   import { Copy } from '@vicons/tabler';
   import { textToBase64 } from '@/utils/base64';
   import { useDownloadBase64File } from '@/composable/downloadBase64';
+
   const width = ref(600);
   const height = ref(400);
   const fontSize = ref(24);
@@ -35,7 +36,7 @@
 
   const onlineUrl = computed(
     () =>
-      `https://placehold.dtool.tech/${width.value}x${height.value}/${backgroundColor.value.slice(1)}/${textColor.value.slice(1)}?text=${customText.value}`
+      `${import.meta.env.VITE_APP_PLACEHOLDER_URL}/${width.value}x${height.value}/${backgroundColor.value.slice(1)}/${textColor.value.slice(1)}?text=${customText.value}`
   );
 
   const styleStore = useStyleStore();
@@ -96,9 +97,9 @@
     </n-form-item>
     <n-form-item class="flex justify-center items-center">
       <n-space>
-        <n-button tertiary @click="copy"> Copy svg </n-button>
-        <n-button tertiary @click="handleCopyBase64"> Copy base64 </n-button>
-        <n-button tertiary @click="download"> Download svg </n-button>
+        <n-button tertiary @click="copy"> Copy svg</n-button>
+        <n-button tertiary @click="handleCopyBase64"> Copy base64</n-button>
+        <n-button tertiary @click="download"> Download svg</n-button>
       </n-space>
     </n-form-item>
   </n-form>
