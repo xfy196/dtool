@@ -16,6 +16,7 @@ declare module 'vue' {
     CameraRecorder: typeof import('./src/pages/camera-recorder/camera-recorder.vue')['default']
     CaseConverter: typeof import('./src/pages/case-converter/case-converter.vue')['default']
     ColorConverter: typeof import('./src/pages/color-converter/color-converter.vue')['default']
+    CopyText: typeof import('./src/components/CopyText.vue')['default']
     DateTimeConverter: typeof import('./src/pages/date-time-converter/date-time-converter.vue')['default']
     DeviceInformation: typeof import('./src/pages/device-information/device-information.vue')['default']
     DiffView: typeof import('./src/pages/json-diff/component/diff-view.vue')['default']
