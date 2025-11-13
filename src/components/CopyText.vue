@@ -18,9 +18,9 @@
   <div class="cursor-pointer">
     <n-tooltip v-if="isSupported" trigger="hover">
       <template #trigger>
-        <span @click.stop="copy">
+        <n-el tag="span" @click.stop="copy">
           {{ text }}
-        </span>
+        </n-el>
       </template>
       {{ tooltipText }}
     </n-tooltip>

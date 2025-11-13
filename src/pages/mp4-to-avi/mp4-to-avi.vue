@@ -31,7 +31,7 @@
   import { ref } from 'vue';
   import { UploadFileInfo, useMessage } from 'naive-ui';
 
-  import { FFmpeg } from '@ffmpeg/ffmpeg';
+  import { FFmpeg, FileData } from '@ffmpeg/ffmpeg';
   import { fetchFile, toBlobURL } from '@ffmpeg/util';
   const convertVideoUrl = ref<string>('');
   const ffmpeg = new FFmpeg();
@@ -47,9 +47,9 @@
     });
     await ffmpeg.writeFile('test.avi', await fetchFile(file));
     await ffmpeg.exec(['-i', 'test.mp4', 'test.avi']);
-    const data = await ffmpeg.readFile('test.avi');
+    const data: FileData = await ffmpeg.readFile('test.avi');
     const url = URL.createObjectURL(
-      new Blob([(data as Uint8Array).buffer], { type: 'video/x-msvideo' })
+      new Blob([(data as any).buffer], { type: 'video/x-msvideo' })
     );
     msgInstance.destroy();
     return {

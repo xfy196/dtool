@@ -19,7 +19,7 @@
     first: '第一个可用地址',
     last: '最后一个可用地址'
   };
-  const data = ref<Array<{ label: string; value: string | number }>>();
+  const data = ref<Array<any>>();
   watchEffect(() => {
     if (ip.value) {
       try {

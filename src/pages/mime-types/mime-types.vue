@@ -44,14 +44,18 @@
       ?.type;
   });
   onBeforeMount(() => {
-    data.value = Object.entries(mimeTypes).map(([key, value]) => {
-      const es = value.map((item) => `.${item}`);
-      exts.value.push(...es.map((item) => ({ label: item, value: item })));
-      return {
-        type: key,
-        exts: es
-      };
-    });
+    data.value = Object.entries(mimeTypes).map(
+      ([key, value]: [key: string, value: Array<string>]) => {
+        const es = value.map((item: string) => `.${item}`);
+        exts.value.push(
+          ...es.map((item: string) => ({ label: item, value: item }))
+        );
+        return {
+          type: key,
+          exts: es
+        };
+      }
+    );
   });
 </script>
 
@@ -70,7 +74,7 @@
       <n-tag
         round
         :bordered="false"
-        class="ml-2 mt-2"
+        class="mt-2 ml-2"
         type="success"
         v-for="ext in extRes"
         :key="ext"
@@ -89,7 +93,7 @@
 
     <div v-if="selectExt">
       <n-text>MimeTypes:</n-text>
-      <n-tag round :bordered="false" class="ml-2 mt-2" type="success">
+      <n-tag round :bordered="false" class="mt-2 ml-2" type="success">
         {{ typeRes }}
       </n-tag>
     </div>
