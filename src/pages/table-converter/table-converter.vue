@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { ref, watch, nextTick } from 'vue';
-  import mime from 'mime';
   import { Copy, Download } from '@vicons/tabler';
   import {
     csvToJson,
