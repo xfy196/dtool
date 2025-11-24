@@ -199,6 +199,10 @@
     "ipv4-subnet-calculator": {
       "title": "IPv4子网计算器",
       "description": "解析IPv4 CIDR块，并获取有关子网络的所有所需信息。"
+    },
+    "table-converter": {
+      "title": "表格转换",
+      "description": "这是一个支持 Markdown 表格、CSV 和 JSON 格式互相转换的在线工具。无论您使用哪种格式的表格数据，都可以轻松地转换为其他格式。"
     }
   }
 }

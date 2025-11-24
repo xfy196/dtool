@@ -46,6 +46,7 @@ import { tool as emojiPicker } from './emoji-picker';
 import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
+import { tool as tableConverter } from './table-converter';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
@@ -76,6 +77,7 @@ export const toolsCategory: ToolCategory[] = [
     show: true,
     icon: ConvertRange20Regular,
     components: [
+      tableConverter,
       caseConverter,
       simplifiedAndComplexConverter,
       romanNumeralConverter,
