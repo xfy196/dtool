@@ -203,6 +203,10 @@
     "table-converter": {
       "title": "table-converter",
       "description": "This is an online tool that supports the conversion of Markdown tables, CSV, and JSON formats. No matter which format of table data you use, it can be easily converted to other formats."
+    },
+    "mock-data": {
+      "title": "Mock data",
+      "description": "Generate mock data"
     }
   }
 }

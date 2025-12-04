@@ -43,6 +43,7 @@
     "markdown-it-mark": "^4.0.0",
     "md-editor-v3": "^4.21.3",
     "mime": "^4.1.0",
+    "mockjs": "^1.1.0",
     "monaco-editor": "^0.52.2",
     "naive-ui": "^2.43.1",
     "netmask": "^2.0.2",

@@ -203,6 +203,10 @@
     "table-converter": {
       "title": "表格转换",
       "description": "这是一个支持 Markdown 表格、CSV 和 JSON 格式互相转换的在线工具。无论您使用哪种格式的表格数据，都可以轻松地转换为其他格式。"
+    },
+    "mock-data": {
+      "title": "Mock数据",
+      "description": "生成Mock数据"
     }
   }
 }

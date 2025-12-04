@@ -47,6 +47,7 @@ import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as tableConverter } from './table-converter';
+import { tool as mockData } from './mock-data';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
@@ -112,7 +113,8 @@ export const toolsCategory: ToolCategory[] = [
       urlParser,
       htmlWysiwygEditor,
       htmlEntities,
-      jsonDiff
+      jsonDiff,
+      mockData
     ]
   },
   {
