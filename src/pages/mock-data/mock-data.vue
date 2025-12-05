@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, useTemplateRef, watch, watchEffect } from 'vue';
+  import { ref, computed, useTemplateRef } from 'vue';
   import type { DataTableColumns, DataTableInst } from 'naive-ui';
   import { useMessage } from 'naive-ui';
   import Mock from 'mockjs';
