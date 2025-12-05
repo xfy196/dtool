@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, useTemplateRef } from 'vue';
+  import { ref, computed, useTemplateRef, watch, watchEffect } from 'vue';
   import type { DataTableColumns, DataTableInst } from 'naive-ui';
   import { useMessage } from 'naive-ui';
   import Mock from 'mockjs';
@@ -165,7 +165,15 @@
       key
     }))
   );
-  const fileSize = ref<string>('');
+  const fileSize = computed(() => {
+    if (outputFormat.value === 'json' || outputFormat.value === 'csv') {
+      return filesize(getStringSize(jsonPreview.value), { standard: 'jedec' });
+    } else if (outputFormat.value === 'sql') {
+      return filesize(getStringSize(sqlPreview.value), { standard: 'jedec' });
+    } else if (outputFormat.value === 'toon') {
+      return filesize(getStringSize(toonPreview.value), { standard: 'jedec' });
+    }
+  });
   const getStringSize = (str: string) => {
     const encoder = new TextEncoder(); // 默认使用 UTF-8 编码
     const bytes = encoder.encode(str);
@@ -173,26 +181,20 @@
   };
   const jsonPreview = computed(() => {
     if (data.value.length) {
-      let json = JSON.stringify(data.value, null, 2);
-      fileSize.value = filesize(getStringSize(json), { standard: 'jedec' });
-      return json;
+      return JSON.stringify(data.value, null, 2);
     }
     return '';
   });
   const sqlPreview = computed(() => {
     if (data.value.length) {
       const result = jsonToSQL(data.value, 'mock-data');
-      let sql = `-- 建表语句:\n${result.createTable}\n-- 插入语句:\n${result.inserts.map((insert: string) => insert).join('\n')}`;
-      fileSize.value = filesize(getStringSize(sql), { standard: 'jedec' });
-      return sql;
+      return `-- 建表语句:\n${result.createTable}\n-- 插入语句:\n${result.inserts.map((insert: string) => insert).join('\n')}`;
     }
     return '';
   });
   const toonPreview = computed(() => {
     if (data.value.length) {
-      const toon = toonEncode(data.value);
-      fileSize.value = filesize(getStringSize(toon), { standard: 'jedec' });
-      return toon;
+      return toonEncode(data.value);
     }
     return '';
   });
