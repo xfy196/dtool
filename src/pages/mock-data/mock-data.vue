@@ -448,6 +448,8 @@
       outputData = jsonPreview.value;
     } else if (outputFormat.value === 'csv') {
       outputData = jsonPreview.value;
+    } else if (outputFormat.value === 'toon') {
+      outputData = toonPreview.value;
     }
     if (!outputData) {
       message.warning('暂无可复制的数据');
