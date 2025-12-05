@@ -1,8 +1,12 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import type { DataTableColumns } from 'naive-ui';
+  import { ref, computed, useTemplateRef } from 'vue';
+  import type { DataTableColumns, DataTableInst } from 'naive-ui';
   import { useMessage } from 'naive-ui';
   import Mock from 'mockjs';
+  import { jsonToSQL } from './utils.ts';
+  import { useDownloadFile } from '@/composable/downloadFile.ts';
+  import { filesize } from 'filesize';
+  import { encode as toonEncode } from '@toon-format/toon';
 
   type Category = 'personal' | 'business' | 'tech' | 'custom';
 
@@ -45,11 +49,20 @@
     rule: string;
   }
 
+  const extMap = {
+    json: 'json',
+    table: 'xlsx',
+    csv: 'csv',
+    sql: 'sql',
+    toon: 'toon'
+  };
   const message = useMessage();
+
+  const tableRef = useTemplateRef<DataTableInst>('tableRef');
 
   const loading = ref(false);
   const count = ref<number | null>(10);
-  const outputFormat = ref<'json' | 'table'>('json');
+  const outputFormat = ref<'json' | 'csv' | 'sql' | 'toon'>('json');
 
   const activeCategory = ref<Category>('personal');
 
@@ -79,11 +92,7 @@
     { label: '请求 URL', key: 'url', category: 'tech' },
     { label: '请求方法', key: 'method', category: 'tech' },
     { label: '状态码', key: 'statusCode', category: 'tech' },
-    { label: '响应时间(ms)', key: 'responseTime', category: 'tech' },
-    // 自定义
-    { label: 'Key', key: 'customKey', category: 'custom' },
-    { label: 'Value', key: 'customValue', category: 'custom' },
-    { label: '备注', key: 'remark', category: 'custom' }
+    { label: '响应时间(ms)', key: 'responseTime', category: 'tech' }
   ];
 
   const selectedFields = ref<FieldKey[]>(['name', 'email', 'phone']);
@@ -156,10 +165,37 @@
       key
     }))
   );
-
-  const jsonPreview = computed(() =>
-    data.value.length ? JSON.stringify(data.value, null, 2) : ''
-  );
+  const fileSize = ref<string>('');
+  const getStringSize = (str: string) => {
+    const encoder = new TextEncoder(); // 默认使用 UTF-8 编码
+    const bytes = encoder.encode(str);
+    return bytes.length;
+  };
+  const jsonPreview = computed(() => {
+    if (data.value.length) {
+      let json = JSON.stringify(data.value, null, 2);
+      fileSize.value = filesize(getStringSize(json), { standard: 'jedec' });
+      return json;
+    }
+    return '';
+  });
+  const sqlPreview = computed(() => {
+    if (data.value.length) {
+      const result = jsonToSQL(data.value, 'mock-data');
+      let sql = `-- 建表语句:\n${result.createTable}\n-- 插入语句:\n${result.inserts.map((insert: string) => insert).join('\n')}`;
+      fileSize.value = filesize(getStringSize(sql), { standard: 'jedec' });
+      return sql;
+    }
+    return '';
+  });
+  const toonPreview = computed(() => {
+    if (data.value.length) {
+      const toon = toonEncode(data.value);
+      fileSize.value = filesize(getStringSize(toon), { standard: 'jedec' });
+      return toon;
+    }
+    return '';
+  });
 
   const handleQuickTemplate = (
     type: 'user' | 'employee' | 'product' | 'order' | 'api'
@@ -405,12 +441,20 @@
   };
 
   const handleCopy = async () => {
-    if (!jsonPreview.value) {
+    let outputData: string = '';
+    if (outputFormat.value === 'sql') {
+      outputData = sqlPreview.value;
+    } else if (outputFormat.value === 'json') {
+      outputData = jsonPreview.value;
+    } else if (outputFormat.value === 'csv') {
+      outputData = jsonPreview.value;
+    }
+    if (!outputData) {
       message.warning('暂无可复制的数据');
       return;
     }
     try {
-      await navigator.clipboard.writeText(jsonPreview.value);
+      await navigator.clipboard.writeText(outputData);
       message.success('复制成功');
     } catch (e) {
       console.error(e);
@@ -419,20 +463,38 @@
   };
 
   const handleDownload = () => {
-    if (!jsonPreview.value) {
+    let outputData: string = '';
+    if (outputFormat.value === 'sql') {
+      outputData = sqlPreview.value;
+    } else if (outputFormat.value === 'json') {
+      outputData = jsonPreview.value;
+    } else if (outputFormat.value === 'csv') {
+      outputData = jsonPreview.value;
+    } else if (outputFormat.value === 'toon') {
+      outputData = toonPreview.value;
+    }
+    if (!outputData) {
       message.warning('暂无可下载的数据');
       return;
     }
     try {
-      const blob = new Blob([jsonPreview.value], {
-        type: 'application/json;charset=utf-8'
+      // 不同的格式要走不同的下载逻辑
+      if (outputFormat.value === 'csv') {
+        if (tableRef.value) {
+          tableRef.value.downloadCsv({ fileName: 'mock-data' });
+          message.success('开始下载');
+        } else {
+          message.error('下载异常');
+        }
+        return;
+      }
+      const fileName = `mock-data.${extMap[outputFormat.value]}`;
+
+      useDownloadFile({
+        source: outputData,
+        fileName,
+        extension: outputFormat.value
       });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'mock-data.json';
-      a.click();
-      URL.revokeObjectURL(url);
       message.success('开始下载');
     } catch (e) {
       console.error(e);
@@ -470,8 +532,8 @@
         >
           生成数据
         </n-button>
-        <n-button size="small" @click="handleSelectAll"> 全选 </n-button>
-        <n-button size="small" @click="handleClear"> 清空 </n-button>
+        <n-button size="small" @click="handleSelectAll"> 全选</n-button>
+        <n-button size="small" @click="handleClear"> 清空</n-button>
       </div>
     </n-card>
 
@@ -522,7 +584,9 @@
           style="width: 180px"
           :options="[
             { label: 'JSON', value: 'json' },
-            { label: '表格', value: 'table' }
+            { label: 'CSV', value: 'csv' },
+            { label: 'SQL', value: 'sql' },
+            { label: 'TOON', value: 'toon' }
           ]"
         />
       </div>
@@ -630,34 +694,54 @@
     </n-card>
   </div>
 
-  <div class="flex-1 min-h-[480px]">
+  <div class="flex-1">
     <n-card>
       <template #header>
         <div class="flex items-center justify-between">
           <span>数据结果</span>
-          <div class="flex gap-2">
-            <n-button size="small" tertiary disabled> 等待生成 </n-button>
+          <div class="flex gap-2 items-center">
+            <n-text class="text-sm">{{ fileSize }}</n-text>
             <n-button size="small" @click="handleCopy">复制结果</n-button>
             <n-button size="small" @click="handleDownload">下载文件</n-button>
           </div>
         </div>
       </template>
 
-      <div class="min-h-[360px]">
+      <div class="min-h-[360px] max-h-[480px] overflow-auto">
         <n-empty
           v-if="!data.length"
           description="请选择数据字段并点击“生成数据”按钮"
         />
         <template v-else>
           <n-data-table
-            v-if="outputFormat === 'table'"
+            ref="tableRef"
+            v-if="outputFormat === 'csv'"
             :bordered="false"
             :columns="columns"
             :data="data"
             size="small"
           />
           <n-input
+            placeholder=""
+            v-else-if="outputFormat === 'sql'"
+            type="textarea"
+            :value="sqlPreview"
+            autosize
+            readonly
+          >
+          </n-input>
+          <n-input
+            placeholder=""
+            v-else-if="outputFormat === 'toon'"
+            type="textarea"
+            :value="toonPreview"
+            autosize
+            readonly
+          >
+          </n-input>
+          <n-input
             v-else
+            placeholder=""
             type="textarea"
             :value="jsonPreview"
             autosize
