@@ -207,6 +207,10 @@
     "mock-data": {
       "title": "Mock data",
       "description": "Generate mock data"
+    },
+    "image-converter": {
+      "title": "Image converter",
+      "description": "Convert images to Base64, PNG, JPG, WebP, SVG."
     }
   }
 }

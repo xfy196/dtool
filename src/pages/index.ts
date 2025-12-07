@@ -48,6 +48,7 @@ import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as tableConverter } from './table-converter';
 import { tool as mockData } from './mock-data';
+import { tool as imageConverter } from './image-converter';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
@@ -78,6 +79,7 @@ export const toolsCategory: ToolCategory[] = [
     show: true,
     icon: ConvertRange20Regular,
     components: [
+      imageConverter,
       tableConverter,
       caseConverter,
       simplifiedAndComplexConverter,
