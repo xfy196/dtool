@@ -12,7 +12,7 @@
   import { useRouter } from 'vue-router';
   const { locale } = useI18n();
   const router = useRouter();
-  const lang = useStorage('lang', 'cn');
+  const lang = useStorage('lang', 'zh');
 
   locale.value = lang.value;
 
@@ -28,7 +28,7 @@
   const langOptions = ref<Array<SelectOption>>([
     {
       label: '中文',
-      value: 'cn'
+      value: 'zh'
     },
     {
       label: 'English',
