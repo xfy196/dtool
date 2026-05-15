@@ -192,6 +192,28 @@
       "title": "简体和繁体转换器",
       "description": "将简体中文转换为繁体中文，反之亦然。"
     },
+    "gb2312-converter": {
+      "title": "汉字 GB2312/GBK 编码转换",
+      "description": "在汉字与 GBK/GB2312 十六进制字节（空格分隔）之间互转，便于调试与协议分析。",
+      "modeToHex": "当前：汉字 → GBK 十六进制",
+      "modeToText": "当前：GBK 十六进制 → 汉字",
+      "inputLabelText": "输入汉字",
+      "inputLabelHex": "输入 GBK 十六进制",
+      "outputLabel": "转换结果",
+      "placeholderText": "例如：你好",
+      "placeholderHex": "例如：C4 E3 BA C3",
+      "convert": "转换",
+      "switchDir": "切换方向",
+      "clear": "清空",
+      "instructionsTitle": "使用说明",
+      "inst1": "汉字转编码：在上方输入框输入汉字，点击「转换」，下方显示空格分隔的十六进制字节（GBK，兼容 GB2312 常用字）。",
+      "inst2": "编码转汉字：点击「切换方向」，在上方输入十六进制（可带空格、逗号或 0x 前缀），点击「转换」。",
+      "inst3": "点击「清空」可清除输入与输出。",
+      "inst4": "本工具按 GBK 编解码；常用汉字与 GB2312 重叠部分结果与 GB2312 工具一致，扩展字依赖 GBK。",
+      "errInvalidHexLen": "十六进制长度须为偶数，请检查是否漏写或多空格。",
+      "errInvalidHexByte": "包含无效的十六进制字符。",
+      "errConvert": "转换失败，请检查输入内容。"
+    },
     "json-diff": {
       "title": "JSON 差异比对",
       "description": "比较两个JSON对象并获得它们之间的差异。"

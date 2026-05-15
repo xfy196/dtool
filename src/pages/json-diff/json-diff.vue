@@ -47,13 +47,13 @@
   });
   onMounted(() => {
     const langMap: Record<string, string> = {
-      cn: 'zh-cn',
+      cn: 'zh',
       en: 'en'
     };
 
     loader.config({ monaco });
     loader.config({
-      'vs/nls': { availableLanguages: { '*': langMap[locale.value] || 'cn' } }
+      'vs/nls': { availableLanguages: { '*': langMap[locale.value] || 'zh' } }
     }); // availableLanguages中可以配置想要的语言，例如de、zh-cn等
     loader.init().then((monaco: Monaco) => {
       if (!editorContainer.value) {

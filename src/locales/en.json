@@ -192,6 +192,28 @@
       "title": "Simplified and Complex Converter",
       "description": "Convert Simplified Chinese to Traditional Chinese and vice versa."
     },
+    "gb2312-converter": {
+      "title": "Chinese GB2312 / GBK hex converter",
+      "description": "Convert between Chinese text and GBK / GB2312-style hex byte sequences (space-separated) for debugging and protocol work.",
+      "modeToHex": "Current: Chinese → GBK hex",
+      "modeToText": "Current: GBK hex → Chinese",
+      "inputLabelText": "Chinese input",
+      "inputLabelHex": "GBK hex input",
+      "outputLabel": "Result",
+      "placeholderText": "e.g. 你好",
+      "placeholderHex": "e.g. C4 E3 BA C3",
+      "convert": "Convert",
+      "switchDir": "Switch direction",
+      "clear": "Clear",
+      "instructionsTitle": "How to use",
+      "inst1": "Text to bytes: type Chinese in the top box, click Convert; hex bytes (GBK, compatible with common GB2312 characters) appear below.",
+      "inst2": "Bytes to text: click Switch direction, enter hex in the top box (spaces, commas, or 0x prefixes allowed), then Convert.",
+      "inst3": "Clear removes both fields.",
+      "inst4": "Encoding uses GBK; for characters in the GB2312 set, results match typical GB2312 tools; rare characters follow GBK.",
+      "errInvalidHexLen": "Hex length must be even — check for typos or stray separators.",
+      "errInvalidHexByte": "Invalid hexadecimal character.",
+      "errConvert": "Conversion failed. Please check your input."
+    },
     "json-diff": {
       "title": "JSON Diff",
       "description": "Compare two JSON objects and get the differences between them."

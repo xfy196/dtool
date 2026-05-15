@@ -44,6 +44,7 @@ import { tool as textStatistics } from './text-statistics';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
 import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
+import { tool as gb2312Converter } from './gb2312-converter';
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as tableConverter } from './table-converter';
@@ -83,6 +84,7 @@ export const toolsCategory: ToolCategory[] = [
       tableConverter,
       caseConverter,
       simplifiedAndComplexConverter,
+      gb2312Converter,
       romanNumeralConverter,
       colorConverter,
       dateConverter,
