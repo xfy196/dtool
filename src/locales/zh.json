@@ -233,6 +233,32 @@
     "image-converter": {
       "title": "图片转换器",
       "description": "将图片转换为Base64、PNG、JPG、WebP、SVG等格式。"
+    },
+    "image-resizer": {
+      "title": "图片尺寸调整",
+      "description": "上传图片并按指定宽高缩放，支持锁定宽高比，下载后尽量保持原图格式。",
+      "uploadHint": "点击或拖拽图片到此处",
+      "uploadFormats": "支持 JPG、PNG、WEBP、BMP",
+      "previewEmpty": "尚未选择图片",
+      "widthLabel": "宽",
+      "heightLabel": "高",
+      "originalSizeEmpty": "原始尺寸：—",
+      "originalSizeValue": "原始尺寸：{width} × {height} px",
+      "originalRatioEmpty": "原始比例：—",
+      "originalRatioValue": "原始比例 {ratio}（宽/高）",
+      "lockRatio": "锁定宽高比",
+      "unlockRatio": "解除宽高比锁定",
+      "lockRequiresImage": "请先选择图片才能锁定比例。",
+      "reset": "重置",
+      "download": "下载调整后的图片",
+      "footerNote": "调整尺寸后点击下载，图片格式保持与原图一致。",
+      "downloadStarted": "开始下载",
+      "errUnsupportedFormat": "仅支持 JPG、PNG、WEBP、BMP 格式",
+      "errFileTooLarge": "文件大小不能超过 20MB",
+      "errLoadImage": "图片加载失败，请重试",
+      "errNoImage": "请先上传图片",
+      "errInvalidSize": "宽高须大于 0",
+      "errResize": "图片处理失败，请重试"
     }
   }
 }

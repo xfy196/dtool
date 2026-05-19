@@ -171,7 +171,7 @@
       :disabled="loading"
     >
       <n-upload-dragger>
-        <div class="flex flex-col items-center justify-center py-8">
+        <div class="flex flex-col justify-center items-center py-8">
           <n-icon size="48" :depth="3" class="mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -233,6 +233,32 @@
     "image-converter": {
       "title": "Image converter",
       "description": "Convert images to Base64, PNG, JPG, WebP, SVG."
+    },
+    "image-resizer": {
+      "title": "Image resizer",
+      "description": "Upload an image, set target width and height, optionally lock aspect ratio, and download the resized file.",
+      "uploadHint": "Click or drag an image here",
+      "uploadFormats": "Supports JPG, PNG, WEBP, BMP",
+      "previewEmpty": "No image selected",
+      "widthLabel": "Width",
+      "heightLabel": "Height",
+      "originalSizeEmpty": "Original size: —",
+      "originalSizeValue": "Original size: {width} × {height} px",
+      "originalRatioEmpty": "Original ratio: —",
+      "originalRatioValue": "Original ratio {ratio} (W/H)",
+      "lockRatio": "Lock aspect ratio",
+      "unlockRatio": "Unlock aspect ratio",
+      "lockRequiresImage": "Select an image before locking aspect ratio.",
+      "reset": "Reset",
+      "download": "Download resized image",
+      "footerNote": "Resize then download. Output format matches the original.",
+      "downloadStarted": "Download started",
+      "errUnsupportedFormat": "Only JPG, PNG, WEBP, and BMP are supported",
+      "errFileTooLarge": "File size must not exceed 20MB",
+      "errLoadImage": "Failed to load image",
+      "errNoImage": "Please upload an image first",
+      "errInvalidSize": "Width and height must be greater than 0",
+      "errResize": "Failed to resize image"
     }
   }
 }

@@ -35,7 +35,7 @@
     bcolor: string;
     errorLvel: string;
   }>({
-    text: 'https://dtool.tech',
+    text: 'https://tools.xxtime.top',
     fcolor: '#000000',
     bcolor: '#ffffff',
     errorLvel: 'M'
