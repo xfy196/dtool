@@ -8,6 +8,7 @@
     "photoandvideo": "图片和视频",
     "text": "文本",
     "network": "网络",
+    "thumbup": "点赞工具箱",
     "uuid-generator": {
       "title": "UUIDs 生成器",
       "description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。"
@@ -259,6 +260,42 @@
       "errNoImage": "请先上传图片",
       "errInvalidSize": "宽高须大于 0",
       "errResize": "图片处理失败，请重试"
+    },
+    "loan-calculator": {
+      "title": "贷款计算器",
+      "description": "按揭贷款计算器(等额本息还款/等额本金还款)·集成AI智能分析",
+      "fields": {
+        "principal": "贷款金额",
+        "months": "贷款期限",
+        "monthsSuffix": "月 (1-360)",
+        "annualRate": "贷款年利率",
+        "repaymentType": "还款方式"
+      },
+      "repayment": {
+        "equal-payment": "等额本息",
+        "equal-principal": "等额本金"
+      },
+      "calculate": "计算",
+      "result": {
+        "title": "计算结果",
+        "monthly": "月供金额",
+        "interest": "总利息金额",
+        "total": "还款总额"
+      },
+      "ai": {
+        "button": "获取AI还款建议",
+        "comingSoon": "AI 还款建议功能即将上线。"
+      },
+      "tip": {
+        "creditTitle": "考虑使用信用卡分期付款?",
+        "creditBody": "使用我们的信用卡分期计算器，了解实际年利率和总费用。"
+      },
+      "errors": {
+        "invalidPrincipal": "请输入大于 0 的贷款金额",
+        "invalidMonths": "贷款期限需在 1-360 月之间",
+        "invalidRate": "年利率不能为负数"
+      },
+      "calculated": "已根据最新输入更新计算结果"
     }
   }
 }

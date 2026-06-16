@@ -51,10 +51,11 @@ import { tool as tableConverter } from './table-converter';
 import { tool as mockData } from './mock-data';
 import { tool as imageConverter } from './image-converter';
 import { tool as imageResizer } from './image-resizer';
+import { tool as loanCalculator } from './loan-calculator';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
-import { Lock, Photo, File } from '@vicons/tabler';
+import { Lock, Photo, File, ThumbUp } from '@vicons/tabler';
 
 export const toolsCategory: ToolCategory[] = [
   {
@@ -145,6 +146,12 @@ export const toolsCategory: ToolCategory[] = [
     show: true,
     icon: ContentDeliveryNetwork,
     components: [ipv4SubnetCalculator]
+  },
+  {
+    name: 'ThumbUp',
+    show: true,
+    icon: ThumbUp,
+    components: [loanCalculator]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

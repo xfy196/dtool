@@ -8,6 +8,7 @@
     "photoandvideo": "PhotoAndVideo",
     "text": "Text",
     "network": "Network",
+    "thumbup": "Thumbup Tool",
     "uuid-generator": {
       "title": "UUIDs generator",
       "description": "A Universally Unique Identifier (UUID) is a 128-bit number used to identify information in computer systems. The number of possible UUIDs is 16^32, which is 2^128 or about 3.4x10^38 (which is a lot!)."
@@ -259,6 +260,42 @@
       "errNoImage": "Please upload an image first",
       "errInvalidSize": "Width and height must be greater than 0",
       "errResize": "Failed to resize image"
+    },
+    "loan-calculator": {
+      "title": "Loan calculator",
+      "description": "Mortgage calculator (equal monthly installment / equal principal) with built-in AI analysis.",
+      "fields": {
+        "principal": "Loan amount",
+        "months": "Loan term",
+        "monthsSuffix": "Month (1-360)",
+        "annualRate": "Annual interest rate",
+        "repaymentType": "Repayment method"
+      },
+      "repayment": {
+        "equal-payment": "Equal monthly installment (EMI)",
+        "equal-principal": "Equal principal"
+      },
+      "calculate": "Calculate",
+      "result": {
+        "title": "Result",
+        "monthly": "Monthly payment",
+        "interest": "Total interest",
+        "total": "Total repayment"
+      },
+      "ai": {
+        "button": "Get AI repayment advice",
+        "comingSoon": "AI repayment advice is coming soon."
+      },
+      "tip": {
+        "creditTitle": "Considering credit card installments?",
+        "creditBody": "Use our credit card installment calculator to understand the real APR and total cost."
+      },
+      "errors": {
+        "invalidPrincipal": "Please enter a loan amount greater than 0.",
+        "invalidMonths": "Loan term must be between 1 and 360 months.",
+        "invalidRate": "Annual interest rate cannot be negative."
+      },
+      "calculated": "Result updated with the latest input."
     }
   }
 }
