@@ -2,14 +2,7 @@
   import { computed, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { useMessage, type SelectOption } from 'naive-ui';
-  import {
-    Calculator,
-    Bulb,
-    Cash,
-    Calendar,
-    Percentage,
-    ChartBar
-  } from '@vicons/tabler';
+  import { Bulb, Cash, Calendar, Percentage, ChartBar } from '@vicons/tabler';
   import {
     calculateLoan,
     formatCurrency,
@@ -196,7 +189,7 @@
           <div class="text-sm text-gray-600 dark:text-zinc-300">
             {{ t('tools.loan-calculator.result.monthly') }}
           </div>
-          <div class="flex items-baseline gap-1">
+          <div class="flex gap-1 items-baseline">
             <span
               class="text-2xl font-bold leading-tight text-blue-600 sm:text-[1.5rem]"
               >{{ monthlyText }}</span
@@ -211,7 +204,7 @@
           <div class="text-sm text-gray-600 dark:text-zinc-300">
             {{ t('tools.loan-calculator.result.interest') }}
           </div>
-          <div class="flex items-baseline gap-1">
+          <div class="flex gap-1 items-baseline">
             <span
               class="text-2xl font-bold leading-tight text-purple-600 sm:text-[1.5rem]"
               >{{ interestText }}</span
@@ -226,7 +219,7 @@
           <div class="text-sm text-gray-600 dark:text-zinc-300">
             {{ t('tools.loan-calculator.result.total') }}
           </div>
-          <div class="flex items-baseline gap-1">
+          <div class="flex gap-1 items-baseline">
             <span
               class="text-2xl font-bold leading-tight text-emerald-600 sm:text-[1.5rem]"
               >{{ totalText }}</span
@@ -236,11 +229,11 @@
         </div>
       </div>
 
-      <div class="my-6 flex justify-center">
+      <div class="flex justify-center my-6">
         <n-button
           type="primary"
           size="medium"
-          class="border-transparent bg-gradient-to-br from-indigo-500 to-violet-500"
+          class="bg-gradient-to-br from-indigo-500 to-violet-500 border-transparent"
           @click="handleAiAdvice"
         >
           <template #icon>
