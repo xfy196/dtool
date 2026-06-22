@@ -73,6 +73,7 @@ declare module 'vue' {
     PdfSignatureChecker: typeof import('./src/pages/pdf-signature-checker/pdf-signature-checker.vue')['default']
     PdfSignatureDetail: typeof import('./src/pages/pdf-signature-checker/components/pdf-signature-detail.vue')['default']
     QrcodeGenerator: typeof import('./src/pages/qrcode-generator/qrcode-generator.vue')['default']
+    RmbConverter: typeof import('./src/pages/rmb-converter/rmb-converter.vue')['default']
     RomanNumeralConverter: typeof import('./src/pages/roman-numeral-converter/roman-numeral-converter.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

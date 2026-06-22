@@ -296,6 +296,10 @@
         "invalidRate": "年利率不能为负数"
       },
       "calculated": "已根据最新输入更新计算结果"
+    },
+    "rmb-converter": {
+      "title": "人民币转换器",
+      "description": "将人民币转换为其他货币，反之亦然。"
     }
   }
 }

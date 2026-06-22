@@ -52,6 +52,7 @@ import { tool as mockData } from './mock-data';
 import { tool as imageConverter } from './image-converter';
 import { tool as imageResizer } from './image-resizer';
 import { tool as loanCalculator } from './loan-calculator';
+import { tool as rmbConverter } from './rmb-converter';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
@@ -151,7 +152,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'ThumbUp',
     show: true,
     icon: ThumbUp,
-    components: [loanCalculator]
+    components: [loanCalculator, rmbConverter]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

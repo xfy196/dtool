@@ -296,6 +296,10 @@
         "invalidRate": "Annual interest rate cannot be negative."
       },
       "calculated": "Result updated with the latest input."
+    },
+    "rmb-converter": {
+      "title": "RMB converter",
+      "description": "Convert RMB to other currencies and vice versa."
     }
   }
 }

@@ -40,14 +40,6 @@
     )
   );
 
-  const hasResult = computed(
-    () =>
-      principal.value > 0 &&
-      months.value > 0 &&
-      annualRate.value >= 0 &&
-      Number.isFinite(result.value.totalPayment)
-  );
-
   // ----- formatted display values -----
   const monthlyText = computed(() =>
     formatCurrency(result.value.monthlyPayment)
@@ -75,9 +67,9 @@
     message.success(t('tools.loan-calculator.calculated'));
   }
 
-  function handleAiAdvice() {
-    message.info(t('tools.loan-calculator.ai.comingSoon'));
-  }
+  // function handleAiAdvice() {
+  //   message.info(t('tools.loan-calculator.ai.comingSoon'));
+  // }
 </script>
 
 <template>
@@ -229,7 +221,7 @@
         </div>
       </div>
 
-      <div class="flex justify-center my-6">
+      <!-- <div class="flex justify-center my-6">
         <n-button
           type="primary"
           size="medium"
@@ -241,17 +233,7 @@
           </template>
           {{ t('tools.loan-calculator.ai.button') }}
         </n-button>
-      </div>
-
-      <n-alert
-        v-if="hasResult"
-        type="info"
-        :show-icon="true"
-        :title="t('tools.loan-calculator.tip.creditTitle')"
-        class="mt-2"
-      >
-        {{ t('tools.loan-calculator.tip.creditBody') }}
-      </n-alert>
+      </div> -->
     </n-card>
   </div>
 </template>
