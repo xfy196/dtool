@@ -300,6 +300,36 @@
     "rmb-converter": {
       "title": "人民币转换器",
       "description": "将人民币转换为其他货币，反之亦然。"
+    },
+    "bmi-calculator": {
+      "title": "BMI 计算器",
+      "description": "身体质量指数(BMI)健康评估工具",
+      "fields": {
+        "height": "身高",
+        "heightUnit": "厘米",
+        "weight": "体重",
+        "weightUnit": "公斤"
+      },
+      "calculate": "计算 BMI",
+      "result": {
+        "title": "计算结果",
+        "bmi": "BMI指数",
+        "category": "体重分类",
+        "risk": "健康风险"
+      },
+      "classification": {
+        "title": "BMI 分类标准"
+      },
+      "table": {
+        "range": "BMI 范围",
+        "category": "分类",
+        "risk": "健康风险"
+      },
+      "errors": {
+        "invalidHeight": "请输入有效的身高",
+        "invalidWeight": "请输入有效的体重"
+      },
+      "calculated": "计算完成"
     }
   }
 }

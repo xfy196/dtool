@@ -2,7 +2,7 @@
   import { computed, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { useMessage, type SelectOption } from 'naive-ui';
-  import { Bulb, Cash, Calendar, Percentage, ChartBar } from '@vicons/tabler';
+  import { Cash, Calendar, Percentage, ChartBar } from '@vicons/tabler';
   import {
     calculateLoan,
     formatCurrency,

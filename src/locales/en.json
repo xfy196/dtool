@@ -300,6 +300,36 @@
     "rmb-converter": {
       "title": "RMB converter",
       "description": "Convert RMB to other currencies and vice versa."
+    },
+    "bmi-calculator": {
+      "title": "BMI Calculator",
+      "description": "Body Mass Index (BMI) health assessment tool",
+      "fields": {
+        "height": "Height",
+        "heightUnit": "cm",
+        "weight": "Weight",
+        "weightUnit": "kg"
+      },
+      "calculate": "Calculate BMI",
+      "result": {
+        "title": "Results",
+        "bmi": "BMI Index",
+        "category": "Weight Category",
+        "risk": "Health Risk"
+      },
+      "classification": {
+        "title": "BMI Classification"
+      },
+      "table": {
+        "range": "BMI Range",
+        "category": "Category",
+        "risk": "Health Risk"
+      },
+      "errors": {
+        "invalidHeight": "Please enter a valid height",
+        "invalidWeight": "Please enter a valid weight"
+      },
+      "calculated": "Calculation complete"
     }
   }
 }
