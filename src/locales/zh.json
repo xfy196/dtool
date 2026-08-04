@@ -193,13 +193,13 @@
       "title": "简体和繁体转换器",
       "description": "将简体中文转换为繁体中文，反之亦然。"
     },
-    "gb2312-converter": {
-      "title": "汉字 GB2312/GBK 编码转换",
-      "description": "在汉字与 GBK/GB2312 十六进制字节（空格分隔）之间互转，便于调试与协议分析。",
-      "modeToHex": "当前：汉字 → GBK 十六进制",
-      "modeToText": "当前：GBK 十六进制 → 汉字",
+    "encoding-converter": {
+      "title": "汉字编码转换",
+      "description": "在汉字与 GBK/GB2312/UTF-8 十六进制字节（空格分隔）之间互转，便于调试与协议分析。",
+      "modeToHex": "当前：汉字 → 十六进制",
+      "modeToText": "当前：十六进制 → 汉字",
       "inputLabelText": "输入汉字",
-      "inputLabelHex": "输入 GBK 十六进制",
+      "inputLabelHex": "输入十六进制",
       "outputLabel": "转换结果",
       "placeholderText": "例如：你好",
       "placeholderHex": "例如：C4 E3 BA C3",
@@ -207,10 +207,10 @@
       "switchDir": "切换方向",
       "clear": "清空",
       "instructionsTitle": "使用说明",
-      "inst1": "汉字转编码：在上方输入框输入汉字，点击「转换」，下方显示空格分隔的十六进制字节（GBK，兼容 GB2312 常用字）。",
-      "inst2": "编码转汉字：点击「切换方向」，在上方输入十六进制（可带空格、逗号或 0x 前缀），点击「转换」。",
+      "inst1": "汉字转编码：在上方输入框输入汉字，选择编码格式（GBK/GB2312/UTF-8），点击「转换」，下方显示空格分隔的十六进制字节。",
+      "inst2": "编码转汉字：点击「切换方向」，在上方输入十六进制（可带空格、逗号或 0x 前缀），选择对应编码格式，点击「转换」。",
       "inst3": "点击「清空」可清除输入与输出。",
-      "inst4": "本工具按 GBK 编解码；常用汉字与 GB2312 重叠部分结果与 GB2312 工具一致，扩展字依赖 GBK。",
+      "inst4": "支持 GBK、GB2312、UTF-8 三种编码格式的互转；GBK 兼容 GB2312 常用字，UTF-8 为国际通用编码。",
       "errInvalidHexLen": "十六进制长度须为偶数，请检查是否漏写或多空格。",
       "errInvalidHexByte": "包含无效的十六进制字符。",
       "errConvert": "转换失败，请检查输入内容。"
@@ -330,6 +330,42 @@
         "invalidWeight": "请输入有效的体重"
       },
       "calculated": "计算完成"
+    },
+    "number-sum-average": {
+      "title": "数字求和求平均数工具",
+      "description": "输入数字数据，自动生成统计表格",
+      "input": {
+        "title": "输入数字数据",
+        "hint": "输入格式说明：每行代表一组数据，数字之间用空格分隔。支持整数和小数。"
+      },
+      "buttons": {
+        "generate": "生成统计表格",
+        "example": "加载示例",
+        "clear": "清空数据"
+      },
+      "result": {
+        "title": "统计结果"
+      },
+      "table": {
+        "row": "行号",
+        "data": "数据",
+        "average": "平均数",
+        "sum": "总和",
+        "stats": "统计"
+      },
+      "summary": {
+        "title": "统计摘要",
+        "rows": "数据行数",
+        "count": "数据总数",
+        "avg": "整体平均",
+        "sum": "综合总和"
+      },
+      "errors": {
+        "empty": "请输入数据后再生成"
+      },
+      "generated": "统计表格已生成",
+      "example_loaded": "示例数据已加载",
+      "cleared": "数据已清空"
     }
   }
 }

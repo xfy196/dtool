@@ -82,29 +82,29 @@ DTOOL 是一个基于 **Vue 3 + Vite** 的单页应用，将数十种常用开�
 
 ### 转换器（Converter）— 24 项
 
-| 工具                       | 路径                                | 说明                                                 |
-| -------------------------- | ----------------------------------- | ---------------------------------------------------- |
-| 图片转换器 ✓               | `/image-converter`                  | 图片与 Base64、PNG、JPG、WebP、SVG 等互转            |
-| 表格转换 ✓                 | `/table-converter`                  | Markdown 表格、CSV、JSON 互转                        |
-| 大小写转换 ✓               | `/case-converter`                   | 多种命名风格（camelCase、snake_case 等）             |
-| 简繁体转换 ✓               | `/simplified-and-complex-converter` | 简体 ↔ 繁体中文                                      |
-| 汉字 GB2312/GBK 编码转换 ✓ | `/gb2312-converter`                 | 汉字与 GBK 十六进制字节互转                          |
-| 罗马数字转换 ✓             | `/roman-numeral-converter`          | 罗马数字与阿拉伯数字互转                             |
-| 颜色转换 ✓                 | `/color-converter`                  | HEX、RGB、HSL、CSS 颜色名                            |
-| 日期时间转换 ✓             | `/date-time-converter`              | 多种日期时间格式互转                                 |
-| 字符串分割器 ✓             | `/str-split`                        | 按规则拆分字符串                                     |
-| 整数转换器 ✓               | `/integer-converter`                | 十进制、十六进制、二进制、八进制、Base64 等          |
-| Base64 字符串编解码 ✓      | `/base64-string-converter`          | 文本 Base64 编码/解码                                |
-| Base64 文件转换 ✓          | `/base64-file-converter`            | 文件/图片与 Base64 互转                              |
-| 文本 ↔ Unicode ✓           | `/text-to-unicode`                  | 文本与 Unicode 表示互转                              |
-| 文本 ↔ 二进制 ✓            | `/text-to-binary`                   | 文本与 8 位二进制串互转                              |
-| JSON ↔ YAML ✓              | `/json-to-yaml`、`/yaml-to-json`    | JSON 与 YAML 互转                                    |
-| JSON ↔ TOML ✓              | `/json-to-toml`、`/toml-to-json`    | JSON 与 TOML 互转                                    |
-| JSON ↔ XML ✓               | `/json-to-xml`、`/xml-to-json`      | JSON 与 XML 互转                                     |
-| TOML ↔ XML ✓               | `/toml-to-xml`                      | TOML 转 XML                                          |
-| YAML ↔ TOML ✓              | `/yaml-to-toml`                     | YAML 与 TOML 互转                                    |
-| Markdown → HTML ✓          | `/markdown-to-html`                 | Markdown 渲染为 HTML                                 |
-| MP4 → AVI                  | `/mp4-to-avi`                       | 浏览器内 FFmpeg 转码（**侧边栏未展示**，路由仍可用） |
+| 工具                  | 路径                                | 说明                                                 |
+| --------------------- | ----------------------------------- | ---------------------------------------------------- |
+| 图片转换器 ✓          | `/image-converter`                  | 图片与 Base64、PNG、JPG、WebP、SVG 等互转            |
+| 表格转换 ✓            | `/table-converter`                  | Markdown 表格、CSV、JSON 互转                        |
+| 大小写转换 ✓          | `/case-converter`                   | 多种命名风格（camelCase、snake_case 等）             |
+| 简繁体转换 ✓          | `/simplified-and-complex-converter` | 简体 ↔ 繁体中文                                      |
+| 汉字编码转换 ✓        | `/encoding-converter`               | 汉字与 GBK/GB2312/UTF-8 十六进制字节互转             |
+| 罗马数字转换 ✓        | `/roman-numeral-converter`          | 罗马数字与阿拉伯数字互转                             |
+| 颜色转换 ✓            | `/color-converter`                  | HEX、RGB、HSL、CSS 颜色名                            |
+| 日期时间转换 ✓        | `/date-time-converter`              | 多种日期时间格式互转                                 |
+| 字符串分割器 ✓        | `/str-split`                        | 按规则拆分字符串                                     |
+| 整数转换器 ✓          | `/integer-converter`                | 十进制、十六进制、二进制、八进制、Base64 等          |
+| Base64 字符串编解码 ✓ | `/base64-string-converter`          | 文本 Base64 编码/解码                                |
+| Base64 文件转换 ✓     | `/base64-file-converter`            | 文件/图片与 Base64 互转                              |
+| 文本 ↔ Unicode ✓      | `/text-to-unicode`                  | 文本与 Unicode 表示互转                              |
+| 文本 ↔ 二进制 ✓       | `/text-to-binary`                   | 文本与 8 位二进制串互转                              |
+| JSON ↔ YAML ✓         | `/json-to-yaml`、`/yaml-to-json`    | JSON 与 YAML 互转                                    |
+| JSON ↔ TOML ✓         | `/json-to-toml`、`/toml-to-json`    | JSON 与 TOML 互转                                    |
+| JSON ↔ XML ✓          | `/json-to-xml`、`/xml-to-json`      | JSON 与 XML 互转                                     |
+| TOML ↔ XML ✓          | `/toml-to-xml`                      | TOML 转 XML                                          |
+| YAML ↔ TOML ✓         | `/yaml-to-toml`                     | YAML 与 TOML 互转                                    |
+| Markdown → HTML ✓     | `/markdown-to-html`                 | Markdown 渲染为 HTML                                 |
+| MP4 → AVI             | `/mp4-to-avi`                       | 浏览器内 FFmpeg 转码（**侧边栏未展示**，路由仍可用） |
 
 ### Web — 8 项
 

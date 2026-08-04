@@ -7,40 +7,48 @@
   import {
     gbkHexToText,
     textToGbkHex,
-    type Gb2312ConvertMode
-  } from './gb2312-converter.models';
+    type Gb2312ConvertMode,
+    type EncodingType
+  } from './encoding-converter.models';
 
   const { t } = useI18n();
   const message = useMessage();
 
   const mode = ref<Gb2312ConvertMode>('text-to-hex');
+  const encoding = ref<EncodingType>('gbk');
   const inputValue = ref('');
   const outputValue = ref('');
   const textareaRows = 18;
 
+  const encodingOptions = computed(() => [
+    { label: 'GBK', value: 'gbk' },
+    { label: 'GB2312', value: 'gb2312' },
+    { label: 'UTF-8', value: 'utf-8' }
+  ]);
+
   const modeSubtitle = computed(() =>
     mode.value === 'text-to-hex'
-      ? t('tools.gb2312-converter.modeToHex')
-      : t('tools.gb2312-converter.modeToText')
+      ? t('tools.encoding-converter.modeToHex')
+      : t('tools.encoding-converter.modeToText')
   );
 
   const inputLabel = computed(() =>
     mode.value === 'text-to-hex'
-      ? t('tools.gb2312-converter.inputLabelText')
-      : t('tools.gb2312-converter.inputLabelHex')
+      ? t('tools.encoding-converter.inputLabelText')
+      : t('tools.encoding-converter.inputLabelHex')
   );
 
   const inputPlaceholder = computed(() =>
     mode.value === 'text-to-hex'
-      ? t('tools.gb2312-converter.placeholderText')
-      : t('tools.gb2312-converter.placeholderHex')
+      ? t('tools.encoding-converter.placeholderText')
+      : t('tools.encoding-converter.placeholderHex')
   );
 
   const instructions = computed(() => [
-    t('tools.gb2312-converter.inst1'),
-    t('tools.gb2312-converter.inst2'),
-    t('tools.gb2312-converter.inst3'),
-    t('tools.gb2312-converter.inst4')
+    t('tools.encoding-converter.inst1'),
+    t('tools.encoding-converter.inst2'),
+    t('tools.encoding-converter.inst3'),
+    t('tools.encoding-converter.inst4')
   ]);
 
   const {
@@ -55,18 +63,18 @@
   function handleConvert() {
     try {
       if (mode.value === 'text-to-hex') {
-        outputValue.value = textToGbkHex(inputValue.value);
+        outputValue.value = textToGbkHex(inputValue.value, encoding.value);
       } else {
-        outputValue.value = gbkHexToText(inputValue.value);
+        outputValue.value = gbkHexToText(inputValue.value, encoding.value);
       }
     } catch (e) {
       const err = e instanceof Error ? e.message : '';
       if (err === 'INVALID_HEX_LEN') {
-        message.error(t('tools.gb2312-converter.errInvalidHexLen'));
+        message.error(t('tools.encoding-converter.errInvalidHexLen'));
       } else if (err === 'INVALID_HEX_BYTE') {
-        message.error(t('tools.gb2312-converter.errInvalidHexByte'));
+        message.error(t('tools.encoding-converter.errInvalidHexByte'));
       } else {
-        message.error(t('tools.gb2312-converter.errConvert'));
+        message.error(t('tools.encoding-converter.errConvert'));
       }
     }
   }
@@ -86,8 +94,14 @@
 </script>
 
 <template>
-  <n-flex justify="center" class="gb2312-full gb2312-hint">
+  <n-flex justify="center" align="center" class="gb2312-full gb2312-hint">
     <n-text depth="3" role="status">{{ modeSubtitle }}</n-text>
+    <n-select
+      v-model:value="encoding"
+      :options="encodingOptions"
+      size="small"
+      style="width: 8rem"
+    />
   </n-flex>
 
   <n-card :title="inputLabel" class="flex-1 gb2312-panel">
@@ -100,7 +114,7 @@
   </n-card>
 
   <n-card
-    :title="t('tools.gb2312-converter.outputLabel')"
+    :title="t('tools.encoding-converter.outputLabel')"
     class="flex-1 gb2312-panel"
   >
     <template v-if="outputValue" #header-extra>
@@ -131,21 +145,21 @@
 
   <n-flex justify="center" class="gb2312-full">
     <n-button type="primary" @click="handleConvert">
-      {{ t('tools.gb2312-converter.convert') }}
+      {{ t('tools.encoding-converter.convert') }}
     </n-button>
     <n-button @click="toggleMode">
       <template #icon>
         <n-icon><ArrowsVertical /></n-icon>
       </template>
-      {{ t('tools.gb2312-converter.switchDir') }}
+      {{ t('tools.encoding-converter.switchDir') }}
     </n-button>
     <n-button @click="handleClear">
-      {{ t('tools.gb2312-converter.clear') }}
+      {{ t('tools.encoding-converter.clear') }}
     </n-button>
   </n-flex>
 
   <n-card
-    :title="t('tools.gb2312-converter.instructionsTitle')"
+    :title="t('tools.encoding-converter.instructionsTitle')"
     class="gb2312-full"
     size="small"
   >

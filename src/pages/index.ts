@@ -44,7 +44,7 @@ import { tool as textStatistics } from './text-statistics';
 import { tool as textDiff } from './text-diff';
 import { tool as emojiPicker } from './emoji-picker';
 import { tool as simplifiedAndComplexConverter } from './simplified-and-complex-converter';
-import { tool as gb2312Converter } from './gb2312-converter';
+import { tool as gb2312Converter } from './encoding-converter';
 import { tool as jsonDiff } from './json-diff';
 import { tool as ipv4SubnetCalculator } from './ipv4-subnet-calculator';
 import { tool as tableConverter } from './table-converter';
@@ -54,6 +54,7 @@ import { tool as imageResizer } from './image-resizer';
 import { tool as loanCalculator } from './loan-calculator';
 import { tool as rmbConverter } from './rmb-converter';
 import { tool as bmiCalculator } from './bmi-calculator';
+import { tool as numberSumAverage } from './number-sum-average';
 import { ToolCategory } from './tool.types.ts';
 import { ConvertRange20Regular } from '@vicons/fluent';
 import { ApplicationWeb, ContentDeliveryNetwork } from '@vicons/carbon';
@@ -153,7 +154,7 @@ export const toolsCategory: ToolCategory[] = [
     name: 'ThumbUp',
     show: true,
     icon: ThumbUp,
-    components: [loanCalculator, rmbConverter, bmiCalculator]
+    components: [loanCalculator, rmbConverter, bmiCalculator, numberSumAverage]
   }
 ];
 export const tools = toolsCategory.flatMap(({ components }) => components);

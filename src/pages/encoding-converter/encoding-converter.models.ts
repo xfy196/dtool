@@ -2,6 +2,8 @@ import iconv from 'iconv-lite';
 
 export type Gb2312ConvertMode = 'text-to-hex' | 'hex-to-text';
 
+export type EncodingType = 'gbk' | 'gb2312' | 'utf-8';
+
 /** Strip separators and optional 0x; return contiguous hex digits. */
 export function normalizeHexInput(raw: string): string {
   return raw.replace(/0x/gi, '').replace(/[,;\s]+/g, '');
@@ -38,15 +40,22 @@ export function bytesToHexUpper(
   return parts.join(separator);
 }
 
-export function textToGbkHex(text: string, separator = ' '): string {
-  const encoded = iconv.encode(text, 'gbk');
+export function textToGbkHex(
+  text: string,
+  encoding: EncodingType = 'gbk',
+  separator = ' '
+): string {
+  const encoded = iconv.encode(text, encoding);
   return bytesToHexUpper(encoded, separator);
 }
 
-export function gbkHexToText(hex: string): string {
+export function gbkHexToText(
+  hex: string,
+  encoding: EncodingType = 'gbk'
+): string {
   const bytes = hexStringToBytes(hex);
   if (!bytes.length) {
     return '';
   }
-  return iconv.decode(bytes, 'gbk');
+  return iconv.decode(bytes, encoding);
 }
